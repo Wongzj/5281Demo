@@ -88,6 +88,7 @@ CREATE TABLE `my_order` (
                             `userName` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 /*Data for the table `my_order` */
 
 insert  into `my_order`(`id`,`p_name`,`price`,`jianJie`,`img`,`userId`,`my_address`,`p_class`,`user_name`,`user_mobile`,`p_color`,`p_version`,`orderDate`,`orderCode`,`shifu`,`userName`) values ('73608d3a-bc0a-704f-0','HUAWEI Mate ','3999','6GB+64GB 全网通版','HUAWEIMate20.png','66f7985c-650c-01d6-c850-987ddf2a7292','河南省郑州市二七区','40','张一','18437892308','香槟金','全网通6GB+64GB','2019-4-22 22:14','1555942446000','3999','hcw123'),('73608d3a-bc0a-704f-0','HUAWEI Mate ','3999','6GB+64GB 全网通版','HUAWEIMate20.png','c9ceaa28-e3ac-e74f-4820-ee0d2f0bf3df','河南省郑州市二七区','40','qq','qq','宝石蓝','全网通6GB+64GB','2019-4-23 12:35','1555994150000','3999','qqqqqq'),('4fb439ab-bb4e-d818-d','HUAWEI nova 3','2799','6GB+64GB 全网通版','nova3.png','f67ce978-e1c9-e83c-ce31-8696149fe118','河南省郑州市二七区','50','霍臣威','18437931129','幻影紫','全网通6GB+64GB','2019-5-2 21:6','1556802360000','5598','hcwhcw'),('73608d3a-bc0a-704f-0','HUAWEI Mate ','3999','6GB+64GB 全网通版','HUAWEIMate20.png','e84f0d72-2ff3-7cae-542c-f11f98d1062f','河南省郑州市二七区','40','lpd','13521598547','宝石蓝','全网通6GB+64GB','2019-5-26 21:19','1558876780000','3999','aaaaaa');
