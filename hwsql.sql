@@ -2,7 +2,7 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 10.1.13-MariaDB : Database - test
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -21,16 +21,16 @@ USE `test`;
 DROP TABLE IF EXISTS `car`;
 
 CREATE TABLE `car` (
-  `id` varchar(100) DEFAULT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `price` varchar(20) DEFAULT NULL,
-  `jianJie` varchar(60) DEFAULT NULL,
-  `img` varchar(20) DEFAULT NULL,
-  `userId` varchar(66) DEFAULT NULL,
-  `p_class` varchar(20) DEFAULT NULL,
-  `p_color` varchar(11) DEFAULT '宝石蓝',
-  `p_version` varchar(12) DEFAULT '全网通6GB+64GB',
-  `p_num` int(12) DEFAULT NULL
+                       `id` varchar(100) DEFAULT NULL,
+                       `name` varchar(20) DEFAULT NULL,
+                       `price` varchar(20) DEFAULT NULL,
+                       `jianJie` varchar(60) DEFAULT NULL,
+                       `img` varchar(20) DEFAULT NULL,
+                       `userId` varchar(66) DEFAULT NULL,
+                       `p_class` varchar(20) DEFAULT NULL,
+                       `p_color` varchar(11) DEFAULT '宝石蓝',
+                       `p_version` varchar(12) DEFAULT '全网通6GB+64GB',
+                       `p_num` int(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `car` */
@@ -42,9 +42,9 @@ insert  into `car`(`id`,`name`,`price`,`jianJie`,`img`,`userId`,`p_class`,`p_col
 DROP TABLE IF EXISTS `gonggao`;
 
 CREATE TABLE `gonggao` (
-  `g_title` varchar(100) DEFAULT NULL,
-  `g_detail` varchar(3000) DEFAULT NULL,
-  `g_id` varchar(33) NOT NULL
+                           `g_title` varchar(100) DEFAULT NULL,
+                           `g_detail` varchar(3000) DEFAULT NULL,
+                           `g_id` varchar(33) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `gonggao` */
@@ -56,9 +56,9 @@ insert  into `gonggao`(`g_title`,`g_detail`,`g_id`) values ('购荣耀旗舰机�
 DROP TABLE IF EXISTS `jifen`;
 
 CREATE TABLE `jifen` (
-  `userId` varchar(50) DEFAULT NULL,
-  `num` varchar(40) DEFAULT NULL,
-  `aaww` varchar(11) DEFAULT NULL
+                         `userId` varchar(50) DEFAULT NULL,
+                         `num` varchar(40) DEFAULT NULL,
+                         `aaww` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `jifen` */
@@ -70,22 +70,22 @@ insert  into `jifen`(`userId`,`num`,`aaww`) values (NULL,NULL,'312');
 DROP TABLE IF EXISTS `my_order`;
 
 CREATE TABLE `my_order` (
-  `id` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `p_name` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `price` varchar(20) DEFAULT NULL,
-  `jianJie` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `img` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `userId` varchar(50) DEFAULT NULL,
-  `my_address` varchar(50) DEFAULT NULL,
-  `p_class` varchar(20) DEFAULT NULL,
-  `user_name` varchar(11) DEFAULT NULL,
-  `user_mobile` varchar(11) DEFAULT NULL,
-  `p_color` varchar(11) DEFAULT '宝石蓝',
-  `p_version` varchar(20) DEFAULT '全网通6GB+64GB',
-  `orderDate` varchar(20) DEFAULT NULL,
-  `orderCode` varchar(20) DEFAULT NULL,
-  `shifu` varchar(11) DEFAULT NULL,
-  `userName` varchar(11) DEFAULT NULL
+                            `id` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+                            `p_name` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+                            `price` varchar(20) DEFAULT NULL,
+                            `jianJie` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+                            `img` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+                            `userId` varchar(50) DEFAULT NULL,
+                            `my_address` varchar(50) DEFAULT NULL,
+                            `p_class` varchar(20) DEFAULT NULL,
+                            `user_name` varchar(11) DEFAULT NULL,
+                            `user_mobile` varchar(11) DEFAULT NULL,
+                            `p_color` varchar(11) DEFAULT '宝石蓝',
+                            `p_version` varchar(20) DEFAULT '全网通6GB+64GB',
+                            `orderDate` varchar(20) DEFAULT NULL,
+                            `orderCode` varchar(20) DEFAULT NULL,
+                            `shifu` varchar(11) DEFAULT NULL,
+                            `userName` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `my_order` */
@@ -97,11 +97,11 @@ insert  into `my_order`(`id`,`p_name`,`price`,`jianJie`,`img`,`userId`,`my_addre
 DROP TABLE IF EXISTS `pingjia`;
 
 CREATE TABLE `pingjia` (
-  `userName` varchar(20) DEFAULT NULL,
-  `productId` varchar(22) DEFAULT NULL,
-  `pingJiaDate` varchar(50) DEFAULT NULL,
-  `pingJiaText` varchar(300) DEFAULT NULL,
-  `p_id` varchar(34) NOT NULL
+                           `userName` varchar(20) DEFAULT NULL,
+                           `productId` varchar(22) DEFAULT NULL,
+                           `pingJiaDate` varchar(50) DEFAULT NULL,
+                           `pingJiaText` varchar(300) DEFAULT NULL,
+                           `p_id` varchar(34) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pingjia` */
@@ -113,15 +113,15 @@ insert  into `pingjia`(`userName`,`productId`,`pingJiaDate`,`pingJiaText`,`p_id`
 DROP TABLE IF EXISTS `productlist`;
 
 CREATE TABLE `productlist` (
-  `id` varchar(20) DEFAULT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `price` int(12) DEFAULT NULL,
-  `jianJie` varchar(50) DEFAULT NULL,
-  `img` varchar(33) CHARACTER SET latin1 DEFAULT NULL,
-  `p_class` varchar(20) DEFAULT NULL,
-  `sales` varchar(500) DEFAULT '0',
-  `p_gn` varchar(1000) DEFAULT NULL,
-  `kucun` int(12) DEFAULT NULL
+                               `id` varchar(20) DEFAULT NULL,
+                               `name` varchar(20) DEFAULT NULL,
+                               `price` int(12) DEFAULT NULL,
+                               `jianJie` varchar(50) DEFAULT NULL,
+                               `img` varchar(33) CHARACTER SET latin1 DEFAULT NULL,
+                               `p_class` varchar(20) DEFAULT NULL,
+                               `sales` varchar(500) DEFAULT '0',
+                               `p_gn` varchar(1000) DEFAULT NULL,
+                               `kucun` int(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `productlist` */
@@ -130,31 +130,31 @@ insert  into `productlist`(`id`,`name`,`price`,`jianJie`,`img`,`p_class`,`sales`
 
 /*Table structure for table `user` */
 
-DROP TABLE IF EXISTS `user`;
 
-CREATE TABLE `user` (
-  `userId` varchar(333) NOT NULL,
-  `userName` varchar(12) DEFAULT NULL,
-  `password` varchar(18) DEFAULT NULL,
-  `userImg` varchar(33) DEFAULT NULL,
-  `jifen` varchar(22) DEFAULT '0'
+DROP TABLE IF EXISTS `user_info`;
+CREATE TABLE `user_info` (
+                             `userId` varchar(333) NOT NULL,
+                             `userName` varchar(12) DEFAULT NULL,
+                             `password` varchar(18) DEFAULT NULL,
+                             `userImg` varchar(33) DEFAULT NULL,
+                             `jifen` varchar(22) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `user` */
 
-insert  into `user`(`userId`,`userName`,`password`,`userImg`,`jifen`) values ('66f7985c-650c-01d6-c850-987ddf2a7292','hcw123','123456',NULL,'0'),('e84f0d72-2ff3-7cae-542c-f11f98d1062f','aaaaaa','111111',NULL,'0'),('c9ceaa28-e3ac-e74f-4820-ee0d2f0bf3df','qqqqqq','111111',NULL,'0'),('admin','lpd','123456',NULL,'0'),('f67ce978-e1c9-e83c-ce31-8696149fe118','hcwhcw','123456',NULL,'0');
+insert  into `user_info`(`userId`,`userName`,`password`,`userImg`,`jifen`) values ('66f7985c-650c-01d6-c850-987ddf2a7292','hcw123','123456',NULL,'0'),('e84f0d72-2ff3-7cae-542c-f11f98d1062f','aaaaaa','111111',NULL,'0'),('c9ceaa28-e3ac-e74f-4820-ee0d2f0bf3df','qqqqqq','111111',NULL,'0'),('admin','lpd','123456',NULL,'0'),('f67ce978-e1c9-e83c-ce31-8696149fe118','hcwhcw','123456',NULL,'0');
 
 /*Table structure for table `useraddress` */
 
 DROP TABLE IF EXISTS `useraddress`;
 
 CREATE TABLE `useraddress` (
-  `userId` varchar(50) DEFAULT NULL,
-  `userAddress` varchar(50) DEFAULT '河南省郑州市二七区',
-  `userName` varchar(20) DEFAULT NULL,
-  `userPhone` varchar(11) DEFAULT NULL,
-  `getUserName` varchar(11) DEFAULT NULL,
-  `dataid` varchar(100) DEFAULT NULL
+                               `userId` varchar(50) DEFAULT NULL,
+                               `userAddress` varchar(50) DEFAULT '河南省郑州市二七区',
+                               `userName` varchar(20) DEFAULT NULL,
+                               `userPhone` varchar(11) DEFAULT NULL,
+                               `getUserName` varchar(11) DEFAULT NULL,
+                               `dataid` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `useraddress` */
