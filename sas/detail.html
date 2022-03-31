@@ -37,7 +37,7 @@
 	<body>
 		<div id="sas_app">
 			<div class="left">
-				<div class="bigTitle">华为手机后台管理系统</div>
+				<div class="bigTitle">宠物商城后台管理系统</div>
 				<div class="lines">
 					<div @click="flag = 2" :class="{active:flag == 2}"><img src="img/icon-2.png" />产品管理</div>
 					<div @click="flag = 1" :class="{active:flag == 1}"><img src="img/addpr.png" />添加产品</div>
@@ -67,12 +67,11 @@
 					产品简介 :&emsp;<el-input type="textarea" :rows="2" placeholder="请输入简介" v-model="p_info"></el-input>
 					产品功能 :&emsp;<el-input type="textarea" :rows="2" placeholder="请输入主要功能:图片格式为：《img src='static/gnImage/201812101528044939784.jpg'》" v-model="p_gn"></el-input>
 					产品型号 :&emsp;<el-select v-model="p_class" placeholder="请选择">
-						<el-option label="荣耀" value="10"></el-option>
-						<el-option label="HUAWEI P系列" value="20"></el-option>
-						<el-option label="华为畅享系列" value="30"></el-option>
-						<el-option label="HUAWEI Mate系列" value="40"></el-option>
-						<el-option label="HUAWEI nova系列" value="50"></el-option>
-						<!-- <el-option label="华为畅享系列" value="60"></el-option> -->
+						<el-option label="狗粮" value="10"></el-option>
+						<el-option label="猫粮" value="20"></el-option>
+						<el-option label="宠物生活用品" value="30"></el-option>
+<!-- 						<el-option label="狗" value="40"></el-option>
+						<el-option label="HUAWEI nova系列" value="50"></el-option> -->
 					</el-select>&emsp;&emsp;
 					产品库存 :&emsp;<el-input v-model="kucun" type="number" min="1" placeholder="请输入数字"></el-input>
 					<el-upload

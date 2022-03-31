@@ -68,7 +68,7 @@
 				<div id="" class="layout">
 					<div class="left">
 						<div class="logo">
-							<img src="static/image/logo.png" />
+<!-- 							<img src="static/image/logo.png" /> -->
 						</div>
 						<div class="naver">
 							<ul id="naver-list">
@@ -114,7 +114,7 @@
 				</div>
 			</div>
 			<div id="" class="layout" style="min-height: 560px;">
-				<p style="color:#666"><a href="index.html" style="color:#666"> 首页 </a> > 手机 > {{jsonData.name}} > {{jsonData.jianJie}}</p>
+				<p style="color:#666"><a href="index.html" style="color:#666"> Home </a> > Merchant > {{jsonData.name}} > {{jsonData.jianJie}}</p>
 				<div class="">
 					<div id="" class="de-con-left">
 						<img :src="'sas/upload/'+jsonData.img"/>
@@ -122,32 +122,28 @@
 					<div id="" class="de-con-right">
 						<p class="de-con-right-jianJie">{{jsonData.name}}&emsp;<span style="font-size: 18px;color: #999;">{{jsonData.jianJie}}</span></p>
 						<div class="de-product-info">
-							<p>价&ensp;&ensp;格：<span style="font-size: 24px;color: #ca141d;"><em>¥</em> {{jsonData.price}}</span></p>
+							<p>Price：<span style="font-size: 24px;color: #ca141d;"><em>¥</em> {{jsonData.price}}</span></p>
 							<!-- <p>限时特价： <span>限时优惠300元</span></p> -->
-							<p>整点赠送：<span>10点/16点/20点下单前500赠畅玩手环A2（荣耀指定手机共享）</span></p>
-							<p>整点赠送：<span>10:00前100下单送晨光开学礼包</span></p>
 							<!-- <p>积分翻倍：<span>活动赠送翻倍积分，积分可抵现~</span></p> -->
 						</div>
-						<p>服务说明 已满48元已免运费 由华为商城负责发货，并提供售后服务</p>
-						<p>商品编码 2601010038102</p>
+						<p> </p>
+						<p> </p>
 						<div class="">
-							颜色选择: &emsp;
-						    <el-radio v-model="radio_color" label="宝石蓝" border>宝石蓝</el-radio>
-						    <el-radio v-model="radio_color" label="香槟金" border>香槟金</el-radio>
-						    <el-radio v-model="radio_color" label="幻影紫" border>幻影紫</el-radio>
+							Size: &emsp;
+						    <el-radio v-model="radio_color" label="Small" border>Small</el-radio>
+						    <el-radio v-model="radio_color" label="Medium" border>Medium</el-radio>
+						    <el-radio v-model="radio_color" label="Large" border>Large</el-radio>
 						    <!-- <el-radio v-model="radio_color" label="海鸥灰" border>海鸥灰</el-radio>
 						    <el-radio v-model="radio_color" label="铃兰白" border>铃兰白</el-radio> -->
 						</div>
 						<div class="" style="margin-top: 10px;">
-							选择版本: &emsp;
-						    <el-radio v-model="radio_v" label="全网通6GB+64GB" border>全网通6GB+64GB</el-radio>
 						    <!-- <el-radio v-model="radio_v" label="全网通6GB+128GB" border>全网通6GB+128GB</el-radio> -->
 						</div>
-						<p>库存：{{jsonData.kucun}}</p>
+						<p>Stock Num:  {{jsonData.kucun}}</p>
 						<div class=""style="margin-top: 10px;">
 							<el-row>
-							  <el-button :disabled="jsonData.kucun < 1" style="width: 25%;" @click="addCar">加入购物车</el-button>
-							  <el-button :disabled="jsonData.kucun < 1" type="danger" style="width: 25%;" @click="dialog_order = true">立即下单</el-button>
+							  <el-button :disabled="jsonData.kucun < 1" style="width: 25%;" @click="addCar">Add to Shopping Cart</el-button>
+							  <el-button :disabled="jsonData.kucun < 1" type="danger" style="width: 25%;" @click="dialog_order = true">Order</el-button>
 							</el-row>
 						</div>
 					</div>
@@ -155,65 +151,64 @@
 			</div>
 			<div class="phone-detail">
 				<el-tabs v-model="activeName" @tab-click="handleClick">
-					<el-tab-pane label="手机详情" name="first">
+					<el-tab-pane label="Merchant Detail" name="first">
 						<div id="phoneDetail" v-html="jsonData.p_gn"></div>
 					</el-tab-pane>
-					<el-tab-pane label="用户评价" name="second">
-						<el-input	type="textarea" :rows="2" placeholder="请输入内容" v-model="phonePj"></el-input>
-						<div style="margin: 20px 0; text-align: right"><el-button type="primary" @click="savePingJia">评论</el-button></div>
+					<el-tab-pane label="User Comment" name="second">
+						<el-input	type="textarea" :rows="2" placeholder="please enter" v-model="phonePj"></el-input>
+						<div style="margin: 20px 0; text-align: right"><el-button type="primary" @click="savePingJia">Comment</el-button></div>
 						<ul>
-							<li v-for="(item, index) in pingJiaData" :key="index"><span style="color:#409EFF;font-size: 16px">{{item.userName}}：</span> <span style="color:#666;font-size: 16px">{{item.pingJiaText}}</span> -------- <span style="color:#666;font-size: 12px">{{item.pingJiaDate}}</span> <span style="color: rgb(64, 158, 255);;cursor: pointer;" @click="delePingJia(item.p_id)" v-if="userInfo &&item.userName == userInfo.userName">删除</span></li>
+							<li v-for="(item, index) in pingJiaData" :key="index"><span style="color:#409EFF;font-size: 16px">{{item.userName}}：</span> <span style="color:#666;font-size: 16px">{{item.pingJiaText}}</span> -------- <span style="color:#666;font-size: 12px">{{item.pingJiaDate}}</span> <span style="color: rgb(64, 158, 255);;cursor: pointer;" @click="delePingJia(item.p_id)" v-if="userInfo &&item.userName == userInfo.userName">delete</span></li>
 						</ul>
 					</el-tab-pane>
 				</el-tabs>
 			</div>
 			<!-- 地址弹窗 -->
 			<el-dialog
-				title="请先填写收货地址"
+				title="Receive Info"
 				:visible.sync="dialog_order"
 				width="30%"
 				>
 				<el-form :model="form">
-					<el-form-item label="收货地址" :label-width="form.formLabelWidth">
+					<el-form-item label="Address" :label-width="form.formLabelWidth">
 						<!-- <el-input v-model="form.address" autocomplete="off"></el-input> -->
-						<el-select v-if="jsonAddressData.length" v-model="form.address" placeholder="请选择">
+						<el-select v-if="jsonAddressData.length" v-model="form.address" placeholder="Select">
 							<el-option v-for="item in jsonAddressData" :key="item.userAddress" :label="item.userAddress" :value="item.userAddress"></el-option>
 						</el-select>
 						<el-input v-else v-model="form.address" autocomplete="off"></el-input>
 					</el-form-item>
-					<el-form-item label="收货人" :label-width="form.formLabelWidth">
+					<el-form-item label="Receiver name" :label-width="form.formLabelWidth">
 					  <el-input v-model="form.userName" autocomplete="off"></el-input>
 					</el-form-item>
-					<el-form-item label="手机号" :label-width="form.formLabelWidth">
+					<el-form-item label="Phone Number" :label-width="form.formLabelWidth">
 					  <el-input v-model="form.mobile" autocomplete="off"></el-input>
 					</el-form-item>
 				</el-form>
 				<span slot="footer" class="dialog-footer">
-					<el-button @click="dialog_order = false">取 消</el-button>
-					<el-button type="primary" @click="dialogVisibleOrder = true;dialog_order = false">确 定</el-button>
+					<el-button @click="dialog_order = false">Cancel</el-button>
+					<el-button type="primary" @click="dialogVisibleOrder = true;dialog_order = false">Confirm</el-button>
 				</span>
 			</el-dialog>
 			<el-dialog
-				title="确认下单"
+				title="Confirm Order"
 				:visible.sync="dialogVisibleOrder"
 				width="30%"
 				>
 				<p>{{jsonData.name}} ({{jsonData.jianJie}})</p>
-				<p>单价： {{jsonData.price}} ({{radio_color}}--{{radio_v}})</p>
-				<p>收货地址: {{form.address}}</p>
-				<p>收货人: {{form.userName}}</p>
-				<p>手机号: {{form.mobile}}</p>
-				<p style="color:red">实付: ￥{{jsonData.price}}</p>
+				<p>Price： {{jsonData.price}} ({{radio_color}}--{{radio_v}})</p>
+				<p>Address: {{form.address}}</p>
+				<p>Receiver: {{form.userName}}</p>
+				<p>Phone Num: {{form.mobile}}</p>
+				<p style="color:red">payment: ￥{{jsonData.price}}</p>
 				<span slot="footer" class="dialog-footer">
-					<el-button @click="dialogVisibleOrder = false">取 消</el-button>
-					<el-button type="primary" @click="sure_order">确 定</el-button>
+					<el-button @click="dialogVisibleOrder = false">Cancel</el-button>
+					<el-button type="primary" @click="sure_order">Confirm</el-button>
 				</span>
 			</el-dialog>
-			<!--底部footer版权-->
 			<div id="footer">
 				<div class="foot">
 					<!--<p class="foot_logo"><img src="static/image/flogo.png" /></p>-->
-					<p class="">Designed and developed by chenwei huo.<br /> Copyright © 2010-2019 chenwei.com. All Rights Reserved.</p>
+					<p class="">Designed and developed by Bravo Team.CS5281<br /> All Rights Reserved.</p>
 					<p class=""></p>
 				</div>
 			</div>
@@ -234,12 +229,12 @@
 				searchVal:"", // 搜索
 				jsonAddressData:[],
 				jsonuserAddressData:[],
-				form:{address:"河南省郑州市二七区",formLabelWidth:"120px",userName:"",mobile:""},
+				form:{address:"",formLabelWidth:"120px",userName:"",mobile:""},
 				dialogTableVisible: false,
         		dialogFormVisible: false,
         		pid:"",
-        		radio_color:"宝石蓝",
-        		radio_v:"全网通6GB+64GB",
+        		radio_color:"Small",
+        		radio_v:"",
         		userInfo: window.sessionStorage.user && JSON.parse(window.sessionStorage.user),
 			},
 			created() {
@@ -257,7 +252,7 @@
 						var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
 						if(!user){
 							that.$message({
-								message: '请先登录',
+								message: 'Pleas Log in ',
 								type: 'warning'
 							});
 								return;
@@ -269,7 +264,7 @@
 										dataType: "json",
 								success: function(res) {
 									that.$message({
-										message: '评论成功',
+										message: 'Comment Success',
 										type: 'success'
 									});
 									that.phonePj = "";
@@ -287,7 +282,7 @@
 										dataType: "json",
 								success: function(res) {
 									that.$message({
-										message: '删除成功',
+										message: 'Delete Success',
 										type: 'success'
 									});
 									that.phonePj = "";
@@ -329,7 +324,7 @@
 								success: function(res) {
 										that.jsonAddressData = res.data;
 										if(!res.data.length) return;
-										that.form.address = res.data[0].userAddress ? res.data[0].userAddress : "河南省郑州市二七区";
+										that.form.address = res.data[0].userAddress ? res.data[0].userAddress : "";
 										that.form.userName = res.data[0].getUserName ? res.data[0].getUserName : "";
 										that.form.mobile = res.data[0].userPhone ? res.data[0].userPhone : "";
 								},
@@ -356,7 +351,7 @@
 				sure_order(){
 					if(!(this.form.address&&this.form.mobile&&this.form.userName)){
 						this.$message({
-							message: '请填写完整信息',
+							message: 'Please Fulfill Order Info',
 							type: 'warning'
 						});
 						return;
@@ -377,26 +372,26 @@
 							success: function(res) {
 								if(res.resultCode == 200){
 									that.$message({
-							          message: '恭喜你，添加成功',
+							          message: 'Successfully Order',
 							          type: 'success'
 							       });
 								}else if(res.resultCode == "00"){
 									that.$message({
-							          message: '请不要重复添加',
+							          message: 'Do not order Repeatdly',
 							          type: 'warning'
 							       });
 								}
 							},
 							error:function(data){
 								that.$message({
-						          message: '添加失败',
+						          message: 'Add Fail',
 						          type: 'success'
 						        });
 							}
 						});
 					}else{
 						this.$message({
-				          message: '请先登录',
+				          message: 'Please Log in First',
 				          type: 'warning'
 				        });
 					}
@@ -406,7 +401,7 @@
 						window.location.href = "car.html"
 					}else{
 						this.$message({
-				          message: '请先登录',
+				          message: 'Please Log in First',
 				          type: 'warning'
 				        });
 					}
@@ -416,7 +411,7 @@
 						window.location.href = "order.html"
 					}else{
 						this.$message({
-				          message: '请先登录',
+				          message: 'Please Log in First',
 				          type: 'warning'
 				        });
 					}
@@ -436,7 +431,7 @@
 							success: function(res) {
 								if(res.resultCode == 200){
 									that.$message({
-							          message: '恭喜你，下单成功',
+							          message: 'Successfully Order',
 							          type: 'success'
 							       });
 									// that.jiFen();
@@ -444,21 +439,21 @@
 									that.sales(that.pid);
 								}else if(res.resultCode == "00"){
 									that.$message({
-							          message: '请不要重复下单',
+							          message: 'Do not order Repeatdly',
 							          type: 'warning'
 							       });
 								}
 							},
 							error:function(data){
 								that.$message({
-						          message: '下单失败',
+						          message: 'Order Fail',
 						          type: 'success'
 						        });
 							}
 						});
 					}else{
 						this.$message({
-				          message: '请先登录',
+				          message: 'Please Log in First',
 				          type: 'warning'
 				        });
 					}
@@ -499,7 +494,7 @@
 							dataType: "json",
 							success: function(res) {
 								if(res.resultCode == 200){
-									console.log("销量增加成功")
+									console.log("Add Success")
 								}
 							},
 							error:function(data){
