@@ -12,151 +12,142 @@
     <script src="static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="static/js/vue.js"></script>
     <script src="static/js/elementui.js" type="text/javascript" charset="utf-8"></script>
-    <title>华为商城简介</title>
+    <title>Introduction</title>
     <style>
-       #userinfo .el-input__inner{
-           width: auto;
-       }
-       #userinfo .address .el-input__inner{
-           width: 500px;
-       }
-       #userinfo .el-input{
-           width: auto;
-       }
+        #userinfo .el-input__inner {
+            width: auto;
+        }
+
+        #userinfo .address .el-input__inner {
+            width: 500px;
+        }
+
+        #userinfo .el-input {
+            width: auto;
+        }
     </style>
 </head>
 
 <body id="login-body">
- <div id="userinfo">
-    <div class="login-header">
-        <div class="login-body">
-            <div class="login-cont">
-                <a href="index.html"><img src="static/image/logo.png" height="30" width="60" alt=""></a>
-            </div>
-            <div class="login-name">
-
-
+    <div id="userinfo">
+        <div class="login-header">
+            <div class="login-body">
+                <div class="login-cont">
+                    <a href="index.html"><img src="static/image/head-top.png" alt=""></a>
+                </div>
+                <div class="login-name">
+                    <b style="font-size: 18px;margin-top: -5px;float: left;color:#cccccc;">|</b>
+                    <b style="font-size: 18px;margin-top: -3px;float: left; margin-left:18px;">Personal Center</b>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="login-main">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-            <!-- 修改用户名 -->
-            <el-tab-pane label="ChangeUsername" name="first">
-                <el-form>
-                    <el-form-item label="Username" label-width="80px">
-                        <el-input v-model="userName" autocomplete="off"></el-input>
+        <div class="login-main">
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+                <!-- Modify user name -->
+                <el-tab-pane label="Modify User Name" name="first">
+                    <el-form>
+                        <el-form-item label="User Name" label-width="55px">
+                            <el-input v-model="userName" autocomplete="off"></el-input>
+                        </el-form-item>
+                    </el-form>
+                    <el-button type="primary" plain style="width: 19%;" @click="saveName">Save</el-button>
+                </el-tab-pane>
+                <!-- Change Password -->
+                <el-tab-pane label="Change Password" name="second">
+                    <el-form>
+                        <el-form-item label="Old Password &emsp;" label-width="68px">
+                            <el-input v-model="oldPassword" type="password" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="New Password &emsp;" label-width="68px">
+                            <el-input v-model="newPassword" type="password" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="Comfirm Password" label-width="68px">
+                            <el-input v-model="newPassword2" type="password" autocomplete="off"></el-input>
+                        </el-form-item>
+                    </el-form>
+                    <el-button type="primary" plain style="width: 19%;" @click="savePassword">Save</el-button>
+                </el-tab-pane>
+                <!-- Add address -->
+                <el-tab-pane label="Add address" name="third">
+                    <el-form class="address">
+                        <el-form-item label="Add address" label-width="68px">
+                            <el-input v-model="userAddress" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="Consignee" label-width="68px">
+                            <el-input v-model="getUserName" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="Mobile" label-width="68px">
+                            <el-input v-model="userPhone" autocomplete="off"></el-input>
+                        </el-form-item>
+                    </el-form>
+                    <el-button type="primary" plain style="width: 19%;" @click="saveAddress('save')">Save</el-button>
+                </el-tab-pane>
+                <!-- Address management -->
+                <el-tab-pane label="Address management" name="five">
+                    <el-table :data="jsonAddressData" style="width: 100%">
+                        <el-table-column prop="userAddress" label="Address">
+                        </el-table-column>
+                        <el-table-column prop="getUserName" label="Consignee">
+                        </el-table-column>
+                        <el-table-column prop="userPhone" label="Mobile">
+                        </el-table-column>
+                        <el-table-column label="Operation">
+                            <template slot-scope="scope">
+                                <a href="javascript:void(0)" style="color:#1989fa"
+                                    @click="changeM(scope.row)">Modify</a>
+                                <a href="javascript:void(0)" style="color:#1989fa"
+                                    @click="deletAddress(scope.row.userAddress)">Delete</a>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </el-tab-pane>
+            </el-tabs>
+            <el-dialog title="Modify default address" :visible.sync="dialogFormVisiblemorenaddress">
+                <el-form :model="form">
+                    <el-form-item label="Address" :label-width="formLabelWidth">
+                        <el-input v-model="form.userAddress" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Consignee" :label-width="formLabelWidth">
+                        <el-input v-model="form.getUserName" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Mobile" :label-width="formLabelWidth">
+                        <el-input v-model="form.userPhone" autocomplete="off"></el-input>
                     </el-form-item>
                 </el-form>
-                <el-button type="primary" plain style="width: 19%;" @click="saveName">Save</el-button>
-            </el-tab-pane>
-            <!-- 修改密码 -->
-            <el-tab-pane label="ChangePassword" name="second">
-                <el-form>
-                    <el-form-item label="old password&emsp;" label-width="68px">
-                        <el-input v-model="oldPassword" type="password" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="new password&emsp;" label-width="68px">
-                        <el-input v-model="newPassword" type="password" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="new password" label-width="68px">
-                        <el-input v-model="newPassword2" type="password" autocomplete="off"></el-input>
-                    </el-form-item>
-                </el-form>
-                <el-button type="primary" plain style="width: 19%;" @click="savePassword">Save</el-button>
-            </el-tab-pane>
-            <!-- 添加收货地址 -->
-            <el-tab-pane label="AddAddress" name="third">
-                <el-form class="address">
-                    <el-form-item label="NewAddress&emsp;" label-width="100px">
-                        <el-input v-model="userAddress"  autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="Receiver&emsp;" label-width="100px">
-                        <el-input v-model="getUserName"  autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="Tel&emsp;" label-width="100px">
-                        <el-input v-model="userPhone"  autocomplete="off"></el-input>
-                    </el-form-item>
-                </el-form>
-                <el-button type="primary" plain style="width: 19%;" @click="saveAddress('save')">Save</el-button>
-            </el-tab-pane>
-            <!-- 收货地址管理 -->
-            <el-tab-pane label="AddressBook" name="five">
-                    <el-table
-					:data="jsonAddressData"
-					style="width: 100%">
-					<el-table-column
-						prop="userAddress"
-						label="Address"
-						>
-                    </el-table-column>
-                    <el-table-column
-						prop="getUserName"
-						label="Receiver"
-						>
-                    </el-table-column>
-                    <el-table-column
-						prop="userPhone"
-						label="TEL"
-						>
-					</el-table-column>
-					<el-table-column
-						label="Operation"
-                        >
-						<template slot-scope="scope">
-                            <a href="javascript:void(0)" style="color:#1989fa" @click="changeM(scope.row)">Change</a>
-							<a href="javascript:void(0)" style="color:#1989fa" @click="deletAddress(scope.row.userAddress)">Delete</a>
-						</template>
-					</el-table-column>
-					</el-table>
-            </el-tab-pane>
-        </el-tabs>
-        <el-dialog title="ChangeAddress" :visible.sync="dialogFormVisiblemorenaddress">
-        <el-form :model="form">
-            <el-form-item label="Address" :label-width="formLabelWidth">
-            <el-input v-model="form.userAddress" autocomplete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="Receiver" :label-width="formLabelWidth">
-            <el-input v-model="form.getUserName" autocomplete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="TEL" :label-width="formLabelWidth">
-            <el-input v-model="form.userPhone" autocomplete="off"></el-input>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisiblemorenaddress = false">Cancel</el-button>
-            <el-button type="primary" @click="sureSave">确 定</el-button>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click="dialogFormVisiblemorenaddress = false">Cancel</el-button>
+                    <el-button type="primary" @click="sureSave">Comfirm</el-button>
+                </div>
+            </el-dialog>
         </div>
-        </el-dialog>
     </div>
-</div>
 </body>
 <script type="text/javascript">
-    // 注册
+    // Register
     Vue.component('my-component', {});
     var WEITUOSERVER = new Vue({
         el: '#userinfo',
         data: {
             jsonData: [],
-            formLabelWidth:"150px",
-            form:{
-                userAddress:"",
-                getUserName:"",
-                userPhone:""
+            formLabelWidth: "150px",
+            form: {
+                userAddress: "",
+                getUserName: "",
+                userPhone: ""
             },
-            dialogFormVisiblemorenaddress:false,
-            userName:JSON.parse(window.sessionStorage.user).userName,
-            userId:JSON.parse(window.sessionStorage.user).userId,
+            dialogFormVisiblemorenaddress: false,
+            userName: JSON.parse(window.sessionStorage.user).userName,
+            userId: JSON.parse(window.sessionStorage.user).userId,
             activeName: 'first',
-            userInfo:JSON.parse(window.sessionStorage.user),
-            oldPassword:"",
-            newPassword:"",
-            newPassword2:"",
-            userAddress:"",
-            getUserName:"",
-            userPhone:"",
-            dataid:"",
-            jsonAddressData:[]
+            userInfo: JSON.parse(window.sessionStorage.user),
+            oldPassword: "",
+            newPassword: "",
+            newPassword2: "",
+            userAddress: "",
+            getUserName: "",
+            userPhone: "",
+            dataid: "",
+            jsonAddressData: []
         },
         created() {
             this.gatAddressData();
@@ -165,71 +156,71 @@
             handleClick(tab, event) {
                 console.log(tab, event);
             },
-            sureSave(){
-                if(!(/^1[34578]\d{9}$/.test(this.form.userPhone))){ 
-                    alert("TEL FORMAT IS NOT CORRECT!");
-                    return false; 
-                } 
+            sureSave() {
+                if (!(/^1[34578]\d{9}$/.test(this.form.userPhone))) {
+                    alert("The mobile phone number is incorrect. Please fill it in again!");
+                    return false;
+                }
                 this.userAddress = this.form.userAddress;
                 this.userPhone = this.form.userPhone;
                 this.getUserName = this.form.getUserName;
                 this.saveAddress('change')
             },
-            changeM(res){
+            changeM(res) {
                 var that = this;
                 that.dialogFormVisiblemorenaddress = true;
-                that.form.userAddress=res.userAddress;
-                that.form.getUserName=res.getUserName;
-                that.form.userPhone=res.userPhone;
+                that.form.userAddress = res.userAddress;
+                that.form.getUserName = res.getUserName;
+                that.form.userPhone = res.userPhone;
                 that.dataid = res.dataid;
             },
             gatData() {
                 var that = this;
                 $.ajax({
                     type: "GET",
-                     url: "php/car.php",
-                     data: {"userId":JSON.parse(window.sessionStorage.user).userId},
-                     dataType: "json",
-                    success: function(data) {
+                    url: "php/car.php",
+                    data: { "userId": JSON.parse(window.sessionStorage.user).userId },
+                    dataType: "json",
+                    success: function (data) {
                         that.jsonData = data.data;
                     },
                 });
             },
-            gatAddressData(){
+            gatAddressData() {
                 var that = this;
-                var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
-                if(!user){
+                var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) : "";
+                if (!user) {
                     return;
                 }
                 $.ajax({
                     type: "GET",
-                        url: "php/detail.php",
-                        data: {"userId":user.userId,"getAddressdata":"getAddressdata"},
-                        dataType: "json",
-                    success: function(res) {
+                    url: "php/detail.php",
+                    data: { "userId": user.userId, "getAddressdata": "getAddressdata" },
+                    dataType: "json",
+                    success: function (res) {
                         that.jsonAddressData = res.data;
                     },
                 });
             },
-            deletAddress(userAddress){
+            deletAddress(userAddress) {
                 var that = this;
-                var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
-                if(!user){
+                var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) : "";
+                if (!user) {
                     return;
                 }
                 $.ajax({
                     type: "GET",
-                     url: "php/detail.php",
-                     data: {"userAddress":userAddress,"userId":user.userId,"deletAddress":"deletAddress"},
-                     dataType: "json",
-                    success: function(data) {
+                    url: "php/detail.php",
+                    data: { "userAddress": userAddress, "userId": user.userId, "deletAddress": "deletAddress" },
+                    dataType: "json",
+                    success: function (data) {
                         that.$message({
                             message: "Deleted successfully!",
                             type: 'success'
                         });
                         that.gatAddressData();
                     },
-                    error:function(data){
+                    error: function (data) {
                         that.$message({
                             message: data.responseText,
                             type: 'warning'
@@ -238,38 +229,38 @@
                     }
                 });
             },
-            saveName(){
+            saveName() {
                 var that = this;
-                if(!this.userName){
+                if (!this.userName) {
                     that.$message({
-                        message: "The name can not be empty!",
+                        message: "User Name cannot be empty!",
                         type: 'warning'
                     });
                     return;
                 }
                 $.ajax({
                     type: "GET",
-                     url: "php/index.php",
-                     data: {"userName":that.userName,"changeName":"changeName","userId":that.userId},
-                     dataType: "json",
-                    success: function(data) {
-                        if(data.resultCode==200){
+                    url: "php/index.php",
+                    data: { "userName": that.userName, "changeName": "changeName", "userId": that.userId },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.resultCode == 200) {
                             that.$message({
-                                message: "Successfully changed!",
+                                message: "Modified successfully!",
                                 type: 'success'
                             });
-                         var olduser = JSON.parse(window.sessionStorage.user);
-                         olduser.userName = that.userName;
-                         window.sessionStorage.user = JSON.stringify(olduser);
-                        }else if(data.resultCode==0001){
+                            var olduser = JSON.parse(window.sessionStorage.user);
+                            olduser.userName = that.userName;
+                            window.sessionStorage.user = JSON.stringify(olduser);
+                        } else if (data.resultCode == 0001) {
                             that.$message({
                                 message: data.message,
                                 type: 'warning'
                             });
                         }
-                        
+
                     },
-                    error:function(data){
+                    error: function (data) {
                         that.$message({
                             message: data.responseText,
                             type: 'warning'
@@ -277,70 +268,70 @@
                     }
                 });
             },
-            savePassword(){
+            savePassword() {
                 var that = this;
-                if(!this.oldPassword){
+                if (!this.oldPassword) {
                     that.$message({
-                        message: "old password can not be empty",
+                        message: "Old password cannot be empty!",
                         type: 'warning'
                     });
                     return;
                 }
-                if((this.newPassword != this.newPassword2) || this.newPassword2==""){
+                if ((this.newPassword != this.newPassword2) || this.newPassword2 == "") {
                     that.$message({
-                        message: "two new password do not match!",
+                        message: "The two new passwords are inconsistent!",
                         type: 'warning'
                     });
                     return;
                 }
                 $.ajax({
                     type: "GET",
-                     url: "php/index.php",
-                     data: {"password":that.newPassword,"changePassword":"changePassword","userId":that.userId},
-                     dataType: "json",
-                    success: function(data) {
-                        if(data.resultCode==200){
+                    url: "php/index.php",
+                    data: { "password": that.newPassword, "changePassword": "changePassword", "userId": that.userId },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.resultCode == 200) {
                             that.$message({
-                                message: data.message,
+                                message: "Modified successfully!",
                                 type: 'success'
                             });
-                        }else if(data.resultCode==0001){
+                        } else if (data.resultCode == 0001) {
                             that.$message({
                                 message: data.message,
                                 type: 'warning'
                             });
                         }
-                        
+
                     }
                 });
             },
-            saveAddress(setType){
+            saveAddress(setType) {
                 var that = this;
-                if(!this.userAddress || !this.userPhone || !this.getUserName){
+                if (!this.userAddress || !this.userPhone || !this.getUserName) {
                     that.$message({
-                        message: "Please complete the information",
+                        message: "Please complete!",
                         type: 'warning'
                     });
                     return;
                 }
-                if(!(/^1[34578]\d{9}$/.test(this.userPhone))){ 
-                    alert("The number is not in a correct format");
-                    return false; 
-                } 
-                if(setType == "save"){
-                    var sendData = {"userAddress":that.userAddress,"addUserAddress":"addUserAddress","userId":that.userId,"userPhone":that.userPhone,"getUserName":that.getUserName,"type":setType,"dataid":Date.parse(new Date())}
-                }else{
-                    var sendData = {"userAddress":that.userAddress,"addUserAddress":"addUserAddress","userId":that.userId,"userPhone":that.userPhone,"getUserName":that.getUserName,"type":setType,"dataid":that.dataid}
+                if (!(/^1[34578]\d{9}$/.test(this.userPhone))) {
+                    alert("The mobile phone number is incorrect. Please fill it in again!");
+                    return false;
+                }
+                if (setType == "save") {
+                    var sendData = { "userAddress": that.userAddress, "addUserAddress": "addUserAddress", "userId": that.userId, "userPhone": that.userPhone, "getUserName": that.getUserName, "type": setType, "dataid": Date.parse(new Date()) }
+                } else {
+                    var sendData = { "userAddress": that.userAddress, "addUserAddress": "addUserAddress", "userId": that.userId, "userPhone": that.userPhone, "getUserName": that.getUserName, "type": setType, "dataid": that.dataid }
                 }
                 $.ajax({
                     type: "GET",
-                     url: "php/index.php",
-                     data: sendData,
-                     dataType: "json",
-                    success: function(data) {
-                        if(data.resultCode==200){
+                    url: "php/index.php",
+                    data: sendData,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.resultCode == 200) {
                             that.$message({
-                                message: data.message,
+                                message: "Set up successfully!",
                                 type: 'success'
                             });
                             that.userAddress = "";
@@ -348,27 +339,28 @@
                             that.getUserName = "";
                             that.gatAddressData();
                             that.dialogFormVisiblemorenaddress = false;
-                        }else if(data.resultCode==0001){
+                        } else if (data.resultCode == 0001) {
                             that.$message({
                                 message: data.message,
                                 type: 'warning'
                             });
                         }
-                        
+
                     }
                 });
             },
             formatDate(now) {
-				var year = now.getFullYear();
-				var month = now.getMonth() + 1;
-				var date = now.getDate();
-				var hour = now.getHours();
-				var minute = now.getMinutes();
-				var second = now.getSeconds();
-				// return year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second; 
-				return year + "-" + month + "-" + date + " " + hour + ":" + minute;
-			},
+                var year = now.getFullYear();
+                var month = now.getMonth() + 1;
+                var date = now.getDate();
+                var hour = now.getHours();
+                var minute = now.getMinutes();
+                var second = now.getSeconds();
+                // return year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second; 
+                return year + "-" + month + "-" + date + " " + hour + ":" + minute;
+            },
         }
     })
 </script>
+
 </html>
