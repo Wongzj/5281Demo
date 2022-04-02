@@ -1,174 +1,175 @@
 <html>
-	<head>
-		<title>Pet Mall</title>
-		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="static/css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="static/css/public.css" />
-		<link rel="stylesheet" type="text/css" href="static/css/swiper.min.css">
-		<link rel="stylesheet" type="text/css" href="static/css/elementui.css"/>
-		<link rel="shortcut icon" href="favicon.ico">
-		<script src="static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/vue.js"></script>
-		<script src="static/js/elementui.js" type="text/javascript" charset="utf-8"></script>
-	</head>
 
-	<body style="min-width: 1200px; overflow-x: auto;background: #f5f5f5;">
-		<div class="toTop" onClick="window.scrollTo(0,0);"><i class="el-icon-upload2"></i></div>
-		<div id="cdnvue">
-			<div id="" class="top_gg">
-				<a href="">
-					<!-- <img src="static/image/top_gg.jpg" /> -->
-				</a>
-			</div>
-			<div id="" class="shortcut">
-				<div class="layout">
-					<div class="s-sub">
-						<ul>
-							<li>
-								<a href="javascript:void(0)">Front Page</a>
-							</li>
-							<li>
-								<a href="systemInfo.html">Introduction To The Mall</a>
-							</li>
-							<li>
-								<a href="">Customer Feedback</a>
-							</li>
-							<!-- <li>
-								<a href="baoxiu.html">保修政策</a>
-							</li> -->
-							<li>
-								<a href="problem.html">Top Questions</a>
-							</li>
-						</ul>
-					</div>
-					<div class="s-right">
-						<ul>
-							<li>
-								<a href="javascript:void (0)" v-if="!userInfo.userName" @click="dialogFormVisible = true">Please login/register</a>
-								<a href="userInfo.html" v-else>{{userInfo.userName}}</a>
-							</li>
-							<!-- <li v-if="userInfo.userName">
+<head>
+	<title>Pet Mall</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="static/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="static/css/elementui.css" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<script src="static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/vue.js"></script>
+	<script src="static/js/elementui.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body style="min-width: 1200px; overflow-x: auto;background: #f5f5f5;">
+	<div class="toTop" onClick="window.scrollTo(0,0);"><i class="el-icon-upload2"></i></div>
+	<div id="cdnvue">
+		<div id="" class="top_gg">
+			<a href="">
+				<!-- <img src="static/image/top_gg.jpg" /> -->
+			</a>
+		</div>
+		<div id="" class="shortcut">
+			<div class="layout">
+				<div class="s-sub">
+					<ul>
+						<li>
+							<a href="javascript:void(0)">Front Page</a>
+						</li>
+						<li>
+							<a href="">Customer Feedback</a>
+						</li>
+					</ul>
+				</div>
+				<div class="s-right">
+					<ul>
+						<li>
+							<a href="javascript:void (0)" v-if="!userInfo.userName"
+								@click="dialogFormVisible = true">Please Login/Register</a>
+							<a href="userInfo.html" v-else>{{userInfo.userName}}</a>
+						</li>
+						<!-- <li v-if="userInfo.userName">
 								<a href="javascript:void(0)">积分：{{userInfo.jifen}}</a>
 							</li> -->
-							<li>
-								<a href="javascript:void(0)" @click="car">|&emsp;shopping cart</a>
-							</li>
-							<li>
-								<a href="javascript:void(0)" @click="order">|&emsp;Order</a>
-							</li>
-							<li>
-								<a href="javascript:void(0)" @click="loginOut">|&emsp;Quit</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!--header-->
-			<div class="header">
-				<div id="" class="layout">
-					<div class="left">
-						<div class="logo">
-							<img width="80px" height="50px" src="static/image/logo.png" />
-						</div>
-						<div class="naver">
-							<ul id="naver-list">
-								<li id="huawei" class="">
-									<a href="ry.html" target="_blank">
-										<span style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Pet Treats</span>
-									</a>
-								</li>
-								<li id="huawei" class="">
-										<a href="p.html" target="_blank">
-											<span  style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Pet Toy</span>
-										</a>
-									</li>
-								<li id="honor" class="">
-									<a href="rycw.html" target="_blank">
-										<span style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Canned Wet Food</span>
-									</a>
-								</li>
-								<li id="honor" class="">
-									<a href="mate.html" target="_blank">
-										<span style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Nutrition</span>
-									</a>
-								</li>
-								<li id="honor" class="">
-										<a href="nova.html" target="_blank">
-											<span style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Medical Products</span>
-										</a>
-									</li>
-								<li id="huawei" class="">
-									<a href="nova_4.html" target="_blank">
-										<span style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Nest Cage</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<!--导航右边部分-->
-					<div class="right">
-						<input type="text" v-model="searchVal" placeholder="50% off dog food" class="search-text">
-						<el-button class="search-btn" icon="el-icon-search" @click="onsearchVal" circle></el-button>
-						<!-- <input type="submit" class="search-btn" @click="onsearchVal" value="搜索"> -->
-					</div>
-				</div>
-			</div>
-			
-			<!--轮播图-->
-			<div id="banner">
-				<div class="swiper-container">
-					<div class="swiper-wrapper" id="box">
-						<div class="swiper-slide"><img width="2000px" height="450px" src="static/image/8x.png" /></div>
-						<div class="swiper-slide"><img width="2000px" height="405px" src="static/image/p20.jpg" /></div>
-						<div class="swiper-slide"><img width="2000px" height="405px" src="static/image/nova3.png" /></div>
-						<!--<div class="swiper-slide"><img src="static/image/banner4.jpg" /></div>
-						<div class="swiper-slide"><img src="static/image/banner5.jpg" /></div>-->
-					</div>
-					<!-- 如果需要导航按钮 -->
-					<div class="swiper-button-prev swiper-button-white"></div>
-					<div class="swiper-button-next swiper-button-white"></div>
-					<div class="swiper-pagination"></div>
-				</div>
-			</div>
-			<div class="box">
-				<span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Announcement</span>
-				<div class="winBox">
-					<ul class="scroll">					
 						<li>
-							<a href="#" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Welcome to an amazing journey into the world of pets
-							</a>
+							<a href="javascript:void(0)" @click="car">|&emsp;Shopping Cart</a>
 						</li>
 						<li>
-							<a href="#" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">The best discounts, the highest quality, the most thoughtful service
-							</a>
+							<a href="javascript:void(0)" @click="order">|&emsp;Order</a>
 						</li>
 						<li>
-							<a href="#" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">For your favorite pet, The best gift for your pet, do not miss the great sale
-							</a>
+							<a href="javascript:void(0)" @click="loginOut">|&emsp;Quit</a>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<div class="show_list">
-				<div class="show_lists">
-					<a href="detail.html?id=f02b6799-1e3b-2f86-f"><img width="292px" height="160px" src="static/image/banner1.jpg" /></a>
+		</div>
+		<!--header-->
+		<div class="header">
+			<div id="" class="layout">
+				<div class="left">
+					<div class="logo">
+						<img width="80px" height="50px" src="static/image/logo.png" />
+					</div>
+					<div class="naver">
+						<ul id="naver-list">
+							<li id="huawei" class="">
+								<a href="Pet_Treats.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Pet
+										Treats</span>
+								</a>
+							</li>
+							<li id="huawei" class="">
+								<a href="Pet_Toy.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Pet
+										Toy</span>
+								</a>
+							</li>
+							<li id="honor" class="">
+								<a href="Canned_Wet_Food.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Canned
+										Wet Food</span>
+								</a>
+							</li>
+							<li id="honor" class="">
+								<a href="Nutrition.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Nutrition</span>
+								</a>
+							</li>
+							<li id="honor" class="">
+								<a href="Medical_Products.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Medical
+										Products</span>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div class="show_lists">
-						<a href="detail.html?id=abc081d8-060c-5d3a-6"><img width="292px" height="160px" src="static/image/banner2.jpg" /></a>
-				</div>
-				<div class="show_lists">
-						<a href="detail.html?id=4fb439ab-bb4e-d818-d"><img width="292px" height="160px" src="static/image/banner3.jpg" /></a>
-				</div>
-				<div class="show_lists">
-						<a href="detail.html?id=219129f3-6419-a3bf-e"><img width="292px" height="160px" src="static/image/banner4.jpg" /></a>
+				<!--导航右边部分-->
+				<div class="right">
+					<input type="text" v-model="searchVal" placeholder="50% off dog food" class="search-text">
+					<el-button class="search-btn" icon="el-icon-search" @click="onsearchVal" circle></el-button>
+					<!-- <input type="submit" class="search-btn" @click="onsearchVal" value="搜索"> -->
 				</div>
 			</div>
-			<!--全部产品-->
-			<!-- <img :src=`static/image/${item.img}` />-->
-			<!-- <a :href="`gonggao.html?t=${item.g_title}`" target="_blank"> -->
-				<!-- </a> -->
-			<!-- <div id="hotPro" class="layout">
+		</div>
+
+		<!--轮播图-->
+		<div id="banner">
+			<div class="swiper-container">
+				<div class="swiper-wrapper" id="box">
+					<div class="swiper-slide"><img width="2000px" height="450px" src="static/image/8x.png" /></div>
+					<div class="swiper-slide"><img width="2000px" height="405px" src="static/image/p20.jpg" /></div>
+					<div class="swiper-slide"><img width="2000px" height="405px" src="static/image/nova3.png" /></div>
+					<!--<div class="swiper-slide"><img src="static/image/banner4.jpg" /></div>
+						<div class="swiper-slide"><img src="static/image/banner5.jpg" /></div>-->
+				</div>
+				<!-- 如果需要导航按钮 -->
+				<div class="swiper-button-prev swiper-button-white"></div>
+				<div class="swiper-button-next swiper-button-white"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<div class="box">
+			<span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Announcement</span>
+			<div class="winBox">
+				<ul class="scroll">
+					<li>
+						<a href="#"
+							style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Welcome to
+							an amazing journey into the world of pets
+						</a>
+					</li>
+					<li>
+						<a href="#" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">The
+							best discounts, the highest quality, the most thoughtful service
+						</a>
+					</li>
+					<li>
+						<a href="#" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">For
+							your favorite pet, The best gift for your pet, do not miss the great sale
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="show_list">
+			<div class="show_lists">
+				<a href="Pet_Treats.html"><img width="292px" height="160px" src="static/image/banner1.jpg" /></a>
+			</div>
+			<div class="show_lists">
+				<a href="Canned_Wet_Food.html"><img width="292px" height="160px" src="static/image/banner2.jpg" /></a>
+			</div>
+			<div class="show_lists">
+				<a href="Pet_Toy.html"><img width="292px" height="160px" src="static/image/banner3.jpg" /></a>
+			</div>
+			<div class="show_lists">
+				<a href="Medical_Products.html"><img width="292px" height="160px" src="static/image/banner4.jpg" /></a>
+			</div>
+		</div>
+		<!--全部产品-->
+		<!-- <img :src=`static/image/${item.img}` />-->
+		<!-- <a :href="`gonggao.html?t=${item.g_title}`" target="_blank"> -->
+		<!-- </a> -->
+		<!-- <div id="hotPro" class="layout">
 				<div class="layout">
 						<h2 class="title" style="float:left">全部产品</h2>
 						<div class="orderBy">
@@ -196,23 +197,25 @@
 								</p>
 								<p class="grid-title">{{item.name}}</p>
 								<p class="grid-desc">{{item.jianJie}}</p>
-								<p class="grid-price">¥{{item.price}}</p>
+								<p class="grid-price">${{item.price}}</p>
 								<p class="grid-sales">销量：{{item.sales}}</p>
 							</a>
 						</li>
 					</ul>
 				</div>
 			</div> -->
-			<!--热销单品-->
-			<div id="hotPro" class="layout">
+		<!--热销单品-->
+		<div id="hotPro" class="layout">
+			<div class="layout">
 				<div class="layout">
-					<div class="layout">
-						<h2 class="title" style="float:left;font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Hot Sales</h2>
-						<!-- <div class="orderBy">
+					<h2 class="title"
+						style="float:left;font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">
+						Hot Sales</h2>
+					<!-- <div class="orderBy">
 								<span @click="orderBy('price')">价格从低到高</span>&emsp;|&emsp;<span @click="orderBy('sales')">销量从低到高</span>&emsp;|
 								<span @click="orderBy2('price')">价格从高到低</span>&emsp;|&emsp;<span @click="orderBy2('sales')">销量从高到低</span>
 						</div> -->
-						<!-- <div class="hotPro-right">
+					<!-- <div class="hotPro-right">
 							<span>公告：</span>
 							<div class="notice">
 								<ul>
@@ -223,9 +226,9 @@
 								</div>
 						</div> -->
 				</div>
-				</div>
-				<div class="layout">
-					<!-- <ul class="grid_ul">
+			</div>
+			<div class="layout">
+				<!-- <ul class="grid_ul">
 						<li class="grid-items" v-for="(item,index) in jsonHotData">
 							<a :href="`detail.html?id=${item.id}`">
 								<p class="grid-img">
@@ -234,142 +237,159 @@
 								</p>
 								<p class="grid-title">{{item.name}}</p>
 								<p class="grid-desc">{{item.jianJie}}</p>
-								<p class="grid-price">¥{{item.price}}</p>
+								<p class="grid-price">${{item.price}}</p>
 								<p class="grid-sales">销量：{{item.sales}}</p>
 							</a>
 						</li>
 					</ul> -->
-					<ul class="grid_ul">
-						<li  class="grid-items">
-							<a href="detail.html?id=f02b6799-1e3b-2f86-f">
-								<p>
-									<img width="290px" height="280px" src="static/image/16355776953829.jpg"/>
-								</p>
-								<p class="grid-title">Chicken Recipe for Small Adult Dogs - Dog Food</p>
-								<p class="grid-price">$399</p>
-								<p class="grid-sales">Monthly sales:5000+</p>
-							</a>
-						</li>
-						<li class="grid-items">
-							<a href="detail.html?id=abc081d8-060c-5d3a-6">
-								<p>
-									<img width="270px" height="280px"  src="static/image/16258890811409.jpg"/>
-								</p>
-								<p class="grid-title">Large Adult Dog Fish Meat Recipe - Dog Food</p>
-								<p class="grid-price">$499</p>
-								<p class="grid-sales">Monthly sales:3000+</p>
-							</a>
-						</li>
-						<li class="grid-items">
-							<a href="detail.html?id=4fb439ab-bb4e-d818-d">
-								<p>
-									<img width="280px" height="280px"  src="static/image/16234049231372.jpg"/>
-								</p>
-								<p class="grid-title">Yinuo SOS Series Dog&Cat Body 280ml Shampoo</p>
-								<p class="grid-price">$699</p>
-								<p class="grid-sales">Monthly sales:2000+</p>
-							</a>
-						</li>
-						<li class="grid-items">
-							<a href="detail.html?id=219129f3-6419-a3bf-e">
-								<p>
-									<img width="290px" height="280px"  src="static/image/16232932473407.jpg"/>
-								</p>
-								<p class="grid-title">Youyu PRO Bobo Sauce Cat Wet Food Nutrition</p>
-								<p class="grid-price">$699</p>
-								<p class="grid-sales">Monthly sales:2000+</p>
-							</a>
-						</li>
-					</ul>
-				</div>
+				<ul class="grid_ul">
+					<li class="grid-items">
+						<a href="detail.html?id=f02b6799-1e3b-2f86-f">
+							<p>
+								<img width="290px" height="280px" src="static/image/16355776953829.jpg" />
+							</p>
+							<p class="grid-title">Chicken Recipe for Small Adult Dogs - Dog Food</p>
+							<p class="grid-price">$399</p>
+							<p class="grid-sales">Monthly sales:5000+</p>
+						</a>
+					</li>
+					<li class="grid-items">
+						<a href="detail.html?id=abc081d8-060c-5d3a-6">
+							<p>
+								<img width="270px" height="280px" src="static/image/16258890811409.jpg" />
+							</p>
+							<p class="grid-title">Large Adult Dog Fish Meat Recipe - Dog Food</p>
+							<p class="grid-price">$499</p>
+							<p class="grid-sales">Monthly sales:3000+</p>
+						</a>
+					</li>
+					<li class="grid-items">
+						<a href="detail.html?id=4fb439ab-bb4e-d818-d">
+							<p>
+								<img width="280px" height="280px" src="static/image/16234049231372.jpg" />
+							</p>
+							<p class="grid-title">Yinuo SOS Series Dog&Cat Body 280ml Shampoo</p>
+							<p class="grid-price">$699</p>
+							<p class="grid-sales">Monthly sales:2000+</p>
+						</a>
+					</li>
+					<li class="grid-items">
+						<a href="detail.html?id=219129f3-6419-a3bf-e">
+							<p>
+								<img width="290px" height="280px" src="static/image/16232932473407.jpg" />
+							</p>
+							<p class="grid-title">Youyu PRO Bobo Sauce Cat Wet Food Nutrition</p>
+							<p class="grid-price">$699</p>
+							<p class="grid-sales">Monthly sales:2000+</p>
+						</a>
+					</li>
+				</ul>
 			</div>
-			<!--底部广告-->
-			<div id="bottom_gg">
-				<!-- <img src="static/image/bottomgg2.jpg" /> -->
-			</div>
-			<!--底部服务-->
-			<div class="slogan-container">
-				<div class="slogan">
-					<ul>
-						<li class="s1">
-							<i></i> 百强企业 品质保证
-						</li>
-						<li class="s2">
-							<i></i> 7天退货 15天换货
-						</li>
-						<li class="s3">
-							<i></i> 48元起免运费
-						</li>
-						<li class="s4">
-							<i></i> 1000家维修网点 全国联保
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!--底部footer版权-->
-			<div id="footer">
-				<div class="foot">
-					<!--<p class="foot_logo"><img src="static/image/flogo.png" /></p>-->
-					<p class="">Designed and developed by chenwei huo.<br /> Copyright © 2010-2019 chenwei.com. All Rights Reserved.</p>
-					<p class=""></p>
-				</div>
-			</div>
-			<!--弹出-->
-			<el-dialog title="登录/注册" :center="true" :visible.sync="dialogFormVisible">
-				<el-tabs v-model="activeName" :center="true" @tab-click="handleClick">
-				    <el-tab-pane label="登录" name="first">
-				    	<el-form :model="form">
-						    <el-form-item label="帐号" style="display: none;" :label-width="formLabelWidth">
-						      <el-input v-model="form.userName" autocomplete="off"></el-input>
-								</el-form-item>
-						    <el-form-item label="密码" style="display: none;" :label-width="formLabelWidth">
-						      <el-input type="password" v-model="form.userPassword" autocomplete="off"></el-input>
-						    </el-form-item>
-						    <el-form-item label="帐号" :label-width="formLabelWidth">
-						      <el-input v-model="form.userName" autocomplete="off" placeholder="请输入长度不超过18位的字符"></el-input>
-								</el-form-item>
-								<p v-show="form.userName.length > 18" style="margin-left: 19%;color: red;font-size: 12px;">*帐号不能超过18位字符</p>
-						    <el-form-item label="密码" :label-width="formLabelWidth">
-						      <el-input type="password" v-model="form.userPassword" autocomplete="off" placeholder="请输入长度不超过18位的字符"></el-input>
-								</el-form-item>
-								<p v-show="form.userPassword.length > 18" style="margin-left: 19%;color: red;font-size: 12px;">*密码不能超过18位字符</p>
-						  </el-form>
-				    </el-tab-pane>
-				    <el-tab-pane label="注册" name="second">
-				    	<el-form :model="form">
-						    <el-form-item label="帐号" style="display: none;" :label-width="formLabelWidth">
-						      <el-input v-model="form.userName" autocomplete="off"></el-input>
-						    </el-form-item>
-						    <el-form-item label="密码" style="display: none;" :label-width="formLabelWidth">
-						      <el-input type="password" v-model="form.userPassword" autocomplete="off"></el-input>
-						    </el-form-item>
-						    <el-form-item label="帐号" :label-width="formLabelWidth">
-						      <el-input v-model="form.userName" autocomplete="off" placeholder="请输入长度6-18位的字符"></el-input>
-								</el-form-item>
-								<p v-show="form.userName.length > 18 || form.userName.length < 6" style="margin-left: 19%;color: red;font-size: 12px;">*请输入长度6-18位的字符</p>
-						    <el-form-item label="密码" :label-width="formLabelWidth">
-						      <el-input type="password" v-model="form.userPassword" autocomplete="off" placeholder="请输入长度不超过18位的字符"></el-input>
-								</el-form-item>
-								<p v-show="form.userPassword.length > 18 || form.userPassword.length < 6" style="margin-left: 19%;color: red;font-size: 12px;">*请输入密码长度6-18位字符</p>
-						    <el-form-item label="确认密码" :label-width="formLabelWidth">
-						      <el-input type="password" v-model="form.userPassword_2" autocomplete="off" placeholder="请输入长度不超过18位的字符"></el-input>
-								</el-form-item>
-								<p v-show="form.userPassword_2.length > 18 || form.userPassword_2.length < 6" style="margin-left: 19%;color: red;font-size: 12px;">*密码不能超过18位字符</p>
-						  </el-form>
-				    </el-tab-pane>
-				    
-				  </el-tabs>
-				
-			  
-			  <div slot="footer" class="dialog-footer">
-			    <el-button v-show="activeName=='second'" :disabled="form.userName.length > 18 || form.userName.length < 6 || form.userPassword.length > 18 || form.userPassword.length < 6" @click="registered">注册</el-button>
-			    <el-button v-show="activeName=='first'" type="primary" @click="login">登录</el-button>
-			  </div>
-			  
-			</el-dialog>
 		</div>
-	</body>
-	<!-- <script>
+		<!--底部广告-->
+		<div id="bottom_gg">
+			<!-- <img src="static/image/bottomgg2.jpg" /> -->
+		</div>
+		<!--底部服务-->
+		<div class="slogan-container">
+			<div class="slogan">
+				<ul>
+					<li class="s1">
+						<i></i> eco-friendly company
+					</li>
+					<li class="s2">
+						<i></i> 7 days' return
+					</li>
+					<li class="s3">
+						<i></i> free delivery on all orders
+					</li>
+					<li class="s4">
+						<i></i> excellent quality
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--底部footer版权-->
+		<div id="footer">
+			<div class="foot">
+				<!--<p class="foot_logo"><img src="static/image/flogo.png" /></p>-->
+				<p class="">Designed and developed by Group Godzilla.<br /> Copyright © 2021-2022 Godzilla. All Rights
+					Reserved.</p>
+				<p class=""></p>
+			</div>
+		</div>
+		<!--弹出-->
+		<el-dialog title="Log in/Register" :center="true" :visible.sync="dialogFormVisible">
+			<el-tabs v-model="activeName" :center="true" @tab-click="handleClick">
+				<el-tab-pane label="Log in" name="first">
+					<el-form :model="form">
+						<el-form-item label="account number" style="display: none;" :label-width="formLabelWidth">
+							<el-input v-model="form.userName" autocomplete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="paaword" style="display: none;" :label-width="formLabelWidth">
+							<el-input type="password" v-model="form.userPassword" autocomplete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="account number" :label-width="formLabelWidth">
+							<el-input v-model="form.userName" autocomplete="off"
+								placeholder="Please enter characters up to 18 characters in length">
+							</el-input>
+						</el-form-item>
+						<p v-show="form.userName.length > 18" style="margin-left: 19%;color: red;font-size: 12px;">
+							*Account number cannot exceed 18 characters</p>
+						<el-form-item label="password" :label-width="formLabelWidth">
+							<el-input type="password" v-model="form.userPassword" autocomplete="off"
+								placeholder="Please enter characters up to 18 characters in length"></el-input>
+						</el-form-item>
+						<p v-show="form.userPassword.length > 18" style="margin-left: 19%;color: red;font-size: 12px;">
+							*Password cannot exceed 18 characters</p>
+					</el-form>
+				</el-tab-pane>
+				<el-tab-pane label="Register" name="second">
+					<el-form :model="form">
+						<el-form-item label="account number" style="display: none;" :label-width="formLabelWidth">
+							<el-input v-model="form.userName" autocomplete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="password" style="display: none;" :label-width="formLabelWidth">
+							<el-input type="password" v-model="form.userPassword" autocomplete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="account number" :label-width="formLabelWidth">
+							<el-input v-model="form.userName" autocomplete="off"
+								placeholder="Please enter 6-18 characters in length"></el-input>
+						</el-form-item>
+						<p v-show="form.userName.length > 18 || form.userName.length < 6"
+							style="margin-left: 19%;color: red;font-size: 12px;">*Please enter 6-18 characters in length
+						</p>
+						<el-form-item label="password" :label-width="formLabelWidth">
+							<el-input type="password" v-model="form.userPassword" autocomplete="off"
+								placeholder="Please enter characters up to 18 characters in length"></el-input>
+						</el-form-item>
+						<p v-show="form.userPassword.length > 18 || form.userPassword.length < 6"
+							style="margin-left: 19%;color: red;font-size: 12px;">*Please enter a password length of 6-18
+							characters</p>
+						<el-form-item label="confirm password" :label-width="formLabelWidth">
+							<el-input type="password" v-model="form.userPassword_2" autocomplete="off"
+								placeholder="Please enter characters up to 18 characters in length"></el-input>
+						</el-form-item>
+						<p v-show="form.userPassword_2.length > 18 || form.userPassword_2.length < 6"
+							style="margin-left: 19%;color: red;font-size: 12px;">*Password cannot exceed 18 characters
+						</p>
+					</el-form>
+				</el-tab-pane>
+
+			</el-tabs>
+
+
+			<div slot="footer" class="dialog-footer">
+				<el-button v-show="activeName=='second'"
+					:disabled="form.userName.length > 18 || form.userName.length < 6 || form.userPassword.length > 18 || form.userPassword.length < 6"
+					@click="registered">Register</el-button>
+				<el-button v-show="activeName=='first'" type="primary" @click="login">Log in</el-button>
+			</div>
+
+		</el-dialog>
+	</div>
+</body>
+<!-- <script>
 	/*
 	* 参数说明
 	* obj : 动画的节点，本例中是ul
@@ -391,275 +411,275 @@
 		});
 </script> -->
 <script type="text/javascript">
-	$(function() {
-			var num = 0;
-			function goLeft() {
-					//750是根据你给的尺寸，可变的
-					if (num == -450) {
-							num = 0;
-					}
-					num -= 1;
-					$(".scroll").css({
-							left: num
-					})
+	$(function () {
+		var num = 0;
+		function goLeft() {
+			//750是根据你给的尺寸，可变的
+			if (num == -450) {
+				num = 0;
 			}
-			//设置滚动速度
-			var timer = setInterval(goLeft, 20);
-			//设置鼠标经过时滚动停止
-			$(".box").hover(function() {
-					clearInterval(timer);
-			},
-			function() {
-					timer = setInterval(goLeft, 20);
+			num -= 1;
+			$(".scroll").css({
+				left: num
+			})
+		}
+		//设置滚动速度
+		var timer = setInterval(goLeft, 20);
+		//设置鼠标经过时滚动停止
+		$(".box").hover(function () {
+			clearInterval(timer);
+		},
+			function () {
+				timer = setInterval(goLeft, 20);
 			})
 	})
 </script>
-	<script type="text/javascript">
-		$(function() {
-			// 初始化swiper
-			var mySwiper = new Swiper('.swiper-container', {
-				updateOnImagesReady: true,
-				direction: 'horizontal',
-				loop: true,
-				autoplay: 8000,
-				observer: true, //修改swiper自己或子元素时，自动初始化swiper
-				// 如果需要前进后退按钮
-				nextButton: '.swiper-button-next',
-				prevButton: '.swiper-button-prev',
-				pagination: '.swiper-pagination',
-			})
+<script type="text/javascript">
+	$(function () {
+		// 初始化swiper
+		var mySwiper = new Swiper('.swiper-container', {
+			updateOnImagesReady: true,
+			direction: 'horizontal',
+			loop: true,
+			autoplay: 8000,
+			observer: true, //修改swiper自己或子元素时，自动初始化swiper
+			// 如果需要前进后退按钮
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			pagination: '.swiper-pagination',
 		})
-	</script>
-	<!--vue-->
-	<script type="text/javascript">
-		// 注册
-		Vue.component('my-component', {});
-		var WEITUOSERVER = new Vue({
-			el: '#cdnvue',
-			data: {
-				activeName: 'first',
-				jsonData: [],  //主页产品
-				jsonHotData:[], // 热销推荐的 显示两行
-				jsonggData: [], // 公告数据
-				searchVal:"", // 搜索
-				dialogTableVisible: false,
-				dialogFormVisible: false,
-				form: {
-					userName: '',
-					userPassword: '',
-					userPassword_2:'', //确认密码
-					type: [],
-				},
-				formLabelWidth: '120px',
-				userInfo: window.sessionStorage.user ? JSON.parse(window.sessionStorage.user ) : "",
+	})
+</script>
+<!--vue-->
+<script type="text/javascript">
+	// 注册
+	Vue.component('my-component', {});
+	var WEITUOSERVER = new Vue({
+		el: '#cdnvue',
+		data: {
+			activeName: 'first',
+			jsonData: [],  //主页产品
+			jsonHotData: [], // 热销推荐的 显示两行
+			jsonggData: [], // 公告数据
+			searchVal: "", // 搜索
+			dialogTableVisible: false,
+			dialogFormVisible: false,
+			form: {
+				userName: '',
+				userPassword: '',
+				userPassword_2: '', //确认密码
+				type: [],
 			},
-			created() {
-				this.gatData();
-				this.gatHotData();
-				this.gatggData();
+			formLabelWidth: '120px',
+			userInfo: window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) : "",
+		},
+		created() {
+			this.gatData();
+			this.gatHotData();
+			this.gatggData();
+		},
+		methods: {
+			handleClick(tab, event) {
+				console.log(tab, event);
 			},
-			methods: {
-				handleClick(tab, event) {
-			        console.log(tab, event);
-			      },
-				gatData() {
-					var that = this;
-					$.ajax({
-						type: "GET",
-						url: "php/index.php",
-						data: {"searchall":"searchall"},
-						dataType: "json",
-						success: function(res) {
-							that.jsonData = res.data;
-						},
-					});
-				},
-				// 搜索
-				onsearchVal(){
-					var arg = encodeURI(encodeURI(this.searchVal));
-					window.location.href = "index_search.html?arg="+arg;
-					// var that = this;
-					// $.ajax({
-					// 	type: "GET",
-			    //          url: "php/index.php",
-			    //          data: {"searchVal":that.searchVal,"searchName":"searchName"},
-			    //          dataType: "json",
-					// 	success: function(res) {
-					// 		that.jsonData = res.data;
-					// 	},
-					// });
-				},
-				// 排序--升序
-				orderBy(arg){
-					var that = this;
-					$.ajax({
-						type: "GET",
-			             url: "php/index.php",
-			             data: {"orderBy":arg,"paixu":"paixu"},
-			             dataType: "json",
-						success: function(res) {
-							that.jsonData = res.data;
-						},
-					});
-				},
-				// 排序--降序
-				orderBy2(arg){
-					var that = this;
-					$.ajax({
-						type: "GET",
-			             url: "php/index.php",
-			             data: {"orderBy":arg,"paixu":"paixu","jiangxu":"jiangxu"},
-			             dataType: "json",
-						success: function(res) {
-							that.jsonData = res.data;
-						},
-					});
-				},
-				// hot 推荐产品--显示两行
-				gatHotData(){
-					var that = this;
-					$.ajax({
-						type: "GET",
-			             url: "php/index.php",
-			             data: {"orderBy":"sales","paixu":"paixu","jiangxu":"jiangxu"},
-			             dataType: "json",
-						success: function(res) {
-							that.jsonHotData = res.data.slice(0,8);
-						},
-					});
-				},
-				// 公告跳转
-				toggDetail(arg){
-					var arg = encodeURI(encodeURI(arg));
-					window.location.href = "gonggao.html?t="+arg;
+			gatData() {
+				var that = this;
+				$.ajax({
+					type: "GET",
+					url: "php/index.php",
+					data: { "searchall": "searchall" },
+					dataType: "json",
+					success: function (res) {
+						that.jsonData = res.data;
+					},
+				});
+			},
+			// 搜索
+			onsearchVal() {
+				var arg = encodeURI(encodeURI(this.searchVal));
+				window.location.href = "index_search.html?arg=" + arg;
+				// var that = this;
+				// $.ajax({
+				// 	type: "GET",
+				//          url: "php/index.php",
+				//          data: {"searchVal":that.searchVal,"searchName":"searchName"},
+				//          dataType: "json",
+				// 	success: function(res) {
+				// 		that.jsonData = res.data;
+				// 	},
+				// });
+			},
+			// 排序--升序
+			orderBy(arg) {
+				var that = this;
+				$.ajax({
+					type: "GET",
+					url: "php/index.php",
+					data: { "orderBy": arg, "paixu": "paixu" },
+					dataType: "json",
+					success: function (res) {
+						that.jsonData = res.data;
+					},
+				});
+			},
+			// 排序--降序
+			orderBy2(arg) {
+				var that = this;
+				$.ajax({
+					type: "GET",
+					url: "php/index.php",
+					data: { "orderBy": arg, "paixu": "paixu", "jiangxu": "jiangxu" },
+					dataType: "json",
+					success: function (res) {
+						that.jsonData = res.data;
+					},
+				});
+			},
+			// hot 推荐产品--显示两行
+			gatHotData() {
+				var that = this;
+				$.ajax({
+					type: "GET",
+					url: "php/index.php",
+					data: { "orderBy": "sales", "paixu": "paixu", "jiangxu": "jiangxu" },
+					dataType: "json",
+					success: function (res) {
+						that.jsonHotData = res.data.slice(0, 8);
+					},
+				});
+			},
+			// 公告跳转
+			toggDetail(arg) {
+				var arg = encodeURI(encodeURI(arg));
+				window.location.href = "gonggao.html?t=" + arg;
 
-				},
-				// 获取公告
-				gatggData() {
-					var that = this;
+			},
+			// 获取公告
+			gatggData() {
+				var that = this;
+				$.ajax({
+					type: "GET",
+					url: "sas/gg.php",
+					data: { "ggallList": "allList" },
+					dataType: "json",
+					success: function (res) {
+						that.jsonggData = res;
+					},
+				});
+			},
+			login() {
+				var that = this;
+				this.dialogFormVisible = false;
+				if (this.form.userName && this.form.userPassword) {
 					$.ajax({
-						type: "GET",
-			             url: "sas/gg.php",
-			             data: {"ggallList":"allList"},
-			             dataType: "json",
-						success: function(res) {
-							that.jsonggData = res;
-						},
-					});
-				},
-				login() {
-					var that = this;
-					this.dialogFormVisible = false;
-					if(this.form.userName && this.form.userPassword){
-						$.ajax({
-							type: "get",
-				             url: "php/index.php",
-				             data: {"userName":that.form.userName,"userPassword":that.form.userPassword},
-				             dataType: "json",
-							success: function(res) {
-								
-								if(res.resultCode == 0000){
-									that.$message({
-							          message: res.message,
-							          type: 'error'
-							        });
-								}else{
-									window.sessionStorage.user = JSON.stringify(res.data);
-									that.userInfo = res.data;
-									that.$message({
-							          message: res.message,
-							          type: 'success'
-							        });
-								}
-							},
-							error:function(data){
-								console.log(data)
-							}
-						});
-					}else{
-						that.$message({
-				          message: 'Account or password cannot be empty!',
-				          type: 'warning'
-				        });
-					}
-				},
-				loginOut(){
-					window.sessionStorage.user = "";
-					window.location.reload();
-				},
-				registered() {
-					var that = this;
-					if(this.form.userPassword !== this.form.userPassword_2){
-						that.$message({
-				          message: 'The two password do not match!',
-				          type: 'error'
-				        });
-				        return;
-					}
-					this.dialogFormVisible = false;
-					if(this.form.userName && this.form.userPassword){
-						$.ajax({
-							type: "get",
-				             url: "php/index.php",
-				             data: {"userName":that.form.userName,"userPassword":that.form.userPassword,"registered":"registered","uuid":that.uuid()},
-				             dataType: "json",
-							success: function(res) {
-								if(res.resultCode == "200"){
-									that.$message({
-							          message: res.message,
-							          type: 'success'
-							        });
-								}else if(res.resultCode == "0001"){
-									that.$message({
-							          message: res.message,
-							          type: 'warning'
-							        });
-								}
-							},
-							error:function(){
+						type: "get",
+						url: "php/index.php",
+						data: { "userName": that.form.userName, "userPassword": that.form.userPassword },
+						dataType: "json",
+						success: function (res) {
+
+							if (res.resultCode == 0000) {
 								that.$message({
-						          message: 'Register fail!',
-						          type: 'error'
-						        });
+									message: res.message,
+									type: 'error'
+								});
+							} else {
+								window.sessionStorage.user = JSON.stringify(res.data);
+								that.userInfo = res.data;
+								that.$message({
+									message: res.message,
+									type: 'success'
+								});
 							}
-						});
-					}else{
-						that.$message({
-				          message: 'The account or password can not be empty',
-				          type: 'warning'
-				        });
-					}
-				},
-				 //uuid
-				uuid () {
-					function _s4(){
-						  return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+						},
+						error: function (data) {
+							console.log(data)
 						}
-					return _s4() + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + _s4() + _s4();
-				  },
-				car() {
-					if(window.sessionStorage.user){
-						window.location.href = "car.html"
-					}else{
-						this.$message({
-				          message: 'Please login first!',
-				          type: 'warning'
-				        });
-					}
-				},
-				order(){
-					if(window.sessionStorage.user){
-						window.location.href = "order.html"
-					}else{
-						this.$message({
-				          message: 'Please login first!',
-				          type: 'warning'
-				        });
-					}
+					});
+				} else {
+					that.$message({
+						message: 'Account or password cannot be empty!',
+						type: 'warning'
+					});
+				}
+			},
+			loginOut() {
+				window.sessionStorage.user = "";
+				window.location.reload();
+			},
+			registered() {
+				var that = this;
+				if (this.form.userPassword !== this.form.userPassword_2) {
+					that.$message({
+						message: 'The two password do not match!',
+						type: 'error'
+					});
+					return;
+				}
+				this.dialogFormVisible = false;
+				if (this.form.userName && this.form.userPassword) {
+					$.ajax({
+						type: "get",
+						url: "php/index.php",
+						data: { "userName": that.form.userName, "userPassword": that.form.userPassword, "registered": "registered", "uuid": that.uuid() },
+						dataType: "json",
+						success: function (res) {
+							if (res.resultCode == "200") {
+								that.$message({
+									message: res.message,
+									type: 'success'
+								});
+							} else if (res.resultCode == "0001") {
+								that.$message({
+									message: res.message,
+									type: 'warning'
+								});
+							}
+						},
+						error: function () {
+							that.$message({
+								message: 'Register fail!',
+								type: 'error'
+							});
+						}
+					});
+				} else {
+					that.$message({
+						message: 'The account or password can not be empty',
+						type: 'warning'
+					});
+				}
+			},
+			//uuid
+			uuid() {
+				function _s4() {
+					return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+				}
+				return _s4() + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + _s4() + _s4();
+			},
+			car() {
+				if (window.sessionStorage.user) {
+					window.location.href = "car.html"
+				} else {
+					this.$message({
+						message: 'Please login first!',
+						type: 'warning'
+					});
+				}
+			},
+			order() {
+				if (window.sessionStorage.user) {
+					window.location.href = "order.html"
+				} else {
+					this.$message({
+						message: 'Please login first!',
+						type: 'warning'
+					});
 				}
 			}
+		}
 
-		})
-	</script>
+	})
+</script>
 
 </html>

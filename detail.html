@@ -1,541 +1,541 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>华为商城</title>
-		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="static/css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="static/css/public.css" />
-		<link rel="stylesheet" type="text/css" href="static/css/swiper.min.css">
-		<link rel="stylesheet" type="text/css" href="static/css/elementui.css"/>
-		<link rel="shortcut icon" href="favicon.ico">
-		<script src="static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/vue.js"></script>
-		<script src="static/js/elementui.js" type="text/javascript" charset="utf-8"></script>
-	</head>
-	<body>
-		<div id="pdetail">
-			<div id="" class="top_gg">
-				<a href="">
-					<!-- <img src="static/image/top_gg.jpg" /> -->
-				</a>
-			</div>
-			<div id="" class="shortcut">
-				<div class="layout">
-					<div class="s-sub">
-						<ul>
-							<li>
-								<a href="index.html">首页</a>
-							</li>
-							<li>
-									<a href="systemInfo.html">商城简介</a>
-								</li>
-								<!-- <li>
-									<a href="">帮助中心 用户反馈</a>
-								</li> -->
-								<li>
-									<a href="baoxiu.html">保修政策</a>
-								</li>
-								<li>
-									<a href="problem.html">热门问题</a>
-								</li>
-						</ul>
-					</div>
-					<div class="s-right">
-						<ul>
-							<li>
-								<a href="index.html" v-if="!userInfo">未登录</a>
-								<a href="userInfo.html" v-else>{{userInfo.userName}}</a>
-							</li>
-							<!-- <li v-if="userInfo">
+
+<head>
+	<title>Pet Mall</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="static/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="static/css/elementui.css" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<script src="static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/vue.js"></script>
+	<script src="static/js/elementui.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+	<div id="pdetail">
+		<div id="" class="top_gg">
+			<a href="">
+				<!-- <img src="static/image/top_gg.jpg" /> -->
+			</a>
+		</div>
+		<div id="" class="shortcut">
+			<div class="layout">
+				<div class="s-sub">
+					<ul>
+						<li>
+							<a href="index.html">Front Page</a>
+						</li>
+						<li>
+							<a href="systemInfo.html">Introduction To The Mall</a>
+						</li>
+						<li>
+							<a href="">Customer Feedback</a>
+						</li>
+						<li>
+							<a href="problem.html">Top Questions</a>
+						</li>
+					</ul>
+				</div>
+				<div class="s-right">
+					<ul>
+						<li>
+							<a href="index.html" v-if="!userInfo">not logged in</a>
+							<a href="userInfo.html" v-else>{{userInfo.userName}}</a>
+						</li>
+						<!-- <li v-if="userInfo">
 								<a href="javascript:void(0)">积分：{{userInfo.jifen}}</a>
 							</li> -->
-							<!--<li>
+						<!--<li>
 								<a href="javascript:void(0)" @click="dialogFormVisible = true">注册</a>
 							</li>-->
-							<li>
-								<a href="javascript:void(0)" @click="isOrder">|&emsp;订单</a>
-							</li>
-							<li>
-								<a href="javascript:void(0)" @click="car">|&emsp;购物车</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!--header-->
-			<div class="header">
-				<div id="" class="layout">
-					<div class="left">
-						<div class="logo">
-<!-- 							<img src="static/image/logo.png" /> -->
-						</div>
-						<div class="naver">
-							<ul id="naver-list">
-								<li id="huawei" class="">
-									<a href="ry.html" target="_blank">
-										<span>荣耀</span>
-									</a>
-								</li>
-								<li id="huawei" class="">
-										<a href="p.html" target="_blank">
-											<span>HUAWEI P系列</span>
-										</a>
-									</li>
-								<li id="honor" class="">
-									<a href="rycw.html" target="_blank">
-										<span>华为畅享系列</span>
-									</a>
-								</li>
-								<li id="honor" class="">
-									<a href="mate.html" target="_blank">
-										<span>HUAWEI Mate系列</span>
-									</a>
-								</li>
-								<li id="honor" class="">
-										<a href="nova.html" target="_blank">
-											<span>HUAWEI nova系列</span>
-										</a>
-									</li>
-								<!-- <li id="huawei" class="">
-									<a href="nova_4.html" target="_blank">
-										<span>华为畅享系列</span>
-									</a>
-								</li> -->
-							</ul>
-						</div>
-					</div>
-					<!--导航右边部分-->
-					<div class="right">
-						<input type="text" v-model="searchVal" placeholder="荣耀10降价" class="search-text">
-						<el-button class="search-btn" icon="el-icon-search" @click="onsearchVal" style="padding: 12.5px;" circle></el-button>
-						<!-- <input type="submit" class="search-btn" @click="onsearchVal" value="搜索"> -->
-					</div>
-				</div>
-			</div>
-			<div id="" class="layout" style="min-height: 560px;">
-				<p style="color:#666"><a href="index.html" style="color:#666"> Home </a> > Merchant > {{jsonData.name}} > {{jsonData.jianJie}}</p>
-				<div class="">
-					<div id="" class="de-con-left">
-						<img :src="'sas/upload/'+jsonData.img"/>
-					</div>
-					<div id="" class="de-con-right">
-						<p class="de-con-right-jianJie">{{jsonData.name}}&emsp;<span style="font-size: 18px;color: #999;">{{jsonData.jianJie}}</span></p>
-						<div class="de-product-info">
-							<p>Price：<span style="font-size: 24px;color: #ca141d;"><em>¥</em> {{jsonData.price}}</span></p>
-							<!-- <p>限时特价： <span>限时优惠300元</span></p> -->
-							<!-- <p>积分翻倍：<span>活动赠送翻倍积分，积分可抵现~</span></p> -->
-						</div>
-						<p> </p>
-						<p> </p>
-						<div class="">
-							Size: &emsp;
-						    <el-radio v-model="radio_color" label="Small" border>Small</el-radio>
-						    <el-radio v-model="radio_color" label="Medium" border>Medium</el-radio>
-						    <el-radio v-model="radio_color" label="Large" border>Large</el-radio>
-						    <!-- <el-radio v-model="radio_color" label="海鸥灰" border>海鸥灰</el-radio>
-						    <el-radio v-model="radio_color" label="铃兰白" border>铃兰白</el-radio> -->
-						</div>
-						<div class="" style="margin-top: 10px;">
-						    <!-- <el-radio v-model="radio_v" label="全网通6GB+128GB" border>全网通6GB+128GB</el-radio> -->
-						</div>
-						<p>Stock Num:  {{jsonData.kucun}}</p>
-						<div class=""style="margin-top: 10px;">
-							<el-row>
-							  <el-button :disabled="jsonData.kucun < 1" style="width: 25%;" @click="addCar">Add to Shopping Cart</el-button>
-							  <el-button :disabled="jsonData.kucun < 1" type="danger" style="width: 25%;" @click="dialog_order = true">Order</el-button>
-							</el-row>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="phone-detail">
-				<el-tabs v-model="activeName" @tab-click="handleClick">
-					<el-tab-pane label="Merchant Detail" name="first">
-						<div id="phoneDetail" v-html="jsonData.p_gn"></div>
-					</el-tab-pane>
-					<el-tab-pane label="User Comment" name="second">
-						<el-input	type="textarea" :rows="2" placeholder="please enter" v-model="phonePj"></el-input>
-						<div style="margin: 20px 0; text-align: right"><el-button type="primary" @click="savePingJia">Comment</el-button></div>
-						<ul>
-							<li v-for="(item, index) in pingJiaData" :key="index"><span style="color:#409EFF;font-size: 16px">{{item.userName}}：</span> <span style="color:#666;font-size: 16px">{{item.pingJiaText}}</span> -------- <span style="color:#666;font-size: 12px">{{item.pingJiaDate}}</span> <span style="color: rgb(64, 158, 255);;cursor: pointer;" @click="delePingJia(item.p_id)" v-if="userInfo &&item.userName == userInfo.userName">delete</span></li>
-						</ul>
-					</el-tab-pane>
-				</el-tabs>
-			</div>
-			<!-- 地址弹窗 -->
-			<el-dialog
-				title="Receive Info"
-				:visible.sync="dialog_order"
-				width="30%"
-				>
-				<el-form :model="form">
-					<el-form-item label="Address" :label-width="form.formLabelWidth">
-						<!-- <el-input v-model="form.address" autocomplete="off"></el-input> -->
-						<el-select v-if="jsonAddressData.length" v-model="form.address" placeholder="Select">
-							<el-option v-for="item in jsonAddressData" :key="item.userAddress" :label="item.userAddress" :value="item.userAddress"></el-option>
-						</el-select>
-						<el-input v-else v-model="form.address" autocomplete="off"></el-input>
-					</el-form-item>
-					<el-form-item label="Receiver name" :label-width="form.formLabelWidth">
-					  <el-input v-model="form.userName" autocomplete="off"></el-input>
-					</el-form-item>
-					<el-form-item label="Phone Number" :label-width="form.formLabelWidth">
-					  <el-input v-model="form.mobile" autocomplete="off"></el-input>
-					</el-form-item>
-				</el-form>
-				<span slot="footer" class="dialog-footer">
-					<el-button @click="dialog_order = false">Cancel</el-button>
-					<el-button type="primary" @click="dialogVisibleOrder = true;dialog_order = false">Confirm</el-button>
-				</span>
-			</el-dialog>
-			<el-dialog
-				title="Confirm Order"
-				:visible.sync="dialogVisibleOrder"
-				width="30%"
-				>
-				<p>{{jsonData.name}} ({{jsonData.jianJie}})</p>
-				<p>Price： {{jsonData.price}} ({{radio_color}}--{{radio_v}})</p>
-				<p>Address: {{form.address}}</p>
-				<p>Receiver: {{form.userName}}</p>
-				<p>Phone Num: {{form.mobile}}</p>
-				<p style="color:red">payment: ￥{{jsonData.price}}</p>
-				<span slot="footer" class="dialog-footer">
-					<el-button @click="dialogVisibleOrder = false">Cancel</el-button>
-					<el-button type="primary" @click="sure_order">Confirm</el-button>
-				</span>
-			</el-dialog>
-			<div id="footer">
-				<div class="foot">
-					<!--<p class="foot_logo"><img src="static/image/flogo.png" /></p>-->
-					<p class="">Designed and developed by Bravo Team.CS5281<br /> All Rights Reserved.</p>
-					<p class=""></p>
+						<li>
+							<a href="javascript:void(0)" @click="car">|&emsp;shopping cart</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" @click="order">|&emsp;Order</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-	</body>
-	<script type="text/javascript">
-		// 注册
-		Vue.component('my-component', {});
-		var WEITUOSERVER = new Vue({
-			el: '#pdetail',
-			data: {
-				activeName: 'first',
-				dialogVisibleOrder:false,
-				phonePj:"",
-				pingJiaData:[],
-				jsonData: {},
-				dialog_order:false, //下单弹窗
-				searchVal:"", // 搜索
-				jsonAddressData:[],
-				jsonuserAddressData:[],
-				form:{address:"",formLabelWidth:"120px",userName:"",mobile:""},
-				dialogTableVisible: false,
-        		dialogFormVisible: false,
-        		pid:"",
-        		radio_color:"Small",
-        		radio_v:"",
-        		userInfo: window.sessionStorage.user && JSON.parse(window.sessionStorage.user),
+		<!--header-->
+		<div class="header">
+			<div id="" class="layout">
+				<div class="left">
+					<div class="logo">
+						<img width="80px" height="50px" src="static/image/logo.png" />
+					</div>
+					<div class="naver">
+						<ul id="naver-list">
+							<li id="huawei" class="">
+								<a href="Pet_Treats.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Pet
+										Treats</span>
+								</a>
+							</li>
+							<li id="huawei" class="">
+								<a href="Pet_Toy.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Pet
+										Toy</span>
+								</a>
+							</li>
+							<li id="honor" class="">
+								<a href="Canned_Wet_Food.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Canned
+										Wet Food</span>
+								</a>
+							</li>
+							<li id="honor" class="">
+								<a href="Nutrition.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Nutrition</span>
+								</a>
+							</li>
+							<li id="honor" class="">
+								<a href="Medical_Products.html" target="_blank">
+									<span
+										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Medical
+										Products</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--导航右边部分-->
+				<div class="right">
+					<input type="text" v-model="searchVal" placeholder="50% off dog food" class="search-text">
+					<el-button class="search-btn" icon="el-icon-search" @click="onsearchVal" circle></el-button>
+					<!-- <input type="submit" class="search-btn" @click="onsearchVal" value="搜索"> -->
+				</div>
+			</div>
+		</div>
+		<div id="" class="layout" style="min-height: 560px;">
+			<p style="color:#666"><a href="index.html" style="color:#666"> Home </a> > Merchant > {{jsonData.name}} >
+				{{jsonData.jianJie}}</p>
+			<div class="">
+				<div id="" class="de-con-left">
+					<img :src="'sas/upload/'+jsonData.img" />
+				</div>
+				<div id="" class="de-con-right">
+					<p class="de-con-right-jianJie">{{jsonData.name}}&emsp;<span
+							style="font-size: 18px;color: #999;">{{jsonData.jianJie}}</span></p>
+					<div class="de-product-info">
+						<p>Price：<span style="font-size: 24px;color: #ca141d;"><em>$</em> {{jsonData.price}}</span></p>
+					</div>
+					<p> </p>
+					<p> </p>
+					<div class="">
+						Size: &emsp;
+						<el-radio v-model="radio_color" label="Small" border>Small</el-radio>
+						<el-radio v-model="radio_color" label="Medium" border>Medium</el-radio>
+						<el-radio v-model="radio_color" label="Large" border>Large</el-radio>
+					</div>
+					<div class="" style="margin-top: 10px;">
+					</div>
+					<p>Stock Num: {{jsonData.kucun}}</p>
+					<div class="" style="margin-top: 10px;">
+						<el-row>
+							<el-button :disabled="jsonData.kucun < 1" style="width: 25%;" @click="addCar">Add to
+								Shopping Cart</el-button>
+							<el-button :disabled="jsonData.kucun < 1" type="danger" style="width: 25%;"
+								@click="dialog_order = true">Order</el-button>
+						</el-row>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="phone-detail">
+			<el-tabs v-model="activeName" @tab-click="handleClick">
+				<el-tab-pane label="Merchant Detail" name="first">
+					<div id="phoneDetail" v-html="jsonData.p_gn"></div>
+				</el-tab-pane>
+				<el-tab-pane label="User Comment" name="second">
+					<el-input type="textarea" :rows="2" placeholder="please enter" v-model="phonePj"></el-input>
+					<div style="margin: 20px 0; text-align: right">
+						<el-button type="primary" @click="savePingJia">Comment</el-button>
+					</div>
+					<ul>
+						<li v-for="(item, index) in pingJiaData" :key="index"><span
+								style="color:#409EFF;font-size: 16px">{{item.userName}}：</span> <span
+								style="color:#666;font-size: 16px">{{item.pingJiaText}}</span> -------- <span
+								style="color:#666;font-size: 12px">{{item.pingJiaDate}}</span> <span
+								style="color: rgb(64, 158, 255);;cursor: pointer;" @click="delePingJia(item.p_id)"
+								v-if="userInfo &&item.userName == userInfo.userName">delete</span></li>
+					</ul>
+				</el-tab-pane>
+			</el-tabs>
+		</div>
+		<el-dialog title="Receive Info" :visible.sync="dialog_order" width="30%">
+			<el-form :model="form">
+				<el-form-item label="Address" :label-width="form.formLabelWidth">
+					<!-- <el-input v-model="form.address" autocomplete="off"></el-input> -->
+					<el-select v-if="jsonAddressData.length" v-model="form.address" placeholder="Select">
+						<el-option v-for="item in jsonAddressData" :key="item.userAddress" :label="item.userAddress"
+							:value="item.userAddress"></el-option>
+					</el-select>
+					<el-input v-else v-model="form.address" autocomplete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="Receiver name" :label-width="form.formLabelWidth">
+					<el-input v-model="form.userName" autocomplete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="Phone Number" :label-width="form.formLabelWidth">
+					<el-input v-model="form.mobile" autocomplete="off"></el-input>
+				</el-form-item>
+			</el-form>
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="dialog_order = false">Cancel</el-button>
+				<el-button type="primary" @click="dialogVisibleOrder = true;dialog_order = false">Confirm</el-button>
+			</span>
+		</el-dialog>
+		<el-dialog title="Confirm Order" :visible.sync="dialogVisibleOrder" width="30%">
+			<p>{{jsonData.name}} ({{jsonData.jianJie}})</p>
+			<p>Price： {{jsonData.price}} ({{radio_color}}--{{radio_v}})</p>
+			<p>Address: {{form.address}}</p>
+			<p>Receiver: {{form.userName}}</p>
+			<p>Phone Num: {{form.mobile}}</p>
+			<p style="color:red">payment: ￥{{jsonData.price}}</p>
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="dialogVisibleOrder = false">Cancel</el-button>
+				<el-button type="primary" @click="sure_order">Confirm</el-button>
+			</span>
+		</el-dialog>
+		<div id="footer">
+			<div class="foot">
+				<!--<p class="foot_logo"><img src="static/image/flogo.png" /></p>-->
+				<p class="">Designed and developed by Group Godzilla.<br /> Copyright © 2021-2022 Godzilla. All Rights
+				<p class=""></p>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	Vue.component('my-component', {});
+	var WEITUOSERVER = new Vue({
+		el: '#pdetail',
+		data: {
+			activeName: 'first',
+			dialogVisibleOrder: false,
+			phonePj: "",
+			pingJiaData: [],
+			jsonData: {},
+			dialog_order: false,
+			searchVal: "",
+			jsonAddressData: [],
+			jsonuserAddressData: [],
+			form: { address: "", formLabelWidth: "120px", userName: "", mobile: "" },
+			dialogTableVisible: false,
+			dialogFormVisible: false,
+			pid: "",
+			radio_color: "Small",
+			radio_v: "",
+			userInfo: window.sessionStorage.user && JSON.parse(window.sessionStorage.user),
+		},
+		created() {
+			this.pid = this.GetQueryString("id");
+			this.gatData();
+			this.gatAddressData();
+			this.getPingJia();
+		},
+		methods: {
+			handleClick(tab, event) {
+				// console.log(tab, event);
 			},
-			created() {
-				this.pid = this.GetQueryString("id");
-				this.gatData();
-				this.gatAddressData();
-				this.getPingJia();
-			},
-			methods: {
-				handleClick(tab, event) {
-							// console.log(tab, event);
+			savePingJia() {
+				var that = this;
+				var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) : "";
+				if (!user) {
+					that.$message({
+						message: 'Pleas Log in ',
+						type: 'warning'
+					});
+					return;
+				}
+				$.ajax({
+					type: "GET",
+					url: "php/pingJia.php",
+					data: { "userName": that.userInfo.userName, "pingJiaText": that.phonePj, "pingJiaDate": new Date(), "productId": that.pid, "add": "add", "p_id": that.uuid() },
+					dataType: "json",
+					success: function (res) {
+						that.$message({
+							message: 'Comment Success',
+							type: 'success'
+						});
+						that.phonePj = "";
+						that.getPingJia();
 					},
-				savePingJia(){
-					var that = this;
-						var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
-						if(!user){
-							that.$message({
-								message: 'Pleas Log in ',
-								type: 'warning'
-							});
-								return;
-						}
-						$.ajax({
-								type: "GET",
-										url: "php/pingJia.php",
-										data: {"userName":that.userInfo.userName,"pingJiaText":that.phonePj,"pingJiaDate":new Date(),"productId":that.pid,"add":"add","p_id":that.uuid()},
-										dataType: "json",
-								success: function(res) {
-									that.$message({
-										message: 'Comment Success',
-										type: 'success'
-									});
-									that.phonePj = "";
-									that.getPingJia();
-								},
+				});
+			},
+			delePingJia(id) {
+				debugger
+				var that = this;
+				$.ajax({
+					type: "GET",
+					url: "php/pingJia.php",
+					data: { "p_id": id, "depj": "depj" },
+					dataType: "json",
+					success: function (res) {
+						that.$message({
+							message: 'Delete Success',
+							type: 'success'
 						});
-				},
-				delePingJia(id){
-					debugger
-					var that = this;
-					$.ajax({
-								type: "GET",
-										url: "php/pingJia.php",
-										data: {"p_id":id,"depj":"depj"},
-										dataType: "json",
-								success: function(res) {
-									that.$message({
-										message: 'Delete Success',
-										type: 'success'
-									});
-									that.phonePj = "";
-									that.getPingJia();
-								},
+						that.phonePj = "";
+						that.getPingJia();
+					},
+				});
+			},
+			getPingJia() {
+				var that = this;
+				// var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
+				// 	if(!user){
+				// 			return;
+				// 	}
+				$.ajax({
+					type: "GET",
+					url: "php/pingJia.php",
+					data: { "productId": that.pid, "search": "search" },
+					dataType: "json",
+					success: function (res) {
+						that.pingJiaData = res.data;
+						that.pingJiaData.forEach(element => {
+							var date = new Date(element.pingJiaDate);
+							element.pingJiaDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 						});
-				},
-				getPingJia(){
-					var that = this;
-					// var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
-					// 	if(!user){
-					// 			return;
-					// 	}
-						$.ajax({
-								type: "GET",
-										url: "php/pingJia.php",
-										data: {"productId":that.pid,"search":"search"},
-										dataType: "json",
-								success: function(res) {
-									that.pingJiaData = res.data;
-									that.pingJiaData.forEach(element => {
-										var date = new Date(element.pingJiaDate);  
-										element.pingJiaDate=date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-									});
-								},
-						});
-				},
-				gatAddressData(){
-						var that = this;
-						var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
-						if(!user){
-								return;
-						}
-						$.ajax({
-								type: "GET",
-										url: "php/detail.php",
-										data: {"userId":user.userId,"getAddressdata":"getAddressdata"},
-										dataType: "json",
-								success: function(res) {
-										that.jsonAddressData = res.data;
-										if(!res.data.length) return;
-										that.form.address = res.data[0].userAddress ? res.data[0].userAddress : "";
-										that.form.userName = res.data[0].getUserName ? res.data[0].getUserName : "";
-										that.form.mobile = res.data[0].userPhone ? res.data[0].userPhone : "";
-								},
-						});
-				},
-				gatData() {
+					},
+				});
+			},
+			gatAddressData() {
+				var that = this;
+				var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) : "";
+				if (!user) {
+					return;
+				}
+				$.ajax({
+					type: "GET",
+					url: "php/detail.php",
+					data: { "userId": user.userId, "getAddressdata": "getAddressdata" },
+					dataType: "json",
+					success: function (res) {
+						that.jsonAddressData = res.data;
+						if (!res.data.length) return;
+						that.form.address = res.data[0].userAddress ? res.data[0].userAddress : "";
+						that.form.userName = res.data[0].getUserName ? res.data[0].getUserName : "";
+						that.form.mobile = res.data[0].userPhone ? res.data[0].userPhone : "";
+					},
+				});
+			},
+			gatData() {
+				var that = this;
+				$.ajax({
+					type: "GET",
+					url: "php/detail.php",
+					data: { "pid": that.pid, "getdata": "pro_detail" },
+					dataType: "json",
+					success: function (res) {
+						that.jsonData = res.data[0];
+					},
+				});
+			},
+			GetQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) return unescape(r[2]); return null;
+			},
+			// 确定下单
+			sure_order() {
+				if (!(this.form.address && this.form.mobile && this.form.userName)) {
+					this.$message({
+						message: 'Please Fulfill Order Info',
+						type: 'warning'
+					});
+					return;
+				}
+				this.dialog_order = false;
+				this.order();
+			},
+			addCar() {
+				var that = this;
+				var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) : "";
+				if (!!user) {
 					var that = this;
 					$.ajax({
 						type: "GET",
-			             url: "php/detail.php",
-			             data: {"pid":that.pid,"getdata":"pro_detail"},
-			             dataType: "json",
-						success: function(res) {
-							that.jsonData = res.data[0];
+						url: "php/detail.php",
+						data: { "pid": that.pid, "userId": user.userId, "p_class": that.jsonData.p_class, "name": that.jsonData.name, "price": that.jsonData.price, "img": that.jsonData.img, "jianJie": that.jsonData.jianJie, "p_color": that.radio_color, "p_version": that.radio_v },
+						dataType: "json",
+						success: function (res) {
+							if (res.resultCode == 200) {
+								that.$message({
+									message: 'Successfully Order',
+									type: 'success'
+								});
+							} else if (res.resultCode == "00") {
+								that.$message({
+									message: 'Do not order Repeatdly',
+									type: 'warning'
+								});
+							}
 						},
+						error: function (data) {
+							that.$message({
+								message: 'Add Fail',
+								type: 'success'
+							});
+						}
 					});
-				},
-				GetQueryString(name){
-				     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-				     var r = window.location.search.substr(1).match(reg);
-				     if(r!=null)return  unescape(r[2]); return null;
-				},
-				// 确定下单
-				sure_order(){
-					if(!(this.form.address&&this.form.mobile&&this.form.userName)){
-						this.$message({
-							message: 'Please Fulfill Order Info',
-							type: 'warning'
-						});
-						return;
-					}
-					this.dialog_order = false;
-					this.order();
-				},
-				addCar() {
+				} else {
+					this.$message({
+						message: 'Please Log in First',
+						type: 'warning'
+					});
+				}
+			},
+			car() {
+				if (window.sessionStorage.user) {
+					window.location.href = "car.html"
+				} else {
+					this.$message({
+						message: 'Please Log in First',
+						type: 'warning'
+					});
+				}
+			},
+			isOrder() {
+				if (window.sessionStorage.user) {
+					window.location.href = "order.html"
+				} else {
+					this.$message({
+						message: 'Please Log in First',
+						type: 'warning'
+					});
+				}
+			},
+
+			order() {
+				var that = this;
+				var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) : "";
+				if (!!user) {
 					var that = this;
-					var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
-					if(!!user){
-						var that = this;
-						$.ajax({
-							type: "GET",
-				             url: "php/detail.php",
-				             data: {"pid":that.pid,"userId":user.userId,"p_class":that.jsonData.p_class,"name":that.jsonData.name,"price":that.jsonData.price,"img":that.jsonData.img,"jianJie":that.jsonData.jianJie,"p_color":that.radio_color,"p_version":that.radio_v},
-				             dataType: "json",
-							success: function(res) {
-								if(res.resultCode == 200){
-									that.$message({
-							          message: 'Successfully Order',
-							          type: 'success'
-							       });
-								}else if(res.resultCode == "00"){
-									that.$message({
-							          message: 'Do not order Repeatdly',
-							          type: 'warning'
-							       });
-								}
-							},
-							error:function(data){
-								that.$message({
-						          message: 'Add Fail',
-						          type: 'success'
-						        });
-							}
-						});
-					}else{
-						this.$message({
-				          message: 'Please Log in First',
-				          type: 'warning'
-				        });
-					}
-				},
-				car(){
-					if(window.sessionStorage.user){
-						window.location.href = "car.html"
-					}else{
-						this.$message({
-				          message: 'Please Log in First',
-				          type: 'warning'
-				        });
-					}
-				},
-				isOrder(){
-					if(window.sessionStorage.user){
-						window.location.href = "order.html"
-					}else{
-						this.$message({
-				          message: 'Please Log in First',
-				          type: 'warning'
-				        });
-					}
-				},
-				
-				order(){
-					var that = this;
-					var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
-					if(!!user){
-						var that = this;
-						var orderDate=this.formatDate(new Date()); 
-						$.ajax({
-							type: "GET",
-				             url: "php/detail.php",
-				             data: {"pid":that.pid,"userId":user.userId,"p_class":that.jsonData.p_class,"p_name":that.jsonData.name,"price":that.jsonData.price,"img":that.jsonData.img,"jianJie":that.jsonData.jianJie,"my_address":that.form.address,"user_name":that.form.userName,"user_mobile":that.form.mobile,"p_color":that.radio_color,"p_version":that.radio_v,"orderDate":orderDate,"orderCode":Date.parse(new Date()),"shifu":that.jsonData.price,"userName":user.userName},
-				             dataType: "json",
-							success: function(res) {
-								if(res.resultCode == 200){
-									that.$message({
-							          message: 'Successfully Order',
-							          type: 'success'
-							       });
-									// that.jiFen();
-									that.dialogVisibleOrder = false;
-									that.sales(that.pid);
-								}else if(res.resultCode == "00"){
-									that.$message({
-							          message: 'Do not order Repeatdly',
-							          type: 'warning'
-							       });
-								}
-							},
-							error:function(data){
-								that.$message({
-						          message: 'Order Fail',
-						          type: 'success'
-						        });
-							}
-						});
-					}else{
-						this.$message({
-				          message: 'Please Log in First',
-				          type: 'warning'
-				        });
-					}
-				},
-				jiFen(){
-					var that = this;
-					var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) :"";
-					if(!user){
-						return;
-					}
+					var orderDate = this.formatDate(new Date());
 					$.ajax({
-							type: "GET",
-							url: "php/detail.php",
-							data: {"userId":user.userId,"addJifen":"addJifen"},
-							dataType: "json",
-							success: function(res) {
-								if(res.resultCode == 200){
-									if(window.sessionStorage.user){
-										user.jifen = res.data;
-										window.sessionStorage.user = JSON.stringify(user);
-									}
-									// that.$message({
-									// 		message: '积分增加成功',
-									// 		type: 'success'
-									// 	});
-								}
-							},
-							error:function(data){
-								
+						type: "GET",
+						url: "php/detail.php",
+						data: { "pid": that.pid, "userId": user.userId, "p_class": that.jsonData.p_class, "p_name": that.jsonData.name, "price": that.jsonData.price, "img": that.jsonData.img, "jianJie": that.jsonData.jianJie, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_color": that.radio_color, "p_version": that.radio_v, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.jsonData.price, "userName": user.userName },
+						dataType: "json",
+						success: function (res) {
+							if (res.resultCode == 200) {
+								that.$message({
+									message: 'Successfully Order',
+									type: 'success'
+								});
+								// that.jiFen();
+								that.dialogVisibleOrder = false;
+								that.sales(that.pid);
+							} else if (res.resultCode == "00") {
+								that.$message({
+									message: 'Do not order Repeatdly',
+									type: 'warning'
+								});
 							}
-						});
-				},
-				sales(productId){
-					$.ajax({
-							type: "GET",
-							url: "php/detail.php",
-							data: {"productId":productId,"addsales":"addsales"},
-							dataType: "json",
-							success: function(res) {
-								if(res.resultCode == 200){
-									console.log("Add Success")
-								}
-							},
-							error:function(data){
-								
+						},
+						error: function (data) {
+							that.$message({
+								message: 'Order Fail',
+								type: 'success'
+							});
+						}
+					});
+				} else {
+					this.$message({
+						message: 'Please Log in First',
+						type: 'warning'
+					});
+				}
+			},
+			jiFen() {
+				var that = this;
+				var user = window.sessionStorage.user ? JSON.parse(window.sessionStorage.user) : "";
+				if (!user) {
+					return;
+				}
+				$.ajax({
+					type: "GET",
+					url: "php/detail.php",
+					data: { "userId": user.userId, "addJifen": "addJifen" },
+					dataType: "json",
+					success: function (res) {
+						if (res.resultCode == 200) {
+							if (window.sessionStorage.user) {
+								user.jifen = res.data;
+								window.sessionStorage.user = JSON.stringify(user);
 							}
-						});
-				},
-				formatDate(now) { 
-					var year=now.getFullYear(); 
-					var month=now.getMonth()+1; 
-					var date=now.getDate(); 
-					var hour=now.getHours(); 
-					var minute=now.getMinutes(); 
-					var second=now.getSeconds(); 
-					// return year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second; 
-					return year+"-"+month+"-"+date+" "+hour+":"+minute; 
-				},
-				// 搜索
-				onsearchVal(){
-					var arg = encodeURI(encodeURI(this.searchVal));
-					window.location.href = "index_search.html?arg="+arg;
-					// var that = this;
-					// $.ajax({
-					// 	type: "GET",
-			    //          url: "php/index.php",
-			    //          data: {"searchVal":that.searchVal,"searchName":"searchName"},
-			    //          dataType: "json",
-					// 	success: function(res) {
-					// 		that.jsonData = res.data;
-					// 	},
-					// });
-				},
-				//uuid
-				uuid () {
-				function _s4(){
-						return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+							// that.$message({
+							// 		message: 'Points increase successfully',
+							// 		type: 'success'
+							// 	});
+						}
+					},
+					error: function (data) {
+
 					}
+				});
+			},
+			sales(productId) {
+				$.ajax({
+					type: "GET",
+					url: "php/detail.php",
+					data: { "productId": productId, "addsales": "addsales" },
+					dataType: "json",
+					success: function (res) {
+						if (res.resultCode == 200) {
+							console.log("Add Success")
+						}
+					},
+					error: function (data) {
+
+					}
+				});
+			},
+			formatDate(now) {
+				var year = now.getFullYear();
+				var month = now.getMonth() + 1;
+				var date = now.getDate();
+				var hour = now.getHours();
+				var minute = now.getMinutes();
+				var second = now.getSeconds();
+				// return year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second; 
+				return year + "-" + month + "-" + date + " " + hour + ":" + minute;
+			},
+			// 搜索
+			onsearchVal() {
+				var arg = encodeURI(encodeURI(this.searchVal));
+				window.location.href = "index_search.html?arg=" + arg;
+				// var that = this;
+				// $.ajax({
+				// 	type: "GET",
+				//          url: "php/index.php",
+				//          data: {"searchVal":that.searchVal,"searchName":"searchName"},
+				//          dataType: "json",
+				// 	success: function(res) {
+				// 		that.jsonData = res.data;
+				// 	},
+				// });
+			},
+			//uuid
+			uuid() {
+				function _s4() {
+					return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+				}
 				return _s4() + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + _s4() + _s4();
-				},
-			}
-		})
-	</script>
-	
+			},
+		}
+	})
+</script>
+
 </html>
