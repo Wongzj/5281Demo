@@ -74,13 +74,13 @@ function searchall ($conn){
 	    }
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询成功",
+            "message"=>"Search successfully",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"无数据",
+            "message"=>"No data founded",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -98,13 +98,13 @@ function orderBy ($conn){
 	    }
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"价格排序成功",
+            "message"=>"Price sort successfully",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"价格排序失败",
+            "message"=>"Price sort failed",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -122,13 +122,13 @@ function orderBy2 ($conn){
 	    }
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"价格排序成功",
+            "message"=>"Sort successfully",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"价格排序失败",
+            "message"=>"Sort failed",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -144,13 +144,13 @@ function searchName ($conn){
 	    }
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"搜索成功",
+            "message"=>"Search Successfully",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"无数据",
+            "message"=>"No data founded",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -162,15 +162,16 @@ function login($conn){
 	$result = $conn->query($sql);
 	$row = mysqli_fetch_assoc($result);
 	if (!$row){
+//        echo "alert('Incorrect account or password');";
 		echo json_encode(array(
             "resultCode"=>'0000',
-            "message"=>"帐号或密码有误",
+            "message"=>"Incorrect account or password",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 	}else{
 		echo json_encode(array(
             "resultCode"=>'200',
-            "message"=>"登录成功",
+            "message"=>"Login successfully!",
             "data"=>$row
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -185,7 +186,7 @@ function registered($conn){
 	 if($row){
 	 	echo json_encode(array(
 	        "resultCode"=>'0001',
-	        "message"=>"此用户已存在",
+	        "message"=>"The user already exists!",
 	        "data"=>[]
 	    ),JSON_UNESCAPED_UNICODE);
 	 	return false;
@@ -195,7 +196,7 @@ function registered($conn){
 	if ($conn->query($sql) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"注册成功！",
+            "message"=>"Register Successfully!！",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 
@@ -213,7 +214,7 @@ function changeName($conn){
 	 if($row){
 	 	echo json_encode(array(
 	        "resultCode"=>'0001',
-	        "message"=>"此用户名已存在",
+	        "message"=>"This name exists",
 	        "data"=>[]
 	    ),JSON_UNESCAPED_UNICODE);
 	 	return false;
@@ -222,7 +223,7 @@ function changeName($conn){
 	if ($conn->query($sql2) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"修改用户名成功！",
+            "message"=>"Successfully changed the name!",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 
@@ -232,17 +233,27 @@ function changeName($conn){
 }
 //修改密码
 function changePassword($conn){
-	$sql2 = "UPDATE user SET password='{$_GET['password']}' WHERE userId = '{$_GET['userId']}'"; 
-	if ($conn->query($sql2) === TRUE) {
-	    echo json_encode(array(
-            "resultCode"=>200,
-            "message"=>"修改用户名成功！",
-            "data"=>[]
-        ),JSON_UNESCAPED_UNICODE);
+//    $sql1 = "SELECT password WHERE userId = '{$_GET['userId']}'";
+//    $result = mysqli_query($conn, $sql1);
+//    if($result["password"] != $_GET['password']){
+//        echo "Error: " . $sql1 . "<br>" . $conn->error;
+//
+//    }
 
-	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}
+        $sql2 = "UPDATE user SET password='{$_GET['password']}' WHERE userId = '{$_GET['userId']}'";
+        if ($conn->query($sql2) === TRUE) {
+            echo json_encode(array(
+                "resultCode"=>200,
+                "message"=>"Success！",
+                "data"=>[]
+            ),JSON_UNESCAPED_UNICODE);
+
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+
+
 }
 //新增收货地址
 function addUserAddress($conn){
@@ -252,7 +263,7 @@ function addUserAddress($conn){
 		if ($conn->query($sql2) === TRUE) {
 			echo json_encode(array(
 				"resultCode"=>200,
-				"message"=>"修改地址成功！",
+				"message"=>"Changed address Successfully!",
 				"data"=>[]
 			),JSON_UNESCAPED_UNICODE);
 
@@ -268,7 +279,7 @@ function addUserAddress($conn){
 	 if($row){
 	 	echo json_encode(array(
 	        "resultCode"=>'0001',
-	        "message"=>"此地址已存在",
+	        "message"=>"This address exists!",
 	        "data"=>[]
 	    ),JSON_UNESCAPED_UNICODE);
 	 	return false;
@@ -278,7 +289,7 @@ function addUserAddress($conn){
 	if ($conn->query($sql) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"新增成功！",
+            "message"=>"Added address successfully!",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 
@@ -293,13 +304,13 @@ function superInfo($conn){
 	if (!$row){
 		echo json_encode(array(
             "resultCode"=>'0000',
-            "message"=>"查询成功",
+            "message"=>"query success",
             "data"=>$row
         ),JSON_UNESCAPED_UNICODE);
 	}else{
 		echo json_encode(array(
             "resultCode"=>'200',
-            "message"=>"查询成功",
+            "message"=>"query success",
             "data"=>$row
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -309,7 +320,7 @@ function superSet($conn){
 	if ($conn->query($sql2) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"修改成功！",
+            "message"=>"set successfully!",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 
