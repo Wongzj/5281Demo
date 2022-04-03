@@ -26,13 +26,13 @@ function search ($conn){
 	    }
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询成功",
+            "message"=>"successful query!",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"无数据",
+            "message"=>"no data found",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 	}

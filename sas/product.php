@@ -43,7 +43,7 @@ function products ($conn){
 	    }
 	    echo json_encode($array);
 	} else {
-	    echo "0 结果";
+	    echo "0 data";
 	}
 }
 //查询所有用户
@@ -58,7 +58,7 @@ function suer ($conn){
 	    }
 	    echo json_encode($array2);
 	} else {
-	    echo "0 结果";
+	    echo "0 data";
 	}
 }
 //添加产品
@@ -67,7 +67,7 @@ function add_products($conn){
     VALUES ('{$_GET['pid']}','{$_GET['name']}','{$_GET['price']}','{$_GET['jianJie']}','{$_GET['img']}','{$_GET['p_class']}','{$_GET['p_gn']}','{$_GET['kucun']}')";
         
     if ($conn->query($sql) === TRUE) {
-        echo "添加成功";
+        echo "added successfully!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }	
@@ -78,7 +78,7 @@ function changeP($conn){
 	if ($conn->query($sql2) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"修改成功！",
+            "message"=>"changed successfully!",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 
@@ -91,7 +91,7 @@ function deleteP ($conn){
     // mysqli_query($conn,"DELETE FROM car WHERE id='{$_GET['pid']}'");
     $sql = "DELETE FROM productlist WHERE id='{$_GET['pid']}'";
     $result = $conn->query($sql);
-    echo "删除成功";
+    echo "deleted successfully!";
     // $array = acrray();
 	// if ($result->num_rows >= 0) {
 	//     // 输出数据
@@ -108,7 +108,7 @@ function deleteP ($conn){
     // mysqli_query($conn,"DELETE FROM car WHERE id='{$_GET['pid']}'");
     $sql = "DELETE FROM user WHERE userId='{$_GET['userId']}'";
     $result = $conn->query($sql);
-    echo "删除成功";
+    echo "deleted successfully!";
     // $array = acrray();
 	// if ($result->num_rows >= 0) {
 	//     // 输出数据

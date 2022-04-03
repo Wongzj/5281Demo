@@ -29,13 +29,13 @@ function products_car ($conn){
 	    }
 		echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询成功",
+            "message"=>"successful query!",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询成功",
+            "message"=>"successful query!",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -48,7 +48,7 @@ function deleteP ($conn){
     $result = $conn->query($sql);
     echo json_encode(array(
 		"resultCode"=>200,
-		"message"=>"删除成功",
+		"message"=>"deleted successfully!",
 		"data"=>[]
 	),JSON_UNESCAPED_UNICODE);
     

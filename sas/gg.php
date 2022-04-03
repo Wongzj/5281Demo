@@ -36,7 +36,7 @@ function ggList ($conn){
 	    }
 	    echo json_encode($array);
 	} else {
-	    echo "0 结果";
+	    echo "0 data";
 	}
 }
 //查询单个公告
@@ -51,7 +51,7 @@ function ggDetail ($conn){
 	    }
 	    echo json_encode($array);
 	} else {
-	    echo "0 结果";
+	    echo "0 data";
 	}
 }
 
@@ -63,7 +63,7 @@ function addgg($conn){
     if ($conn->query($sql) === TRUE) {
         echo json_encode(array(
 			"resultCode"=>200,
-			"message"=>"添加成功",
+			"message"=>"added successfully!",
 			"data"=>[]
 		),JSON_UNESCAPED_UNICODE);
     } else {
@@ -80,7 +80,7 @@ function addgg($conn){
     if ($conn->query($sql) === TRUE) {
 		echo json_encode(array(
 			"resultCode"=>200,
-			"message"=>"删除成功",
+			"message"=>"deleted successfully!",
 			"data"=>[]
 		),JSON_UNESCAPED_UNICODE);
 	} else {
@@ -93,7 +93,7 @@ function changegg($conn){
 	$result = $conn->query($sql2);
 	echo json_encode(array(
 		"resultCode"=>200,
-		"message"=>"修改成功",
+		"message"=>"changed successfully!",
 		"data"=>[]
 	),JSON_UNESCAPED_UNICODE);
 }

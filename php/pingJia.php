@@ -30,13 +30,13 @@ function search ($conn){
 	    }
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询成功",
+            "message"=>"successful query!",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"无数据",
+            "message"=>"no data found",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -48,7 +48,7 @@ function add($conn){
 	if ($conn->query($sql) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"评论成功",
+            "message"=>"commented successfully!",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 
@@ -63,7 +63,7 @@ function depj ($conn){
     $result = $conn->query($sql);
     echo json_encode(array(
 		"resultCode"=>200,
-		"message"=>"删除成功",
+		"message"=>"deleted successfully",
 		"data"=>[]
 	),JSON_UNESCAPED_UNICODE);
     

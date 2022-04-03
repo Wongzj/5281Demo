@@ -52,7 +52,7 @@ function products ($conn){
 	    }
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询成功",
+            "message"=>"successful query!",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
@@ -103,7 +103,7 @@ function addCar($conn){
 		$result = $conn->query($sql3);
 		echo json_encode(array(
 			"resultCode"=>200,
-			"message"=>"数量增加成功",
+			"message"=>"Add successfully",
 			"data"=>[]
 		),JSON_UNESCAPED_UNICODE);
 	 	return false;
@@ -113,7 +113,7 @@ function addCar($conn){
 		if ($conn->query($sql4) === TRUE) {
 			echo json_encode(array(
 				"resultCode"=>200,
-				"message"=>"添加成功",
+				"message"=>"Add successfully",
 				"data"=>[]
 			),JSON_UNESCAPED_UNICODE);
 		} else {
@@ -121,7 +121,7 @@ function addCar($conn){
 		}
 	 }
 }
-//添加订单
+//添加订单，有个问题就是，下单的id是以产品id作为订单号的，也就是说，一个订单只能买一个东西，需要改动该部分逻辑，新增一个订单号，查这个订单号就可以了。
 function addOrder($conn){
 	$sql = "SELECT * FROM my_order WHERE id='{$_GET['pid']}' AND userId = '{$_GET['userId']}'";
 	$result = $conn->query($sql);
@@ -129,7 +129,7 @@ function addOrder($conn){
 	if($row == TRUE){
 		echo json_encode(array(
 			"resultCode"=>"00",
-			"message"=>"重复下单",
+			"message"=>"Repeat Order!",
 			"data"=>[]
 		),JSON_UNESCAPED_UNICODE);
 		return false;
@@ -147,7 +147,7 @@ function addOrder($conn){
 		if ($conn->query($sql) === TRUE) {
 			echo json_encode(array(
 				"resultCode"=>200,
-				"message"=>"添加成功",
+				"message"=>"Add successfully!",
 				"data"=>[]
 			),JSON_UNESCAPED_UNICODE);
 		} else {
@@ -167,7 +167,7 @@ function addJifen($conn){
 	$result = $conn->query($sql2);
 	echo json_encode(array(
 		"resultCode"=>200,
-		"message"=>"积分增加成功",
+		"message"=>"Points increase successfully!",
 		"data"=>$new_jifen
 	),JSON_UNESCAPED_UNICODE);
 }
@@ -183,7 +183,7 @@ function addSales($conn){
 	$result = $conn->query($sql2);
 	echo json_encode(array(
 		"resultCode"=>200,
-		"message"=>"销量增加成功",
+		"message"=>"Sales increased successfully!",
 		"data"=>$new_sales
 	),JSON_UNESCAPED_UNICODE);
 }
@@ -199,13 +199,13 @@ function gatAddressData($conn){
 	    }
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询地址成功",
+            "message"=>"get address successfully!",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询地址成功",
+            "message"=>"get address successfully!",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -217,7 +217,7 @@ function deletAddress ($conn){
     $result = $conn->query($sql);
     echo json_encode(array(
 		"resultCode"=>200,
-		"message"=>"删除成功",
+		"message"=>"deleted successfully!",
 		"data"=>[]
 	),JSON_UNESCAPED_UNICODE);
     
