@@ -20,7 +20,23 @@ if(!empty($_GET['userId']) && empty($_GET['del']) && empty($_GET['changePnum']) 
 //查询所有
 function products_car ($conn){
 	$sql = "SELECT * FROM car WHERE userId='{$_GET['userId']}'";
-	$result = $conn->query($sql);
+
+
+//    $result = $conn->query($sql);
+//    $array = array();
+//    if ($result->num_rows > 0) {
+//        // 输出数据
+//        while($row = $result->fetch_assoc()) {
+//            $array[] = $row;
+//        }
+//        echo json_encode(array(
+//            "resultCode"=>200,
+//            "message"=>"查询成功",
+//            "data"=>$array
+//        ),JSON_UNESCAPED_UNICODE);
+//    }
+
+    $result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
 	    // 输出数据
@@ -29,13 +45,13 @@ function products_car ($conn){
 	    }
 		echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询成功",
+            "message"=>"successful query!",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	} else {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"查询成功",
+            "message"=>"successful query",
             "data"=>$array
         ),JSON_UNESCAPED_UNICODE);
 	}
@@ -48,7 +64,7 @@ function deleteP ($conn){
     $result = $conn->query($sql);
     echo json_encode(array(
 		"resultCode"=>200,
-		"message"=>"删除成功",
+		"message"=>"deleted successfully!",
 		"data"=>[]
 	),JSON_UNESCAPED_UNICODE);
     
@@ -59,7 +75,7 @@ function changePnum($conn){
 	if ($conn->query($sql2) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
-            "message"=>"数量修改成功！",
+            "message"=>"changed amount successfully!",
             "data"=>[]
         ),JSON_UNESCAPED_UNICODE);
 
