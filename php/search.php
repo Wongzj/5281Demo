@@ -16,7 +16,7 @@ if(!empty($_GET['p_class']) && $_GET['search'] == 'search'){
 
 //查询所有
 function search ($conn){
-	$sql = "SELECT * FROM productlist WHERE p_class='{$_GET['p_class']}'";
+	$sql = "SELECT * FROM product WHERE p_class='{$_GET['p_class']}'";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {

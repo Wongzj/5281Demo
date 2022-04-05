@@ -57,7 +57,7 @@ function getAllOrder ($conn){
 }
 //查询所有用户
 function suer ($conn){
-	$sql2 = "SELECT * FROM user";
+	$sql2 = "SELECT * FROM user_info";
 	$result2 = $conn->query($sql2);
 	$array2 = array();
 	if ($result2->num_rows > 0) {
@@ -72,7 +72,7 @@ function suer ($conn){
 }
 //添加产品
 function add_products($conn){
-    $sql = "INSERT INTO productlist (id,name,price,jianJie,img,p_class,p_gn,kucun)
+    $sql = "INSERT INTO product (id,name,price,description,img,p_class,p_detail,stock)
     VALUES ('{$_GET['pid']}','{$_GET['name']}','{$_GET['price']}','{$_GET['jianJie']}','{$_GET['img']}','{$_GET['p_class']}','{$_GET['p_gn']}','{$_GET['kucun']}')";
         
     if ($conn->query($sql) === TRUE) {
@@ -85,7 +85,7 @@ function add_products($conn){
 //删除产品
 function deleteP ($conn){
     // mysqli_query($conn,"DELETE FROM car WHERE id='{$_GET['pid']}'");
-    $sql = "DELETE FROM productlist WHERE id='{$_GET['pid']}'";
+    $sql = "DELETE FROM product WHERE id='{$_GET['pid']}'";
     $result = $conn->query($sql);
     echo "删除成功";
     // $array = acrray();
@@ -102,7 +102,7 @@ function deleteP ($conn){
  // 删除用户
  function deleteUser ($conn){
     // mysqli_query($conn,"DELETE FROM car WHERE id='{$_GET['pid']}'");
-    $sql = "DELETE FROM user WHERE userId='{$_GET['userId']}'";
+    $sql = "DELETE FROM user_info WHERE userId='{$_GET['userId']}'";
     $result = $conn->query($sql);
     echo "删除成功";
     // $array = acrray();

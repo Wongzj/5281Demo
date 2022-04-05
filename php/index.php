@@ -64,7 +64,7 @@ if(!empty($_GET['userAddress']) && !empty($_GET['userPhone']) && !empty($_GET['g
 
 //查询所有
 function searchall ($conn){
-	$sql = "SELECT * FROM productlist";
+	$sql = "SELECT * FROM product";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
@@ -88,7 +88,7 @@ function searchall ($conn){
 // 排序--升序
 function orderBy ($conn){
 	$arg = $_GET['orderBy'];
-	$sql = "SELECT * FROM productlist ORDER BY $arg";
+	$sql = "SELECT * FROM product ORDER BY $arg";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
@@ -112,7 +112,7 @@ function orderBy ($conn){
 // 排序--降序
 function orderBy2 ($conn){
 	$arg = $_GET['orderBy'];
-	$sql = "SELECT * FROM productlist ORDER BY $arg DESC";
+	$sql = "SELECT * FROM product ORDER BY $arg DESC";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
@@ -135,7 +135,7 @@ function orderBy2 ($conn){
 }
 // 搜索
 function searchName ($conn){
-	$sql = "SELECT * FROM productlist WHERE name like '%".$_GET['searchVal']."%'";
+	$sql = "SELECT * FROM product WHERE name like '%".$_GET['searchVal']."%'";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
@@ -158,7 +158,7 @@ function searchName ($conn){
 
 //登录
 function login($conn){
-	$sql = "SELECT * FROM user WHERE userName='{$_GET['userName']}' AND password='{$_GET['userPassword']}'";
+	$sql = "SELECT * FROM user_info WHERE userName='{$_GET['userName']}' AND password='{$_GET['userPassword']}'";
 	$result = $conn->query($sql);
 	$row = mysqli_fetch_assoc($result);
 	if (!$row){
@@ -179,7 +179,7 @@ function login($conn){
 //注册
 function registered($conn){
 
-	$sql = "SELECT * FROM user WHERE userName='{$_GET['userName']}'";
+	$sql = "SELECT * FROM user_info WHERE userName='{$_GET['userName']}'";
 	$query = $conn->query($sql); 
 	$row = mysqli_fetch_assoc($query);
 	//echo $query?1:0; //php 无法输出布尔值
@@ -191,7 +191,7 @@ function registered($conn){
 	    ),JSON_UNESCAPED_UNICODE);
 	 	return false;
 	}
-	$sql = "INSERT INTO user (userName, password,userId)
+	$sql = "INSERT INTO user_info (userName, password,userId)
 	VALUES ('{$_GET['userName']}', '{$_GET['userPassword']}','{$_GET['uuid']}')"; 
 	if ($conn->query($sql) === TRUE) {
 	    echo json_encode(array(
@@ -207,7 +207,7 @@ function registered($conn){
 //修改用户名
 function changeName($conn){
 
-	$sql = "SELECT * FROM user WHERE userName ='{$_GET['userName']}'";
+	$sql = "SELECT * FROM user_info WHERE userName ='{$_GET['userName']}'";
 	$query = $conn->query($sql); 
 	$row = mysqli_fetch_assoc($query);
 	//echo $query?1:0; //php 无法输出布尔值
@@ -219,7 +219,7 @@ function changeName($conn){
 	    ),JSON_UNESCAPED_UNICODE);
 	 	return false;
 	}
-	$sql2 = "UPDATE user SET userName='{$_GET['userName']}' WHERE userId = '{$_GET['userId']}'"; 
+	$sql2 = "UPDATE user_info SET userName='{$_GET['userName']}' WHERE userId = '{$_GET['userId']}'";
 	if ($conn->query($sql2) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
@@ -240,7 +240,7 @@ function changePassword($conn){
 //
 //    }
 
-        $sql2 = "UPDATE user SET password='{$_GET['password']}' WHERE userId = '{$_GET['userId']}'";
+        $sql2 = "UPDATE user_info SET password='{$_GET['password']}' WHERE userId = '{$_GET['userId']}'";
         if ($conn->query($sql2) === TRUE) {
             echo json_encode(array(
                 "resultCode"=>200,
@@ -258,7 +258,7 @@ function changePassword($conn){
 //新增收货地址
 function addUserAddress($conn){
 	if($_GET['type'] == "change"){
-		$sql2 = "UPDATE useraddress SET userAddress='{$_GET['userAddress']}' , getUserName='{$_GET['getUserName']}' , userPhone='{$_GET['userPhone']}' WHERE dataid='{$_GET['dataid']}'"; 
+		$sql2 = "UPDATE address SET userAddress='{$_GET['userAddress']}' , consignee='{$_GET['getUserName']}' , mobile='{$_GET['userPhone']}' WHERE address_id='{$_GET['dataid']}'";
 		$query = $conn->query($sql2); 
 		if ($conn->query($sql2) === TRUE) {
 			echo json_encode(array(
@@ -272,7 +272,7 @@ function addUserAddress($conn){
 		}
 		return false;
 	}
-	$sql = "SELECT * FROM useraddress WHERE userAddress='{$_GET['userAddress']}' AND  getUserName='{$_GET['getUserName']}' AND  userPhone='{$_GET['userPhone']}' ";
+	$sql = "SELECT * FROM address WHERE userAddress='{$_GET['userAddress']}' AND  consignee='{$_GET['getUserName']}' AND  mobile='{$_GET['userPhone']}' ";
 	$query = $conn->query($sql); 
 	$row = mysqli_fetch_assoc($query);
 	//echo $query?1:0; //php 无法输出布尔值
@@ -284,7 +284,7 @@ function addUserAddress($conn){
 	    ),JSON_UNESCAPED_UNICODE);
 	 	return false;
 	}
-	$sql = "INSERT INTO useraddress (userAddress,getUserName,userPhone,userId,dataid)
+	$sql = "INSERT INTO address (userAddress,consignee,mobile,userId,address_id)
 	VALUES ('{$_GET['userAddress']}','{$_GET['getUserName']}','{$_GET['userPhone']}','{$_GET['userId']}','{$_GET['dataid']}')"; 
 	if ($conn->query($sql) === TRUE) {
 	    echo json_encode(array(
@@ -298,7 +298,7 @@ function addUserAddress($conn){
 	}
 }
 function superInfo($conn){
-	$sql = "SELECT * FROM user WHERE userId='admin'";
+	$sql = "SELECT * FROM user_info WHERE userId='admin'";
 	$result = $conn->query($sql);
 	$row = mysqli_fetch_assoc($result);
 	if (!$row){
@@ -316,7 +316,7 @@ function superInfo($conn){
 	}
 }
 function superSet($conn){
-	$sql2 = "UPDATE user SET userName='{$_GET['userName']}', password='{$_GET['password']}' WHERE userId = 'admin'"; 
+	$sql2 = "UPDATE user_info SET userName='{$_GET['userName']}', password='{$_GET['password']}' WHERE userId = 'admin'";
 	if ($conn->query($sql2) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,

@@ -20,7 +20,7 @@ if(!empty($_GET['depj']) && $_GET['depj'] == 'depj'){
 
 //查询所有
 function search ($conn){
-	$sql = "SELECT * FROM pingjia WHERE productId='{$_GET['productId']}'";
+	$sql = "SELECT * FROM review WHERE productId='{$_GET['productId']}'";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
@@ -43,7 +43,7 @@ function search ($conn){
 }
 
 function add($conn){
-	$sql = "INSERT INTO pingjia (userName, pingJiaText,pingJiaDate,productId,p_id)
+	$sql = "INSERT INTO review (userName,reviewText,reviewDate,productId,review_id)
 	VALUES ('{$_GET['userName']}', '{$_GET['pingJiaText']}','{$_GET['pingJiaDate']}','{$_GET['productId']}','{$_GET['p_id']}')"; 
 	if ($conn->query($sql) === TRUE) {
 	    echo json_encode(array(
@@ -59,7 +59,7 @@ function add($conn){
  //删除
 function depj ($conn){
     // mysqli_query($conn,"DELETE FROM car WHERE id='{$_GET['pid']}'");
-    $sql = "DELETE FROM pingjia WHERE p_id='{$_GET['p_id']}'";
+    $sql = "DELETE FROM review WHERE review_id='{$_GET['p_id']}'";
     $result = $conn->query($sql);
     echo json_encode(array(
 		"resultCode"=>200,

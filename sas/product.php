@@ -33,7 +33,7 @@ if( !empty($_GET['pid']) && !empty($_GET['add'])) {
 
 //查询所有产品
 function products ($conn){
-	$sql = "SELECT * FROM productlist";
+	$sql = "SELECT * FROM product";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
@@ -48,7 +48,7 @@ function products ($conn){
 }
 //查询所有用户
 function suer ($conn){
-	$sql2 = "SELECT * FROM user";
+	$sql2 = "SELECT * FROM user_info";
 	$result2 = $conn->query($sql2);
 	$array2 = array();
 	if ($result2->num_rows > 0) {
@@ -63,7 +63,7 @@ function suer ($conn){
 }
 //添加产品
 function add_products($conn){
-    $sql = "INSERT INTO productlist (id,name,price,jianJie,img,p_class,p_gn,kucun)
+    $sql = "INSERT INTO product (id,name,price,description,img,p_class,p_detail,stock)
     VALUES ('{$_GET['pid']}','{$_GET['name']}','{$_GET['price']}','{$_GET['jianJie']}','{$_GET['img']}','{$_GET['p_class']}','{$_GET['p_gn']}','{$_GET['kucun']}')";
         
     if ($conn->query($sql) === TRUE) {
@@ -74,7 +74,7 @@ function add_products($conn){
 	
 }
 function changeP($conn){
-	$sql2 = "UPDATE productlist SET price='{$_GET['price']}',kucun='{$_GET['kucun']}',jianJie='{$_GET['jianJie']}' WHERE id = '{$_GET['pid']}'"; 
+	$sql2 = "UPDATE product SET price='{$_GET['price']}',stock='{$_GET['kucun']}',description='{$_GET['jianJie']}' WHERE id = '{$_GET['pid']}'";
 	if ($conn->query($sql2) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
@@ -89,7 +89,7 @@ function changeP($conn){
 //删除产品
 function deleteP ($conn){
     // mysqli_query($conn,"DELETE FROM car WHERE id='{$_GET['pid']}'");
-    $sql = "DELETE FROM productlist WHERE id='{$_GET['pid']}'";
+    $sql = "DELETE FROM product WHERE id='{$_GET['pid']}'";
     $result = $conn->query($sql);
     echo "删除成功";
     // $array = acrray();
@@ -106,7 +106,7 @@ function deleteP ($conn){
  // 删除用户
  function deleteUser ($conn){
     // mysqli_query($conn,"DELETE FROM car WHERE id='{$_GET['pid']}'");
-    $sql = "DELETE FROM user WHERE userId='{$_GET['userId']}'";
+    $sql = "DELETE FROM user_info WHERE userId='{$_GET['userId']}'";
     $result = $conn->query($sql);
     echo "删除成功";
     // $array = acrray();

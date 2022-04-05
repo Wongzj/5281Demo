@@ -42,7 +42,7 @@ if( !empty($_GET['userAddress']) && !empty($_GET['userId']) && !empty($_GET['del
 
 //查询所有
 function products ($conn){
-	$sql = "SELECT * FROM productlist WHERE id='{$_GET['pid']}'";
+	$sql = "SELECT * FROM product WHERE id='{$_GET['pid']}'";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
@@ -108,7 +108,7 @@ function addCar($conn){
 		),JSON_UNESCAPED_UNICODE);
 	 	return false;
 	 }else{
-		$sql4 = "INSERT INTO car (userId, id,name,price,jianJie,img,p_class,p_color,p_version,p_num)
+		$sql4 = "INSERT INTO car (userId,id,name,price,description,img,p_class,p_palce,p_specification,p_num)
 		VALUES ('{$_GET['userId']}', '{$_GET['pid']}','{$_GET['name']}','{$_GET['price']}','{$_GET['jianJie']}','{$_GET['img']}','{$_GET['p_class']}','{$_GET['p_color']}','{$_GET['p_version']}',1)";
 		if ($conn->query($sql4) === TRUE) {
 			echo json_encode(array(
@@ -134,14 +134,14 @@ function addOrder($conn){
 		),JSON_UNESCAPED_UNICODE);
 		return false;
 	}else{
-		$psql = "SELECT * FROM productlist WHERE id='{$_GET['pid']}'";
+		$psql = "SELECT * FROM product WHERE id='{$_GET['pid']}'";
 		$presult = $conn->query($psql);
 		$prow = mysqli_fetch_assoc($presult);
 		$pold_kucun = array_values($prow)[8]; //查询原有kc
 		$pnew_kucun =  --$pold_kucun; //每次-1
-		$psql2 = "UPDATE productlist SET kucun=$pnew_kucun WHERE id='{$_GET['pid']}'";
+		$psql2 = "UPDATE product SET stock=$pnew_kucun WHERE id='{$_GET['pid']}'";
 		$presult2 = $conn->query($psql2);
-		$sql = "INSERT INTO my_order (userId,id,p_name,price,jianJie,my_address,img,p_class,user_name,user_mobile,p_color,p_version,orderDate,orderCode,shifu,userName)
+		$sql = "INSERT INTO my_order (userId,id,p_name,price,description,my_address,img,p_class,consignee,mobile,p_place,p_specification,orderDate,orderCode,actual_price,userName)
 		VALUES ('{$_GET['userId']}','{$_GET['pid']}','{$_GET['p_name']}','{$_GET['price']}','{$_GET['jianJie']}','{$_GET['my_address']}','{$_GET['img']}','{$_GET['p_class']}','{$_GET['user_name']}','{$_GET['user_mobile']}','{$_GET['p_color']}','{$_GET['p_version']}','{$_GET['orderDate']}','{$_GET['orderCode']}','{$_GET['shifu']}','{$_GET['userName']}')";
 			
 		if ($conn->query($sql) === TRUE) {
@@ -158,12 +158,12 @@ function addOrder($conn){
 //增加积分
 
 function addJifen($conn){
-	$sql = "SELECT * FROM user WHERE userId = '{$_GET['userId']}'";
+	$sql = "SELECT * FROM user_info WHERE userId = '{$_GET['userId']}'";
 	$result = $conn->query($sql);
 	$row = mysqli_fetch_assoc($result);
 	$old_jifen = array_values($row)[4]; //查询原有积分
 	$new_jifen = $old_jifen + 10; //每次增加10分
-	$sql2 = "UPDATE user SET jifen=$new_jifen WHERE userId = '{$_GET['userId']}'";
+	$sql2 = "UPDATE user_info SET points=$new_jifen WHERE userId = '{$_GET['userId']}'";
 	$result = $conn->query($sql2);
 	echo json_encode(array(
 		"resultCode"=>200,
@@ -174,12 +174,12 @@ function addJifen($conn){
 //增加销量
 
 function addSales($conn){
-	$sql = "SELECT * FROM productlist WHERE id='{$_GET['productId']}'";
+	$sql = "SELECT * FROM product WHERE id='{$_GET['productId']}'";
 	$result = $conn->query($sql);
 	$row = mysqli_fetch_assoc($result);
 	$old_sales = array_values($row)[6]; //查询原有积分
 	$new_sales = $old_sales + 1; //每次增加10分
-	$sql2 = "UPDATE productlist SET sales=$new_sales WHERE id = '{$_GET['productId']}'";
+	$sql2 = "UPDATE product SET sales=$new_sales WHERE id = '{$_GET['productId']}'";
 	$result = $conn->query($sql2);
 	echo json_encode(array(
 		"resultCode"=>200,
@@ -189,7 +189,7 @@ function addSales($conn){
 }
 // 获取收货地址
 function gatAddressData($conn){
-	$sql = "SELECT * FROM useraddress WHERE userId='{$_GET['userId']}'";
+	$sql = "SELECT * FROM address WHERE userId='{$_GET['userId']}'";
 	$result = $conn->query($sql);
 	$array = array();
 	if ($result->num_rows > 0) {
@@ -213,7 +213,7 @@ function gatAddressData($conn){
 // 删除地址
 //删除
 function deletAddress ($conn){
-    $sql = "DELETE FROM useraddress WHERE userAddress='{$_GET['userAddress']}'";
+    $sql = "DELETE FROM address WHERE userAddress='{$_GET['userAddress']}'";
     $result = $conn->query($sql);
     echo json_encode(array(
 		"resultCode"=>200,
