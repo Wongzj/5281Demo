@@ -44,7 +44,7 @@ function search ($conn){
 
 function add($conn){
 	$sql = "INSERT INTO review (userName,reviewText,reviewDate,productId,review_id)
-	VALUES ('{$_GET['userName']}', '{$_GET['pingJiaText']}','{$_GET['pingJiaDate']}','{$_GET['productId']}','{$_GET['p_id']}')"; 
+	VALUES ('{$_GET['userName']}', '{$_GET['reviewText']}','{$_GET['reviewDate']}','{$_GET['productId']}','{$_GET['review_id']}')"; 
 	if ($conn->query($sql) === TRUE) {
 	    echo json_encode(array(
             "resultCode"=>200,
@@ -59,7 +59,7 @@ function add($conn){
  //删除
 function depj ($conn){
     // mysqli_query($conn,"DELETE FROM car WHERE id='{$_GET['pid']}'");
-    $sql = "DELETE FROM review WHERE review_id='{$_GET['p_id']}'";
+    $sql = "DELETE FROM review WHERE review_id='{$_GET['review_id']}'";
     $result = $conn->query($sql);
     echo json_encode(array(
 		"resultCode"=>200,

@@ -56,7 +56,7 @@
 							<a href="javascript:void(0)" @click="car">|&emsp;shopping cart</a>
 						</li>
 						<li>
-							<a href="javascript:void(0)" @click="order">|&emsp;Order</a>
+							<a href="javascript:void(0)" @click="isOrder">|&emsp;Order</a>
 						</li>
 					</ul>
 				</div>
@@ -118,14 +118,14 @@
 		</div>
 		<div id="" class="layout" style="min-height: 560px;">
 			<p style="color:#666"><a href="index.html" style="color:#666"> Home </a> > Merchant > {{jsonData.name}} >
-				{{jsonData.jianJie}}</p>
+				{{jsonData.description}}</p>
 			<div class="">
 				<div id="" class="de-con-left">
-					<img :src="'sas/upload/'+jsonData.img" />
+					<img :src="'sas/upload/'+jsonData.img"  width="450" height="450"/>
 				</div>
 				<div id="" class="de-con-right">
 					<p class="de-con-right-jianJie">{{jsonData.name}}&emsp;<span
-							style="font-size: 18px;color: #999;">{{jsonData.jianJie}}</span></p>
+							style="font-size: 18px;color: #999;">{{jsonData.description}}</span></p>
 					<div class="de-product-info">
 						<p>Price：<span style="font-size: 24px;color: #ca141d;"><em>$</em> {{jsonData.price}}</span></p>
 					</div>
@@ -139,12 +139,12 @@
 					</div>
 					<div class="" style="margin-top: 10px;">
 					</div>
-					<p>Stock Num: {{jsonData.kucun}}</p>
+					<p>Stock Num: {{jsonData.stock}}</p>
 					<div class="" style="margin-top: 10px;">
 						<el-row>
-							<el-button :disabled="jsonData.kucun < 1" style="width: 25%;" @click="addCar">Add to
+							<el-button :disabled="jsonData.stock < 1" style="width: 25%;" @click="addCar">Add to
 								Shopping Cart</el-button>
-							<el-button :disabled="jsonData.kucun < 1" type="danger" style="width: 25%;"
+							<el-button :disabled="jsonData.stock < 1" type="danger" style="width: 25%;"
 								@click="dialog_order = true">Order</el-button>
 						</el-row>
 					</div>
@@ -154,7 +154,7 @@
 		<div class="phone-detail">
 			<el-tabs v-model="activeName" @tab-click="handleClick">
 				<el-tab-pane label="Merchant Detail" name="first">
-					<div id="phoneDetail" v-html="jsonData.p_gn"></div>
+					<div id="phoneDetail" v-html="jsonData.p_detail"></div>
 				</el-tab-pane>
 				<el-tab-pane label="User Comment" name="second">
 					<el-input type="textarea" :rows="2" placeholder="please enter" v-model="phonePj"></el-input>
@@ -164,9 +164,9 @@
 					<ul>
 						<li v-for="(item, index) in pingJiaData" :key="index"><span
 								style="color:#409EFF;font-size: 16px">{{item.userName}}：</span> <span
-								style="color:#666;font-size: 16px">{{item.pingJiaText}}</span> -------- <span
-								style="color:#666;font-size: 12px">{{item.pingJiaDate}}</span> <span
-								style="color: rgb(64, 158, 255);;cursor: pointer;" @click="delePingJia(item.p_id)"
+								style="color:#666;font-size: 16px">{{item.reviewText}}</span> -------- <span
+								style="color:#666;font-size: 12px">{{item.reviewDate}}</span> <span
+								style="color: rgb(64, 158, 255);;cursor: pointer;" @click="delePingJia(item.review_id)"
 								v-if="userInfo &&item.userName == userInfo.userName">delete</span></li>
 					</ul>
 				</el-tab-pane>
@@ -195,7 +195,7 @@
 			</span>
 		</el-dialog>
 		<el-dialog title="Confirm Order" :visible.sync="dialogVisibleOrder" width="30%">
-			<p>{{jsonData.name}} ({{jsonData.jianJie}})</p>
+			<p>{{jsonData.name}} ({{jsonData.description}})</p>
 			<p>Price： {{jsonData.price}} ({{radio_color}}--{{radio_v}})</p>
 			<p>Address: {{form.address}}</p>
 			<p>Receiver: {{form.userName}}</p>
@@ -259,8 +259,8 @@
 				}
 				$.ajax({
 					type: "GET",
-					url: "php/pingJia.php",
-					data: { "userName": that.userInfo.userName, "pingJiaText": that.phonePj, "pingJiaDate": new Date(), "productId": that.pid, "add": "add", "p_id": that.uuid() },
+					url: "php/review.php",
+					data: { "userName": that.userInfo.userName, "reviewText": that.phonePj, "reviewDate": new Date(), "productId": that.pid, "add": "add", "review_id": that.uuid() },
 					dataType: "json",
 					success: function (res) {
 						that.$message({
@@ -277,8 +277,8 @@
 				var that = this;
 				$.ajax({
 					type: "GET",
-					url: "php/pingJia.php",
-					data: { "p_id": id, "depj": "depj" },
+					url: "php/review.php",
+					data: { "review_id": id, "depj": "depj" },
 					dataType: "json",
 					success: function (res) {
 						that.$message({
@@ -298,7 +298,7 @@
 				// 	}
 				$.ajax({
 					type: "GET",
-					url: "php/pingJia.php",
+					url: "php/review.php",
 					data: { "productId": that.pid, "search": "search" },
 					dataType: "json",
 					success: function (res) {
@@ -367,12 +367,12 @@
 					$.ajax({
 						type: "GET",
 						url: "php/detail.php",
-						data: { "pid": that.pid, "userId": user.userId, "p_class": that.jsonData.p_class, "name": that.jsonData.name, "price": that.jsonData.price, "img": that.jsonData.img, "jianJie": that.jsonData.jianJie, "p_color": that.radio_color, "p_version": that.radio_v },
+						data: { "pid": that.pid, "userId": user.userId, "p_class": that.jsonData.p_class, "name": that.jsonData.name, "price": that.jsonData.price, "img": that.jsonData.img, "description": that.jsonData.description, "p_palce": that.radio_color, "p_specification": that.radio_v },
 						dataType: "json",
 						success: function (res) {
 							if (res.resultCode == 200) {
 								that.$message({
-									message: 'Successfully Order',
+									message: 'Successfully Add',
 									type: 'success'
 								});
 							} else if (res.resultCode == "00") {
@@ -426,7 +426,7 @@
 					$.ajax({
 						type: "GET",
 						url: "php/detail.php",
-						data: { "pid": that.pid, "userId": user.userId, "p_class": that.jsonData.p_class, "p_name": that.jsonData.name, "price": that.jsonData.price, "img": that.jsonData.img, "jianJie": that.jsonData.jianJie, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_color": that.radio_color, "p_version": that.radio_v, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.jsonData.price, "userName": user.userName },
+						data: { "pid": that.pid, "userId": user.userId, "p_class": that.jsonData.p_class, "p_name": that.jsonData.name, "price": that.jsonData.price, "img": that.jsonData.img, "description": that.jsonData.description, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_place": that.radio_color, "p_specification": that.radio_v, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.jsonData.price, "userName": user.userName },
 						dataType: "json",
 						success: function (res) {
 							if (res.resultCode == 200) {
@@ -516,16 +516,16 @@
 			onsearchVal() {
 				var arg = encodeURI(encodeURI(this.searchVal));
 				window.location.href = "index_search.html?arg=" + arg;
-				// var that = this;
-				// $.ajax({
-				// 	type: "GET",
-				//          url: "php/index.php",
-				//          data: {"searchVal":that.searchVal,"searchName":"searchName"},
-				//          dataType: "json",
-				// 	success: function(res) {
-				// 		that.jsonData = res.data;
-				// 	},
-				// });
+				var that = this;
+				$.ajax({
+					type: "GET",
+				         url: "php/index.php",
+				         data: {"searchVal":that.searchVal,"searchName":"searchName"},
+				         dataType: "json",
+					success: function(res) {
+						that.jsonData = res.data;
+					},
+				});
 			},
 			//uuid
 			uuid() {

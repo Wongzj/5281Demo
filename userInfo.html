@@ -33,10 +33,8 @@
         <div class="login-header">
             <div class="login-body">
                 <div class="login-cont">
-                    <a href="index.html"><img src="static/image/head-top.png" alt=""></a>
                 </div>
                 <div class="login-name">
-                    <b style="font-size: 18px;margin-top: -5px;float: left;color:#cccccc;">|</b>
                     <b style="font-size: 18px;margin-top: -3px;float: left; margin-left:18px;">Personal Center</b>
                 </div>
             </div>
@@ -87,9 +85,9 @@
                     <el-table :data="jsonAddressData" style="width: 100%">
                         <el-table-column prop="userAddress" label="Address">
                         </el-table-column>
-                        <el-table-column prop="getUserName" label="Consignee">
+                        <el-table-column prop="consignee" label="Consignee">
                         </el-table-column>
-                        <el-table-column prop="userPhone" label="Mobile">
+                        <el-table-column prop="mobile" label="Mobile">
                         </el-table-column>
                         <el-table-column label="Operation">
                             <template slot-scope="scope">
@@ -108,10 +106,10 @@
                         <el-input v-model="form.userAddress" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="Consignee" :label-width="formLabelWidth">
-                        <el-input v-model="form.getUserName" autocomplete="off"></el-input>
+                        <el-input v-model="form.consignee" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="Mobile" :label-width="formLabelWidth">
-                        <el-input v-model="form.userPhone" autocomplete="off"></el-input>
+                        <el-input v-model="form.mobile" autocomplete="off"></el-input>
                     </el-form-item>
                 </el-form>
                 <div slot="footer" class="dialog-footer">
@@ -132,8 +130,8 @@
             formLabelWidth: "150px",
             form: {
                 userAddress: "",
-                getUserName: "",
-                userPhone: ""
+                consignee: "",
+                mobile: ""
             },
             dialogFormVisiblemorenaddress: false,
             userName: JSON.parse(window.sessionStorage.user).userName,
@@ -157,21 +155,21 @@
                 console.log(tab, event);
             },
             sureSave() {
-                if (!(/^1[34578]\d{9}$/.test(this.form.userPhone))) {
+                if (!(/^1[34578]\d{9}$/.test(this.form.mobile))) {
                     alert("The mobile phone number is incorrect. Please fill it in again!");
                     return false;
                 }
                 this.userAddress = this.form.userAddress;
-                this.userPhone = this.form.userPhone;
-                this.getUserName = this.form.getUserName;
+                this.consignee = this.form.consignee;
+                this.mobile = this.form.mobile;
                 this.saveAddress('change')
             },
             changeM(res) {
                 var that = this;
                 that.dialogFormVisiblemorenaddress = true;
                 that.form.userAddress = res.userAddress;
-                that.form.getUserName = res.getUserName;
-                that.form.userPhone = res.userPhone;
+                that.form.consignee = res.consignee;
+                that.form.mobile = res.mobile;
                 that.dataid = res.dataid;
             },
             gatData() {
@@ -307,17 +305,17 @@
             },
             saveAddress(setType) {
                 var that = this;
-                if (!this.userAddress || !this.userPhone || !this.getUserName) {
-                    that.$message({
-                        message: "Please complete!",
-                        type: 'warning'
-                    });
-                    return;
-                }
-                if (!(/^1[34578]\d{9}$/.test(this.userPhone))) {
-                    alert("The mobile phone number is incorrect. Please fill it in again!");
-                    return false;
-                }
+                // if (!this.userAddress || !this.consignee || !this.mobile) {
+                //     that.$message({
+                //         message: "Please complete!",
+                //         type: 'warning'
+                //     });
+                //     return;
+                // }
+                // if (!(/^1[34578]\d{9}$/.test(this.mobile))) {
+                //     alert("The mobile phone number is incorrect. Please fill it in again!");
+                //     return false;
+                // }
                 if (setType == "save") {
                     var sendData = { "userAddress": that.userAddress, "addUserAddress": "addUserAddress", "userId": that.userId, "userPhone": that.userPhone, "getUserName": that.getUserName, "type": setType, "dataid": Date.parse(new Date()) }
                 } else {
