@@ -144,7 +144,9 @@ CREATE TABLE `product` (
 
 /*Data for the table `product` */
 
-insert  into `product`(`id`,`name`,`price`,`description`,`img`,`p_class`,`sales`,`p_detail`,`stock`) values ('247563e3-ab6e-fe51-a','pedigree dog food adult',150,'chicken & vegetables','pedigree.jpg','food','9','<img src=\"static/gnImage/pedigree1.PNG\" alt=\"\"><img src=\"static/gnImage/pedigree2.PNG\">',1301),
+insert  into `product`(`id`,`name`,`price`,`description`,`img`,`p_class`,`sales`,`p_detail`,`stock`) values ('247563e3-ab6e-fe51-a','pedigree dog food adult',150,'chicken & vegetables','pedigree.jpg','food','9',
+    '<img src=\"static/gnImage/pedigree1.PNG\" alt=\"\">
+    <img src=\"static/gnImage/pedigree2.PNG\" alt=\"\">',1301),
                                                                                                         ('f6ddb4d5-3a12-e99a-9','pet home',500,'comfortable home','cathome.jpg','home','2','<img src=\"static/gnImage/home1.PNG\" alt=\"\"><img src=\"static/gnImage/home2.PNG\" alt=\"\">',198),
                                                                                                         ('025d13bf-5323-80b2-5','royal canin dog food',100,'an economic pet food','royal_canin.jpg','food','100','<img src=\"static/gnImage/royal1.PNG\" alt=\"\"><img src=\"static/gnImage/royal2.PNG\" alt=\"\">',900),
                                                                                                         ('c20459ca-2978-443f-b','pedigree dog food age 1-6',200,'成犬中小型 5大健康活力表现','pedigree.jpeg','food','6','<img src=\"static/gnImage/pedigree3.PNG\" alt=\"\"><img src=\"static/gnImage/pedigree4.PNG\" alt=\"\">',4002),

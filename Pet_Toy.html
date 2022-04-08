@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -130,7 +131,7 @@
 				$.ajax({
 					type: "GET",
 					url: "php/search.php",
-					data: { "p_class": "20", "search": "search" },
+					data: { "p_class": "toy", "search": "search" },
 					dataType: "json",
 					success: function (res) {
 						that.jsonData = res.data;
