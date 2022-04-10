@@ -376,7 +376,7 @@
 						error: function (data) {
 							that.$message({
 								message: 'Add Fail',
-								type: 'success'
+								type: 'warning'
 							});
 						}
 					});
@@ -430,15 +430,15 @@
 								that.sales(that.pid);
 							} else if (res.resultCode == "00") {
 								that.$message({
-									message: 'Do not order Repeatdly',
+									message: 'Do not Repeat the order',
 									type: 'warning'
 								});
 							}
 						},
 						error: function (data) {
 							that.$message({
-								message: 'Order Failed',
-								type: 'error'
+								message: 'Order Fail',
+								type: 'warning'
 							});
 						}
 					});

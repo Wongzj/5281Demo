@@ -181,8 +181,8 @@
 			</span>
 		</el-dialog>
 		<el-dialog title="Confirm order" :visible.sync="dialogVisibleOrder" width="30%">
-			<p>{{orderInfoData.name}} ({{orderInfoData.jianJie}})</p>
-			<p>Price： {{orderInfoData.price}} ({{orderInfoData.p_color}}--{{orderInfoData.p_version}})</p>
+			<p>{{orderInfoData.name}} ({{orderInfoData.description}})</p>
+			<p>Price： {{orderInfoData.price}} ({{orderInfoData.p_color}}--{{orderInfoData.p_specification}})</p>
 			<p>Address: {{form.address}}</p>
 			<p>Consignee: {{form.userName}}</p>
 			<p>Mobile: {{form.mobile}}</p>
@@ -288,7 +288,7 @@
 					success: function (data) {
 						that.$message({
 							message: "Deleted successfully!",
-							type: 'success'
+							type: 'warning'
 						});
 						that.gatData();
 					},
@@ -353,7 +353,7 @@
 				$.ajax({
 					type: "GET",
 					url: "php/detail.php",
-					data: { "pid": that.orderInfoData.id, "userId": user.userId, "p_class": that.orderInfoData.p_class, "p_name": that.orderInfoData.name, "price": that.orderInfoData.price, "img": that.orderInfoData.img, "description": that.orderInfoData.jianJie, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_color": that.orderInfoData.p_color, "p_specification": that.orderInfoData.p_version, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.orderInfoData.price * that.orderInfoData.p_num, "userName": user.userName },
+					data: { "pid": that.orderInfoData.id, "userId": user.userId, "p_class": that.orderInfoData.p_class, "p_name": that.orderInfoData.name, "price": that.orderInfoData.price, "img": that.orderInfoData.img, "description": that.orderInfoData.description, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_color": that.orderInfoData.p_color, "p_specification": that.orderInfoData.p_specification, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.orderInfoData.price * that.orderInfoData.p_num, "userName": user.userName },
 					dataType: "json",
 					success: function (res) {
 						if (res.resultCode == 200) {
@@ -361,7 +361,6 @@
 								message: 'Congratulations!Order successfully!',
 								type: 'success'
 							});
-							// that.jiFen();
 							that.dialogVisibleOrder = false;
 							that.sales(that.orderInfoData.id);
 						} else if (res.resultCode == "00") {

@@ -328,13 +328,13 @@
 			<el-tabs v-model="activeName" :center="true" @tab-click="handleClick">
 				<el-tab-pane label="Log in" name="first">
 					<el-form :model="form">
-						<el-form-item label="account number" style="display: none;" :label-width="formLabelWidth">
+						<el-form-item label="account" style="display: none;" :label-width="formLabelWidth">
 							<el-input v-model="form.userName" autocomplete="off"></el-input>
 						</el-form-item>
 						<el-form-item label="paaword" style="display: none;" :label-width="formLabelWidth">
 							<el-input type="password" v-model="form.userPassword" autocomplete="off"></el-input>
 						</el-form-item>
-						<el-form-item label="account number" :label-width="formLabelWidth">
+						<el-form-item label="account" :label-width="formLabelWidth">
 							<el-input v-model="form.userName" autocomplete="off"
 								placeholder="Please enter characters up to 18 characters in length">
 							</el-input>
