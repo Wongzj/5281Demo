@@ -417,7 +417,7 @@
 					$.ajax({
 						type: "GET",
 						url: "php/detail.php",
-						data: { "pid": that.pid, "userId": user.userId, "p_class": that.jsonData.p_class, "p_name": that.jsonData.name, "price": that.jsonData.price, "img": that.jsonData.img, "description": that.jsonData.description, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_color": that.radio_color, "p_specification": that.radio_v, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.jsonData.price, "userName": user.userName },
+						data: { "pid": that.pid, "userId": user.userId, "p_class": that.jsonData.p_class, "p_name": that.jsonData.name, "price": that.jsonData.price, "img": that.jsonData.img, "description": that.jsonData.description, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_specification": that.radio_v, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.jsonData.price, "userName": user.userName },
 						dataType: "json",
 						success: function (res) {
 							if (res.resultCode == 200) {
