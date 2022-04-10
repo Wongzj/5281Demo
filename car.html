@@ -372,10 +372,10 @@
 						}
 					},
 					error: function (data) {
-						that.$message({
-							message: 'Congratulations!Order successfully!',
-							type: 'success'
-						});
+							that.$message({
+								message: 'Order Failed',
+								type: 'error'
+							});
 					}
 				});
 			},
