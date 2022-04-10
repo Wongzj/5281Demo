@@ -22,14 +22,14 @@ DROP TABLE IF EXISTS `car`;
 
 CREATE TABLE `car` (
                        `id` varchar(100) DEFAULT NULL,
-                       `name` varchar(20) DEFAULT NULL,
+                       `name` varchar(256) DEFAULT NULL,
                        `price` varchar(20) DEFAULT NULL,
-                       `description` varchar(60) DEFAULT NULL,
+                       `description` varchar(256) DEFAULT NULL,
                        `img` varchar(20) DEFAULT NULL,
                        `userId` varchar(66) DEFAULT NULL,
                        `p_class` varchar(20) DEFAULT NULL,
                        `p_color` varchar(11) DEFAULT NULL,
-                       `p_specification` varchar(12) DEFAULT NULL,
+                       `p_specification` varchar(256) DEFAULT NULL,
                        `p_num` int(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -50,7 +50,7 @@ insert  into `car`(`id`,`name`,`price`,`description`,`img`,`userId`,`p_class`,`p
 DROP TABLE IF EXISTS `announcement`;
 
 CREATE TABLE `announcement` (
-                           `a_title` varchar(100) DEFAULT NULL,
+                           `a_title` varchar(256) DEFAULT NULL,
                            `a_detail` varchar(3000) DEFAULT NULL,
                            `a_id` varchar(33) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -82,21 +82,21 @@ DROP TABLE IF EXISTS `my_order`;
 
 CREATE TABLE `my_order` (
                             `id` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
-                            `p_name` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+                            `p_name` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
                             `price` varchar(20) DEFAULT NULL,
-                            `description` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+                            `description` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
                             `img` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
                             `userId` varchar(50) DEFAULT NULL,
-                            `my_address` varchar(50) DEFAULT NULL,
+                            `my_address` varchar(256) DEFAULT NULL,
                             `p_class` varchar(20) DEFAULT NULL,
-                            `consignee` varchar(11) DEFAULT NULL,
+                            `consignee` varchar(256) DEFAULT NULL,
                             `mobile` varchar(11) DEFAULT NULL,
                             `p_color` varchar(11) DEFAULT NULL,
-                            `p_specification` varchar(20) DEFAULT NULL,
+                            `p_specification` varchar(256) DEFAULT NULL,
                             `orderDate` varchar(20) DEFAULT NULL,
                             `orderCode` varchar(20) DEFAULT NULL,
                             `actual_price` varchar(11) DEFAULT NULL,
-                            `userName` varchar(11) DEFAULT NULL
+                            `userName` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -112,10 +112,10 @@ insert  into `my_order`(`id`,`p_name`,`price`,`description`,`img`,`userId`,`my_a
 DROP TABLE IF EXISTS `review`;
 
 CREATE TABLE `review` (
-                           `userName` varchar(20) DEFAULT NULL,
+                           `userName` varchar(256) DEFAULT NULL,
                            `productId` varchar(22) DEFAULT NULL,
                            `reviewDate` varchar(50) DEFAULT NULL,
-                           `reviewText` varchar(300) DEFAULT NULL,
+                           `reviewText` varchar(256) DEFAULT NULL,
                            `review_id` varchar(34) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -132,9 +132,9 @@ DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product` (
                                `id` varchar(20) DEFAULT NULL,
-                               `name` varchar(20) DEFAULT NULL,
+                               `name` varchar(256) DEFAULT NULL,
                                `price` int(12) DEFAULT NULL,
-                               `description` varchar(50) DEFAULT NULL,
+                               `description` varchar(256) DEFAULT NULL,
                                `img` varchar(33) CHARACTER SET latin1 DEFAULT NULL,
                                `p_class` varchar(20) DEFAULT NULL,
                                `sales` varchar(500) DEFAULT '0',
@@ -158,7 +158,7 @@ insert  into `product`(`id`,`name`,`price`,`description`,`img`,`p_class`,`sales`
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
                              `userId` varchar(333) NOT NULL,
-                             `userName` varchar(12) DEFAULT NULL,
+                             `userName` varchar(256) DEFAULT NULL,
                              `password` varchar(18) DEFAULT NULL,
                              `userImg` varchar(33) DEFAULT NULL,
                              `points` varchar(22) DEFAULT '0'
@@ -179,10 +179,10 @@ DROP TABLE IF EXISTS `address`;
 
 CREATE TABLE `address` (
                                `userId` varchar(50) DEFAULT NULL,
-                               `userAddress` varchar(50) DEFAULT NULL,
-                               `userName` varchar(20) DEFAULT NULL,
+                               `userAddress` varchar(256) DEFAULT NULL,
+                               `userName` varchar(256) DEFAULT NULL,
                                `mobile` varchar(11) DEFAULT NULL,
-                               `consignee` varchar(11) DEFAULT NULL,
+                               `consignee` varchar(256) DEFAULT NULL,
                                `address_id` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
