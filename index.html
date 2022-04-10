@@ -66,34 +66,34 @@
 					</div>
 					<div class="naver">
 						<ul id="naver-list">
-							<li id="huawei" class="">
+							<li id="Pet_Treats" class="">
 								<a href="Pet_Treats.html" >
 									<span
 										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Pet
 										Treats</span>
 								</a>
 							</li>
-							<li id="huawei" class="">
+							<li id="Pet_Toy" class="">
 								<a href="Pet_Toy.html" >
 									<span
 										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Pet
 										Toy</span>
 								</a>
 							</li>
-							<li id="honor" class="">
+							<li id="Canned_Wet_Food" class="">
 								<a href="Canned_Wet_Food.html" >
 									<span
 										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Canned
 										Wet Food</span>
 								</a>
 							</li>
-							<li id="honor" class="">
+							<li id="Nutrition" class="">
 								<a href="Nutrition.html" >
 									<span
 										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Nutrition</span>
 								</a>
 							</li>
-							<li id="honor" class="">
+							<li id="Medical_Products" class="">
 								<a href="Medical_Products.html" >
 									<span
 										style="font-weight: bold;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-transform: uppercase;">Medical
@@ -233,11 +233,11 @@
 				</div>
 			</div>
 			<div class="layout">
-				<!-- <ul class="grid_ul">
+				 <ul class="grid_ul">
 						<li class="grid-items" v-for="(item,index) in jsonHotData">
 							<a :href="`detail.html?id=${item.id}`">
 								<p class="grid-img">
-									<img :src=`static/image/${item.img}` />
+									<!--<img :src=`static/image/${item.img}` />-->
 									<img :src="'sas/upload/'+item.img" />
 								</p>
 								<p class="grid-title">{{item.name}}</p>
@@ -246,8 +246,8 @@
 								<p class="grid-sales">销量：{{item.sales}}</p>
 							</a>
 						</li>
-					</ul> -->
-				<ul class="grid_ul">
+					</ul>
+				<!--<ul class="grid_ul">
 					<li class="grid-items">
 						<a href="detail.html?id=247563e3-ab6e-fe51-a">
 							<p>
@@ -288,7 +288,7 @@
 							<p class="grid-sales">Monthly sales:2000+</p>
 						</a>
 					</li>
-				</ul>
+				</ul>-->
 			</div>
 		</div>
 		<!--底部广告-->
@@ -564,7 +564,7 @@
 				var that = this;
 				$.ajax({
 					type: "GET",
-					url: "sas/gg.php",
+					url: "sas/announcement.php",
 					data: { "ggallList": "allList" },
 					dataType: "json",
 					success: function (res) {

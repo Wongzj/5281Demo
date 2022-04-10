@@ -37,7 +37,7 @@
 	<body>
 		<div id="sas_app">
 			<div class="left">
-				<div class="bigTitle">Backend Management System</div>
+				<div class="bigTitle">Backend Management</div>
 				<div class="lines">
 					<div @click="flag = 2" :class="{active:flag == 2}"><img src="img/icon-2.png" />Product Manage</div>
 					<div @click="flag = 1" :class="{active:flag == 1}"><img src="img/addpr.png" />Add Product</div>
@@ -66,9 +66,9 @@
 					Product Type :&emsp;<el-select v-model="p_class" placeholder="select">
 						<el-option label="Pet Treats" value="10"></el-option>
 						<el-option label="Pet Toy" value="20"></el-option>
-						<el-option label="Canned Wet Food" value="30"></el-option>
+						<el-option label="Food" value="30"></el-option>
 						<el-option label="Nutrition" value="40"></el-option>
-						<el-option label="Medical Products" value="50"></el-option>
+						<el-option label="Other" value="50"></el-option>
 					</el-select>&emsp;&emsp;
 					Product Stock Number:&emsp;<el-input v-model="kucun" type="number" min="1" placeholder="please enter number"></el-input>
 					<el-upload
@@ -77,7 +77,7 @@
 					:on-success="success_upload"
 					:limit="1"
 					:file-list="fileList">
-					<el-button size="small" type="primary">Upload Product Img</el-button>
+					<el-button size="small" type="primary">Product Details</el-button>
 					<!-- <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div> -->
 					</el-upload>
 					<el-button type="primary" style="width: 50%;margin-top: 50px;" @click="save">Save</el-button>
@@ -104,11 +104,11 @@
 						label="Price">
 					</el-table-column>
 					<el-table-column
-						prop="kucun"
+						prop="stock"
 						label="Stock">
 					</el-table-column>
 					<el-table-column
-						prop="jianJie"
+						prop="description"
 						label="Brief">
 					</el-table-column>
 					<el-table-column
@@ -411,7 +411,7 @@
 					if(that.g_title&&that.g_detail){
 						$.ajax({
 						type: "GET",
-			             url: "gg.php",
+			             url: "announcement.php",
 			             data: {"g_title":that.g_title,"g_detail":that.g_detail,"g_id":that.uuid(),"add":"add"},
 			             dataType: "json",
 						success: function(data) {
@@ -449,7 +449,7 @@
 					this.flag = 4;
 					$.ajax({
 						type: "GET",
-			             url: "gg.php",
+			             url: "announcement.php",
 			             data: {"ggallList":"allList"},
 			             dataType: "json",
 						success: function(data) {
@@ -595,7 +595,7 @@
 					}
 					$.ajax({
 						type: "GET",
-			             url: "gg.php",
+			             url: "announcement.php",
 			             data: {"g_title":that.g_title,"g_detail":that.g_detail,"change_gg":"change_gg","g_old_title":that.g_old_title},
 			             dataType: "json",
 						success: function(data) {
@@ -625,7 +625,7 @@
 					var that = this;
 					$.ajax({
 						type: "GET",
-			             url: "gg.php",
+			             url: "announcement.php",
 			             data: {"g_title":g_title,"g_detele":"g_detele"},
 			             dataType: "json",
 						success: function(data) {

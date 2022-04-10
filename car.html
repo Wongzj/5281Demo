@@ -74,27 +74,27 @@
 					</div>
 					<div class="naver">
 						<ul id="naver-list">
-							<li id="huawei" class="">
+							<li id="Pet_Treats" class="">
 								<a href="Pet_Treats.html" target="_blank">
 									<span>Pet Treats</span>
 								</a>
 							</li>
-							<li id="huawei" class="">
+							<li id="Pet_Toy" class="">
 								<a href="Pet_Toy.html" target="_blank">
 									<span>Pet Toy</span>
 								</a>
 							</li>
-							<li id="honor" class="">
+							<li id="Canned_Wet_Food" class="">
 								<a href="Canned_Wet_Food.html" target="_blank">
 									<span>Canned Wet Food</span>
 								</a>
 							</li>
-							<li id="honor" class="">
+							<li id="Nutrition" class="">
 								<a href="Nutrition.html" target="_blank">
 									<span>Nutrition</span>
 								</a>
 							</li>
-							<li id="honor" class="">
+							<li id="Medical_Products" class="">
 								<a href="Medical_Products.html" target="_blank">
 									<span>Medical Products</span>
 								</a>
@@ -356,7 +356,7 @@
 				$.ajax({
 					type: "GET",
 					url: "php/detail.php",
-					data: { "pid": that.orderInfoData.id, "userId": user.userId, "p_class": that.orderInfoData.p_class, "p_name": that.orderInfoData.name, "price": that.orderInfoData.price, "img": that.orderInfoData.img, "jianJie": that.orderInfoData.jianJie, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_color": that.orderInfoData.p_color, "p_version": that.orderInfoData.p_version, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.orderInfoData.price * that.orderInfoData.p_num, "userName": user.userName },
+					data: { "pid": that.orderInfoData.id, "userId": user.userId, "p_class": that.orderInfoData.p_class, "p_name": that.orderInfoData.name, "price": that.orderInfoData.price, "img": that.orderInfoData.img, "description": that.orderInfoData.jianJie, "my_address": that.form.address, "user_name": that.form.userName, "user_mobile": that.form.mobile, "p_color": that.orderInfoData.p_color, "p_specification": that.orderInfoData.p_version, "orderDate": orderDate, "orderCode": Date.parse(new Date()), "shifu": that.orderInfoData.price * that.orderInfoData.p_num, "userName": user.userName },
 					dataType: "json",
 					success: function (res) {
 						if (res.resultCode == 200) {

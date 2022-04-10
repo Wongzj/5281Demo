@@ -61,7 +61,7 @@
                 that.t = decodeURI(that.t)
                 $.ajax({
                     type: "GET",
-                    url: "sas/gg.php",
+                    url: "sas/announcement.php",
                     data: { "g_title": that.t, "checkone": "checkone" },
                     dataType: "json",
                     success: function (res) {

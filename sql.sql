@@ -28,22 +28,22 @@ CREATE TABLE `car` (
                        `img` varchar(20) DEFAULT NULL,
                        `userId` varchar(66) DEFAULT NULL,
                        `p_class` varchar(20) DEFAULT NULL,
-                       `p_place` varchar(11) DEFAULT 'China',
+                       `p_color` varchar(11) DEFAULT NULL,
                        `p_specification` varchar(12) DEFAULT NULL,
                        `p_num` int(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `car` */
 
-insert  into `car`(`id`,`name`,`price`,`description`,`img`,`userId`,`p_class`,`p_place`,`p_specification`,`p_num`) values ('c20459ca-2978-443f-b','pedigree dog food age 1-6','200','成犬中小型 5大健康活力表现','pedigree.jpeg','7065e571-2e16-2bfd-06c5-eff1c155130d','food','China','4kg',10),
-                                                                                                                          ('247563e3-ab6e-fe51-a','pedigree dog food adult','150','chicken & vegetables','pedigree.jpg','7065e571-2e16-2bfd-06c5-eff1c155130d','food','US','3kg',10),
-                                                                                                                          ('4fb439ab-bb4e-d818-d','fashion cloth suit','300','make your cool pet','cloth.jpg','00b06059-95a1-1462-9e56-ef523d9eb8cf','cloth','China','yellow',1),
-                                                                                                                          ('f6ddb4d5-3a12-e99a-9','pet home','500','comfortable home','cathome.jpg','66f7985c-650c-01d6-c850-987ddf2a7292','home','China','gray',1),
-                                                                                                                          ('73608d3a-bc0a-704f-0','foobler pet toy','1000','an intelligent pet toy, make your pet happy','foobler.jpg','66f7985c-650c-01d6-c850-987ddf2a7292','toy','Germany','basic edition',1),
-                                                                                                                          ('025d13bf-5323-80b2-5','royal canin dog food','100','an economic pet food','royal_canin.jpg','66f7985c-650c-01d6-c850-987ddf2a7292','food','China','4kg',3),
-                                                                                                                          ('4fb439ab-bb4e-d818-d','fashion cloth suit','300','make your cool pet','cloth.jpg','f67ce978-e1c9-e83c-ce31-8696149fe118','cloth','China','yellow',1),
-                                                                                                                          ('c20459ca-2978-443f-b','pedigree dog food age 1-6','200','成犬中小型 5大健康活力表现','pedigree.jpeg','admin','food','China','4kg',5),
-                                                                                                                          ('c20459ca-2978-443f-b','pedigree dog food age 1-6','200','成犬中小型 5大健康活力表现','pedigree.jpeg','e84f0d72-2ff3-7cae-542c-f11f98d1062f','food','China','4kg',1);
+insert  into `car`(`id`,`name`,`price`,`description`,`img`,`userId`,`p_class`,`p_color`,`p_specification`,`p_num`) values ('c20459ca-2978-443f-b','pedigree dog food age 1-6','200','成犬中小型 5大健康活力表现','pedigree.jpeg','7065e571-2e16-2bfd-06c5-eff1c155130d','30',NULL,'4kg',10),
+                                                                                                                          ('247563e3-ab6e-fe51-a','pedigree dog food adult','150','chicken & vegetables','pedigree.jpg','7065e571-2e16-2bfd-06c5-eff1c155130d','40',NULL,'3kg',10),
+                                                                                                                          ('4fb439ab-bb4e-d818-d','fashion cloth suit','300','make your cool pet','cloth.jpg','00b06059-95a1-1462-9e56-ef523d9eb8cf','50','yellow','L',1),
+                                                                                                                          ('f6ddb4d5-3a12-e99a-9','pet home','500','comfortable home','cathome.jpg','66f7985c-650c-01d6-c850-987ddf2a7292','10',NULL,'gray',1),
+                                                                                                                          ('73608d3a-bc0a-704f-0','foobler pet toy','1000','an intelligent pet toy, make your pet happy','foobler.jpg','66f7985c-650c-01d6-c850-987ddf2a7292','20',NULL,'basic edition',1),
+                                                                                                                          ('025d13bf-5323-80b2-5','royal canin dog food','100','an economic pet food','royal_canin.jpg','66f7985c-650c-01d6-c850-987ddf2a7292','30',NULL,'4kg',3),
+                                                                                                                          ('4fb439ab-bb4e-d818-d','fashion cloth suit','300','make your cool pet','cloth.jpg','f67ce978-e1c9-e83c-ce31-8696149fe118','50','yellow','M',1),
+                                                                                                                          ('c20459ca-2978-443f-b','pedigree dog food age 1-6','200','成犬中小型 5大健康活力表现','pedigree.jpeg','admin','30',NULL,'4kg',5),
+                                                                                                                          ('c20459ca-2978-443f-b','pedigree dog food age 1-6','200','成犬中小型 5大健康活力表现','pedigree.jpeg','e84f0d72-2ff3-7cae-542c-f11f98d1062f','30',NULL,'4kg',1);
 
 /*Table structure for table `announcement` */
 
@@ -91,7 +91,7 @@ CREATE TABLE `my_order` (
                             `p_class` varchar(20) DEFAULT NULL,
                             `consignee` varchar(11) DEFAULT NULL,
                             `mobile` varchar(11) DEFAULT NULL,
-                            `p_place` varchar(11) DEFAULT 'China',
+                            `p_color` varchar(11) DEFAULT NULL,
                             `p_specification` varchar(20) DEFAULT NULL,
                             `orderDate` varchar(20) DEFAULT NULL,
                             `orderCode` varchar(20) DEFAULT NULL,
@@ -102,10 +102,10 @@ CREATE TABLE `my_order` (
 
 /*Data for the table `my_order` */
 
-insert  into `my_order`(`id`,`p_name`,`price`,`description`,`img`,`userId`,`my_address`,`p_class`,`consignee`,`mobile`,`p_place`,`p_specification`,`orderDate`,`orderCode`,`actual_price`,`userName`) values ('73608d3a-bc0a-704f-0','foobler pet toy','1000','an intelligent pet toy, make your pet happy','foobler.jpg','66f7985c-650c-01d6-c850-987ddf2a7292','City University of Hong Kong','toy','alice','63332222','Germany','basic edition','2022-4-1 21:09','1555942446000','1000','alice'),
-                                                                                                                                                                                                 ('73608d3a-bc0a-704f-0','foobler pet toy','1000','an intelligent pet toy, make your pet happy','foobler.jpg','c9ceaa28-e3ac-e74f-4820-ee0d2f0bf3df','City University of Hong Kong','toy','bob','60001111','Germany','basic edition','2022-4-2 20:20','1555994150000','1000','bob'),
-                                                                                                                                                                                                 ('4fb439ab-bb4e-d818-d','fashion cloth suit','300','make your cool pet','cloth.jpg','f67ce978-e1c9-e83c-ce31-8696149fe118','Kowloon, Hong Kong','cloth','express station','61110000','China','yellow','2022-4-1 17:06','1556802360000','300','david'),
-                                                                                                                                                                                                 ('73608d3a-bc0a-704f-0','foobler pet toy','1000','an intelligent pet toy, make your pet happy','foobler.jpg','e84f0d72-2ff3-7cae-542c-f11f98d1062f','Chinese University of Hong Kong','toy','my sister','65554444','Germany','basic edition','2022-3-27 10:19','1558876780000','1000','cindy');
+insert  into `my_order`(`id`,`p_name`,`price`,`description`,`img`,`userId`,`my_address`,`p_class`,`consignee`,`mobile`,`p_color`,`p_specification`,`orderDate`,`orderCode`,`actual_price`,`userName`) values ('73608d3a-bc0a-704f-0','foobler pet toy','1000','an intelligent pet toy, make your pet happy','foobler.jpg','66f7985c-650c-01d6-c850-987ddf2a7292','City University of Hong Kong','20','alice','63332222',NULL,'basic edition','2022-4-1 21:09','1555942446000','1000','alice'),
+                                                                                                                                                                                                 ('73608d3a-bc0a-704f-0','foobler pet toy','1000','an intelligent pet toy, make your pet happy','foobler.jpg','c9ceaa28-e3ac-e74f-4820-ee0d2f0bf3df','City University of Hong Kong','20','bob','60001111',NULL,'basic edition','2022-4-2 20:20','1555994150000','1000','bob'),
+                                                                                                                                                                                                 ('4fb439ab-bb4e-d818-d','fashion cloth suit','300','make your cool pet','cloth.jpg','f67ce978-e1c9-e83c-ce31-8696149fe118','Kowloon, Hong Kong','50','express station','61110000','yellow','S','2022-4-1 17:06','1556802360000','300','david'),
+                                                                                                                                                                                                 ('73608d3a-bc0a-704f-0','foobler pet toy','1000','an intelligent pet toy, make your pet happy','foobler.jpg','e84f0d72-2ff3-7cae-542c-f11f98d1062f','Chinese University of Hong Kong','20','my sister','65554444',NULL,'basic edition','2022-3-27 10:19','1558876780000','1000','cindy');
 
 /*Table structure for table `review` */
 
@@ -144,13 +144,13 @@ CREATE TABLE `product` (
 
 /*Data for the table `product` */
 
-insert  into `product`(`id`,`name`,`price`,`description`,`img`,`p_class`,`sales`,`p_detail`,`stock`) values ('247563e3-ab6e-fe51-a','pedigree dog food adult',150,'chicken & vegetables','pedigree.jpg','food','9','<img src=\"static/gnImage/pedigree1.PNG\" alt=\"\"><img src=\"static/gnImage/pedigree2.PNG\">',1301),
-                                                                                                        ('f6ddb4d5-3a12-e99a-9','pet home',500,'comfortable home','cathome.jpg','home','2','<img src=\"static/gnImage/home1.PNG\" alt=\"\"><img src=\"static/gnImage/home2.PNG\" alt=\"\">',198),
-                                                                                                        ('025d13bf-5323-80b2-5','royal canin dog food',100,'an economic pet food','royal_canin.jpg','food','100','<img src=\"static/gnImage/royal1.PNG\" alt=\"\"><img src=\"static/gnImage/royal2.PNG\" alt=\"\">',900),
-                                                                                                        ('c20459ca-2978-443f-b','pedigree dog food age 1-6',200,'成犬中小型 5大健康活力表现','pedigree.jpeg','food','6','<img src=\"static/gnImage/pedigree3.PNG\" alt=\"\"><img src=\"static/gnImage/pedigree4.PNG\" alt=\"\">',4002),
-                                                                                                        ('73608d3a-bc0a-704f-0','foobler pet toy',1000,'an intelligent pet toy, make your pet happy','foobler.jpg','toy','4','<img src=\"static/gnImage/foobler1.PNG\" alt=\"\"><img src=\"static/gnImage/foobler2.PNG\" alt=\"\">',16),
-                                                                                                        ('abc081d8-060c-5d3a-6','RW Simple Solution',120,'針對各類型寵物污漬，包括排泄物污漬及嘔吐漬等','other.jpg','other','1','<img src=\"static/gnImage/other1.PNG\" alt=\"\"><img src=\"static/gnImage/other2.PNG\" alt=\"\">',299),
-                                                                                                        ('4fb439ab-bb4e-d818-d','fashion cloth suit',300,'make your cool pet','cloth.jpg','cloth','15','<img src=\"static/gnImage/cloth1.PNG\" alt=\"\"><img src=\"static/gnImage/cloth2.PNG\" alt=\"\">',5);
+insert  into `product`(`id`,`name`,`price`,`description`,`img`,`p_class`,`sales`,`p_detail`,`stock`) values ('247563e3-ab6e-fe51-a','pedigree dog food adult',150,'chicken & vegetables','pedigree.jpg','40','9','<img src=\"static/gnImage/pedigree1.PNG\" alt=\"\"><img src=\"static/gnImage/pedigree2.PNG\">',1301),
+                                                                                                        ('f6ddb4d5-3a12-e99a-9','pet home',500,'comfortable home','cathome.jpg','10','2','<img src=\"static/gnImage/home1.PNG\" alt=\"\"><img src=\"static/gnImage/home2.PNG\" alt=\"\">',198),
+                                                                                                        ('025d13bf-5323-80b2-5','royal canin dog food',100,'an economic pet food','royal_canin.jpg','30','100','<img src=\"static/gnImage/royal1.PNG\" alt=\"\"><img src=\"static/gnImage/royal2.PNG\" alt=\"\">',900),
+                                                                                                        ('c20459ca-2978-443f-b','pedigree dog food age 1-6',200,'成犬中小型 5大健康活力表现','pedigree.jpeg','30','6','<img src=\"static/gnImage/pedigree3.PNG\" alt=\"\"><img src=\"static/gnImage/pedigree4.PNG\" alt=\"\">',4002),
+                                                                                                        ('73608d3a-bc0a-704f-0','foobler pet toy',1000,'an intelligent pet toy, make your pet happy','foobler.jpg','20','4','<img src=\"static/gnImage/foobler1.PNG\" alt=\"\"><img src=\"static/gnImage/foobler2.PNG\" alt=\"\">',16),
+                                                                                                        ('abc081d8-060c-5d3a-6','RW Simple Solution',120,'針對各類型寵物污漬，包括排泄物污漬及嘔吐漬等','other.jpg','50','1','<img src=\"static/gnImage/other1.PNG\" alt=\"\"><img src=\"static/gnImage/other2.PNG\" alt=\"\">',299),
+                                                                                                        ('4fb439ab-bb4e-d818-d','fashion cloth suit',300,'make your cool pet','cloth.jpg','50','15','<img src=\"static/gnImage/cloth1.PNG\" alt=\"\"><img src=\"static/gnImage/cloth2.PNG\" alt=\"\">',5);
 
 /*Table structure for table `user_info` */
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/huawei.iml" filepath="$PROJECT_DIR$/huawei.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PetMall.iml" filepath="$PROJECT_DIR$/PetMall.iml" />
     </modules>
   </component>
 </project>
