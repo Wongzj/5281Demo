@@ -42,8 +42,8 @@
 					<div @click="flag = 2" :class="{active:flag == 2}"><img src="img/icon-2.png" />Product Manage</div>
 					<div @click="flag = 1" :class="{active:flag == 1}"><img src="img/addpr.png" />Add Product</div>
 					<div @click="gatUserData" :class="{active:flag == 3}"><img src="img/icon-1.png" />User Management</div>
-					<div @click="gatggData" :class="{active:flag == 4}"><img src="img/gonggao.png" />Post Management</div>
-					<div @click="flag = 5" :class="{active:flag == 5}"><img src="img/addpr.png" />Add Post</div>
+					<!-- <div @click="gatggData" :class="{active:flag == 4}"><img src="img/gonggao.png" />Post Management</div> -->
+					<!-- <div @click="flag = 5" :class="{active:flag == 5}"><img src="img/addpr.png" />Add Post</div> -->
 					<div @click="gatOrderData" :class="{active:flag == 6}"><img src="img/icon-5.png" />Order Management</div>
 					<div @click="gatSuperData" :class="{active:flag == 7}"><img src="img/icon-1.png" />Admin Management</div>
 				</div>
@@ -62,7 +62,7 @@
 					Porduct Name :&emsp;<el-input v-model="p_name" placeholder="please enter product name"></el-input> &emsp;&emsp;
 					Product Price :&emsp;<el-input v-model="p_price" placeholder="please enter product price"></el-input><br>
 					Brief :&emsp;<el-input type="textarea" :rows="1" placeholder="please enter brief" v-model="p_info"></el-input><br>
-					Product Detail Img:<el-input type="textarea" :rows="2" placeholder="please enter Product Deatil Img Src, the format is as follow ：《img src='static/gnImage/201812101528044939784.jpg'》" v-model="p_gn"></el-input><br>
+					<!-- Product Detail Img:<el-input type="textarea" :rows="2" placeholder="please enter Product Deatil Img Src, the format is as follow ：《img src='static/gnImage/201812101528044939784.jpg'》" v-model="p_gn"></el-input><br> -->
 					Product Type :&emsp;<el-select v-model="p_class" placeholder="select">
 						<el-option label="Pet Treats" value="10"></el-option>
 						<el-option label="Pet Toy" value="20"></el-option>
@@ -298,7 +298,7 @@
         		p_name:"",
 				p_price:"",
 				p_info:"",
-				p_gn:"",
+				p_gn:null,
 				p_class:"", // 型号
 				kucun:"",
 				fileList:[],
@@ -321,7 +321,7 @@
 				// 存储主页产品
 				save(){
 					var that = this;
-					if(that.p_name&&that.p_price&&that.flile_upload_name&&that.p_info&&that.p_gn&&that.p_class&&that.kucun){
+					if(that.p_name&&that.p_price&&that.flile_upload_name&&that.p_info&&that.p_class&&that.kucun){
 						$.ajax({
 						type: "GET",
 			             url: "product.php",
