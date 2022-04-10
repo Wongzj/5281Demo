@@ -61,15 +61,15 @@
 			<div v-if="flag==1" class="content">
 					Porduct Name :&emsp;<el-input v-model="p_name" placeholder="please enter product name"></el-input> &emsp;&emsp;
 					Product Price :&emsp;<el-input v-model="p_price" placeholder="please enter product price"></el-input><br>
-					Brief :&emsp;<el-input type="textarea" :rows="2" placeholder="please enter brief" v-model="p_info"></el-input>&emsp;&emsp;
-					Product Detail Img:<el-input type="textarea" :rows="2" placeholder="please enter Product Deatil Img Src, the format is as：《img src='static/gnImage/201812101528044939784.jpg'》" v-model="p_gn"></el-input>
+					Brief :&emsp;<el-input type="textarea" :rows="1" placeholder="please enter brief" v-model="p_info"></el-input><br>
+					Product Detail Img:<el-input type="textarea" :rows="2" placeholder="please enter Product Deatil Img Src, the format is as follow ：《img src='static/gnImage/201812101528044939784.jpg'》" v-model="p_gn"></el-input><br>
 					Product Type :&emsp;<el-select v-model="p_class" placeholder="select">
 						<el-option label="Pet Treats" value="10"></el-option>
 						<el-option label="Pet Toy" value="20"></el-option>
 						<el-option label="Food" value="30"></el-option>
 						<el-option label="Nutrition" value="40"></el-option>
 						<el-option label="Other" value="50"></el-option>
-					</el-select>&emsp;&emsp;
+					</el-select><br>
 					Product Stock Number:&emsp;<el-input v-model="kucun" type="number" min="1" placeholder="please enter number"></el-input>
 					<el-upload
 					class="upload-demo"
