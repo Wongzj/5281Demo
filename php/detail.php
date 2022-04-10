@@ -142,7 +142,7 @@ function addOrder($conn){
 		$psql2 = "UPDATE product SET stock=$pnew_kucun WHERE id='{$_GET['pid']}'";
 		$presult2 = $conn->query($psql2);
 		$sql = "INSERT INTO my_order (userId,id,p_name,price,description,my_address,img,p_class,consignee,mobile,p_color,p_specification,orderDate,orderCode,actual_price,userName)
-		VALUES ('{$_GET['userId']}','{$_GET['pid']}','{$_GET['p_name']}','{$_GET['price']}','{$_GET['jianJie']}','{$_GET['my_address']}','{$_GET['img']}','{$_GET['p_class']}','{$_GET['user_name']}','{$_GET['user_mobile']}','{$_GET['p_color']}','{$_GET['p_version']}','{$_GET['orderDate']}','{$_GET['orderCode']}','{$_GET['shifu']}','{$_GET['userName']}')";
+		VALUES ('{$_GET['userId']}','{$_GET['pid']}','{$_GET['p_name']}','{$_GET['price']}','{$_GET['description']}','{$_GET['my_address']}','{$_GET['img']}','{$_GET['p_class']}','{$_GET['user_name']}','{$_GET['user_mobile']}','{$_GET['p_color']}','{$_GET['p_specification']}','{$_GET['orderDate']}','{$_GET['orderCode']}','{$_GET['shifu']}','{$_GET['userName']}')";
 			
 		if ($conn->query($sql) === TRUE) {
 			echo json_encode(array(
