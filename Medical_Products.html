@@ -215,6 +215,21 @@
 					},
 				});
 			},
+			// 搜索
+			onsearchVal() {
+				var arg = encodeURI(encodeURI(this.searchVal));
+				window.location.href = "index_search.html?arg=" + arg;
+				// var that = this;
+				// $.ajax({
+				// 	type: "GET",
+				//          url: "php/index.php",
+				//          data: {"searchVal":that.searchVal,"searchName":"searchName"},
+				//          dataType: "json",
+				// 	success: function(res) {
+				// 		that.jsonData = res.data;
+				// 	},
+				// });
+			},
 			//uuid
 			uuid() {
 				function _s4() {
